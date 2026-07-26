@@ -826,13 +826,13 @@ export const CoreLanguage = {
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
-  11 | const Label = ({ children }) =&gt; &lt;p className=&quot;gshadow-story-label&quot;&gt;{children}&lt;/p&gt;
-  12 |
-&gt; 13 | export default { title: &#39;GSHADOW/Registry&#39;, parameters: { layout: &#39;fullscreen&#39; } }
+  38 | )
+  39 |
+&gt; 40 | export default { title: &#39;GSHADOW/Registry&#39;, parameters: { layout: &#39;fullscreen&#39; } }
      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  14 |
-  15 | export const Base = {
-  16 |   render: () =&gt; &lt;Frame&gt;
+  41 |
+  42 | export const Base = {
+  43 |   render: () =&gt; &lt;Frame
 
 ./stories/GShadowPrimitives.stories.jsx:
 import &#39;../registry/styles/gshadow.css&#39;
@@ -844,96 +844,146 @@ import { Surface as GShadowSurface } from &#39;../registry/components/surface&#3
 import { ThemeToggle as GShadowThemeToggle } from &#39;../registry/components/theme-toggle&#39;
 import { cn } from &#39;../registry/lib/utils&#39;
 
-const Frame = ({ children }) =&gt; &lt;main className=&quot;gshadow-story-frame&quot;&gt;{children}&lt;/main&gt;
-const Label = ({ children }) =&gt; &lt;p className=&quot;gshadow-story-label&quot;&gt;{children}&lt;/p&gt;
+const Frame = ({ title, eyebrow, summary, contract, children }) =&gt; (
+  &lt;main className=&quot;gshadow-story-frame&quot;&gt;
+    &lt;div className=&quot;gshadow-story-content&quot;&gt;
+      &lt;header className=&quot;gshadow-story-header&quot;&gt;
+        &lt;div&gt;
+          &lt;p className=&quot;gshadow-story-label&quot;&gt;{eyebrow}&lt;/p&gt;
+          &lt;h1 className=&quot;gshadow-story-title&quot;&gt;{title}&lt;/h1&gt;
+          &lt;p className=&quot;gshadow-story-copy&quot;&gt;{summary}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;p className=&quot;gshadow-story-contract&quot;&gt;{contract}&lt;/p&gt;
+      &lt;/header&gt;
+      {children}
+    &lt;/div&gt;
+  &lt;/main&gt;
+)
+
+const Section = ({ title, index, children }) =&gt; (
+  &lt;section className=&quot;gshadow-story-section&quot;&gt;
+    &lt;h2 className=&quot;gshadow-story-section-heading&quot;&gt;&lt;span&gt;{index}&lt;/span&gt;{title}&lt;/h2&gt;
+    {children}
+  &lt;/section&gt;
+)
+
+const Guidance = ({ use, avoid }) =&gt; (
+  &lt;div className=&quot;gshadow-story-guidance&quot;&gt;
+    &lt;div&gt;&lt;h3&gt;USE IT FOR&lt;/h3&gt;&lt;p&gt;{use}&lt;/p&gt;&lt;/div&gt;
+    &lt;div&gt;&lt;h3&gt;NOT FOR&lt;/h3&gt;&lt;p&gt;{avoid}&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+)
 
 export default { title: &#39;GSHADOW/Registry&#39;, parameters: { layout: &#39;fullscreen&#39; } }
 
 export const Base = {
-  render: () =&gt; &lt;Frame&gt;
-    &lt;Label&gt;BASE / TOKENS / TYPOGRAPHY / FOCUS&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;A system with a pulse.&lt;/h1&gt;
-    &lt;p className=&quot;gshadow-story-copy&quot;&gt;Warm light and void-dark share one semantic contract. Display type identifies. Interface type works. Mono labels evidence.&lt;/p&gt;
-    &lt;div className=&quot;gshadow-story-token-grid&quot;&gt;
-      {[&#39;background&#39;, &#39;card&#39;, &#39;primary&#39;, &#39;destructive&#39;, &#39;border&#39;, &#39;foreground&#39;].map((token) =&gt; &lt;div className=&quot;gshadow-story-token&quot; key={token}&gt;&lt;i style={{ background: `var(--${token})` }} /&gt;&lt;span&gt;{token}&lt;/span&gt;&lt;/div&gt;)}
-    &lt;/div&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;FOUNDATION / TOKENS / TYPE / FOCUS&quot;
+    title=&quot;A system with a pulse.&quot;
+    summary=&quot;The baseline is warm and legible in light mode, quiet and watchful in void-dark. Violet is an operational signal, never the room itself.&quot;
+    contract=&quot;Semantic names stay stable across modes. Components only consume semantic tokens, so a theme change never requires a component rewrite.&quot;
+  &gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Semantic color roles&quot;&gt;
+      &lt;div className=&quot;gshadow-story-token-grid&quot;&gt;
+        {[
+          [&#39;background&#39;, &#39;canvas&#39;], [&#39;card&#39;, &#39;surface&#39;], [&#39;foreground&#39;, &#39;primary text&#39;],
+          [&#39;primary&#39;, &#39;action / trace&#39;], [&#39;border&#39;, &#39;structure&#39;], [&#39;destructive&#39;, &#39;danger&#39;],
+        ].map(([token, use]) =&gt; &lt;div className=&quot;gshadow-story-token&quot; key={token}&gt;&lt;i style={{ background: `var(--${token})` }} /&gt;&lt;span&gt;{token}&lt;br /&gt;&lt;small&gt;{use}&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;)}
+      &lt;/div&gt;
+    &lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;
+      &lt;Guidance use=&quot;Use violet for one active action, selected state, focus ring, or a single trace edge in a composition.&quot; avoid=&quot;Do not wash a page in violet gradients, glow every status dot, or use color as the only status signal.&quot; /&gt;
+    &lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
 export const Utilities = {
-  render: () =&gt; &lt;Frame&gt;
-    &lt;Label&gt;UTILITY / CLASS COMPOSITION&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;The quiet machinery.&lt;/h1&gt;
-    &lt;p className=&quot;gshadow-story-copy&quot;&gt;The registry’s class merger keeps component contracts predictable when consumers extend them.&lt;/p&gt;
-    &lt;pre className=&quot;gshadow-story-code&quot;&gt;{cn(&#39;gshadow-surface&#39;, &#39;gshadow-surface--trace&#39;, &#39;gshadow-surface--comfortable&#39;)}&lt;/pre&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;UTILITY / CLASS COMPOSITION&quot;
+    title=&quot;The quiet machinery.&quot;
+    summary=&quot;The class merger lets a consumer compose a documented primitive without fighting its contract or duplicating style bundles.&quot;
+    contract=&quot;Utilities protect the system from accidental overrides. They are infrastructure, not a visual feature.&quot;
+  &gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Composition result&quot;&gt;
+      &lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;GShadowSurface className={cn(&#39;gshadow-surface--trace&#39;)} elevation=&quot;trace&quot; density=&quot;comfortable&quot;&gt;&lt;GShadowStatus state=&quot;info&quot;&gt;UTILITY CONTRACT ACTIVE&lt;/GShadowStatus&gt;&lt;/GShadowSurface&gt;&lt;/div&gt;
+    &lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;The exact class merge&quot;&gt;&lt;pre className=&quot;gshadow-story-code&quot;&gt;{cn(&#39;gshadow-surface&#39;, &#39;gshadow-surface--trace&#39;, &#39;gshadow-surface--comfortable&#39;)}&lt;/pre&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Extend a documented primitive through its named props and a small local class adjustment.&quot; avoid=&quot;Copy a giant visual class string into product pages or invent a one-off color variant.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
 export const ModeScript = {
-  render: () =&gt; &lt;Frame&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;MODE SCRIPT / PRE-PAINT PERSISTENCE&quot;
+    title=&quot;No flash. No guesswork.&quot;
+    summary=&quot;The pre-paint script restores an explicit warm-light or void-dark choice before the interface renders. Without one, it follows the operating system.&quot;
+    contract=&quot;The theme contract is light, dark, or system default. It never asks a component to discover the current theme itself.&quot;
+  &gt;
     &lt;GShadowModeScript /&gt;
-    &lt;Label&gt;MODE SCRIPT / PRE-PAINT PERSISTENCE&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;No flash. No guesswork.&lt;/h1&gt;
-    &lt;p className=&quot;gshadow-story-copy&quot;&gt;The pre-paint script restores an explicit warm-light or void-dark choice. Without one, it follows the operating system.&lt;/p&gt;
-    &lt;GShadowStatus state=&quot;success&quot;&gt;MODE CONTRACT ACTIVE&lt;/GShadowStatus&gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Live state&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;GShadowStatus state=&quot;success&quot;&gt;MODE CONTRACT ACTIVE&lt;/GShadowStatus&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Mount it once at the document root before product content begins rendering.&quot; avoid=&quot;Mount one script per component, or use it as a visual mode switcher.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
 export const ThemeToggle = {
-  render: () =&gt; &lt;Frame&gt;
-    &lt;Label&gt;THEME TOGGLE / LIGHT / DARK / SYSTEM&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Cycle the environment.&lt;/h1&gt;
-    &lt;p className=&quot;gshadow-story-copy&quot;&gt;Click the control to step through system, void-dark, and warm-light. The choice persists for the next visit.&lt;/p&gt;
-    &lt;GShadowThemeToggle /&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;THEME TOGGLE / DIRECT LIGHT-DARK SWITCH&quot;
+    title=&quot;Change the field in one move.&quot;
+    summary=&quot;A single press switches directly between warm-light and void-dark. System preference is only the starting point, not a third stop in the interaction.&quot;
+    contract=&quot;The hit area is 44 px. The control persists an explicit choice and announces the mode it will switch to.&quot;
+  &gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Live example&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;GShadowThemeToggle /&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Interaction rule&quot;&gt;&lt;Guidance use=&quot;Place this at a global level where users expect environment controls, such as the application rail.&quot; avoid=&quot;Hide the state in a menu without a visible affordance or require repeated taps to change modes.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
 export const Button = {
-  render: () =&gt; &lt;Frame&gt;
-    &lt;Label&gt;BUTTON / INTENT / SIZE / LOADING&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Actions with a reason.&lt;/h1&gt;
-    &lt;div className=&quot;gshadow-story-row&quot;&gt;
-      &lt;GShadowButtonComponent intent=&quot;primary&quot;&gt;VIEW EVIDENCE&lt;/GShadowButtonComponent&gt;
-      &lt;GShadowButtonComponent intent=&quot;secondary&quot;&gt;SECONDARY&lt;/GShadowButtonComponent&gt;
-      &lt;GShadowButtonComponent intent=&quot;ghost&quot;&gt;GHOST&lt;/GShadowButtonComponent&gt;
-      &lt;GShadowButtonComponent intent=&quot;danger&quot;&gt;DANGER&lt;/GShadowButtonComponent&gt;
-      &lt;GShadowButtonComponent loading&gt;WORKING&lt;/GShadowButtonComponent&gt;
-    &lt;/div&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;BUTTON / INTENT / SIZE / LOADING&quot;
+    title=&quot;Actions with a reason.&quot;
+    summary=&quot;Buttons communicate action priority before decoration. The primary action earns the only concentrated violet on this surface.&quot;
+    contract=&quot;Use intent, size, and state. Do not invent color-named buttons or placement-specific variants.&quot;
+  &gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Intent&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;div className=&quot;gshadow-story-row&quot;&gt;&lt;GShadowButtonComponent intent=&quot;primary&quot;&gt;VIEW EVIDENCE&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent intent=&quot;secondary&quot;&gt;OPEN LOG&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent intent=&quot;ghost&quot;&gt;DISMISS&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent intent=&quot;danger&quot;&gt;PURGE&lt;/GShadowButtonComponent&gt;&lt;/div&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Size and state&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;div className=&quot;gshadow-story-row&quot;&gt;&lt;GShadowButtonComponent size=&quot;sm&quot;&gt;COMPACT&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent size=&quot;md&quot;&gt;DEFAULT&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent size=&quot;lg&quot;&gt;PROMINENT&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent loading&gt;WORKING&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent disabled&gt;UNAVAILABLE&lt;/GShadowButtonComponent&gt;&lt;/div&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use primary for the single next move, secondary for an equal alternative, ghost for low-emphasis actions, and danger for irreversible work.&quot; avoid=&quot;Put two primary actions beside each other or use danger merely to add visual excitement.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
 export const Surface = {
-  render: () =&gt; &lt;Frame&gt;
-    &lt;Label&gt;SURFACE / BASE / RAISED / TRACE&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Structure without chrome.&lt;/h1&gt;
-    &lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;
-      {[&#39;base&#39;, &#39;raised&#39;, &#39;trace&#39;].map((elevation) =&gt; &lt;GShadowSurface key={elevation} elevation={elevation} density=&quot;comfortable&quot;&gt;&lt;Label&gt;{elevation}&lt;/Label&gt;&lt;strong&gt;{elevation === &#39;trace&#39; ? &#39;Signal edge&#39; : &#39;Calm containment&#39;}&lt;/strong&gt;&lt;/GShadowSurface&gt;)}
-    &lt;/div&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;SURFACE / BASE / RAISED / TRACE&quot;
+    title=&quot;Structure without chrome.&quot;
+    summary=&quot;Surfaces create hierarchy with containment, spacing, and a rare trace. The dark field stays deep, but it does not become a purple fog machine.&quot;
+    contract=&quot;One trace edge per composition. Elevation is semantic: base contains, raised separates, trace directs attention.&quot;
+  &gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Elevation&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;{[[&#39;base&#39;, &#39;Calm containment&#39;], [&#39;raised&#39;, &#39;Separate a task&#39;], [&#39;trace&#39;, &#39;Direct attention&#39;]].map(([elevation, copy]) =&gt; &lt;GShadowSurface key={elevation} elevation={elevation} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{elevation}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;p className=&quot;gshadow-story-copy&quot;&gt;Use this level only when its hierarchy has a job to do.&lt;/p&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Density&quot;&gt;&lt;div className=&quot;gshadow-story-row&quot;&gt;&lt;GShadowSurface elevation=&quot;base&quot; density=&quot;compact&quot;&gt;Compact: controls and tight metadata&lt;/GShadowSurface&gt;&lt;GShadowSurface elevation=&quot;base&quot; density=&quot;comfortable&quot;&gt;Comfortable: readable task content&lt;/GShadowSurface&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use a base surface for related content, raised for separation, and a trace for the one item that needs a directional cue.&quot; avoid=&quot;Stack raised cards, add decorative gradients, or trace every panel.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
 export const Metric = {
-  render: () =&gt; &lt;Frame&gt;
-    &lt;Label&gt;METRIC / TABULAR VALUE / UNIT&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Numbers that hold their line.&lt;/h1&gt;
-    &lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;
-      &lt;GShadowMetric label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;
-      &lt;GShadowMetric label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;
-      &lt;GShadowMetric label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;
-    &lt;/div&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;METRIC / TABULAR VALUE / UNIT&quot;
+    title=&quot;Numbers that hold their line.&quot;
+    summary=&quot;Operational values use Manrope with tabular lining figures. Labels are mono. Units breathe at a smaller scale and always keep one space from the value.&quot;
+    contract=&quot;Metric data stays readable at a glance. Syne is identity type, never live operational data.&quot;
+  &gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Operational examples&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowMetric label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;&lt;GShadowMetric label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;&lt;GShadowMetric label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use for a concise, high-value count, measure, rate, or capacity with a precise label and unit.&quot; avoid=&quot;Use for paragraphs, status messages, or values that need explanatory prose to be understood.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
 export const Status = {
-  render: () =&gt; &lt;Frame&gt;
-    &lt;Label&gt;STATUS / TEXT + SIGNAL&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Readable without color.&lt;/h1&gt;
-    &lt;div className=&quot;gshadow-story-status-list&quot;&gt;
-      &lt;GShadowStatus state=&quot;success&quot;&gt;PROBE CLEAN&lt;/GShadowStatus&gt;
-      &lt;GShadowStatus state=&quot;warning&quot;&gt;LATENCY WATCH&lt;/GShadowStatus&gt;
-      &lt;GShadowStatus state=&quot;error&quot;&gt;ACTION REQUIRED&lt;/GShadowStatus&gt;
-      &lt;GShadowStatus state=&quot;info&quot;&gt;LOG INDEXED&lt;/GShadowStatus&gt;
-    &lt;/div&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;STATUS / TEXT + SIGNAL&quot;
+    title=&quot;Readable without color.&quot;
+    summary=&quot;Status combines a named state, mono label, and a restrained dot. Color reinforces the message; it is never the only message.&quot;
+    contract=&quot;Use the four named states. Keep the wording direct enough that the status survives monochrome or reduced vision.&quot;
+  &gt;
+    &lt;Section index=&quot;01&quot; title=&quot;State examples&quot;&gt;&lt;div className=&quot;gshadow-story-status-list&quot;&gt;&lt;GShadowStatus state=&quot;success&quot;&gt;PROBE CLEAN&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;warning&quot;&gt;LATENCY WATCH&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;error&quot;&gt;ACTION REQUIRED&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;info&quot;&gt;LOG INDEXED&lt;/GShadowStatus&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Pair status with a concise observed condition, especially in operational UI and system feedback.&quot; avoid=&quot;Use status color as decoration, or hide a critical action behind a vague label like “Attention.”&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 </code></pre></div>
@@ -975,13 +1025,23 @@ export const Status = {
               </div>
               
               
-              <pre><code>const Base = () =&gt; &lt;Frame&gt;
-  &lt;Label&gt;BASE / TOKENS / TYPOGRAPHY / FOCUS&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;A system with a pulse.&lt;/h1&gt;
-  &lt;p className=&quot;gshadow-story-copy&quot;&gt;Warm light and void-dark share one semantic contract. Display type identifies. Interface type works. Mono labels evidence.&lt;/p&gt;
-  &lt;div className=&quot;gshadow-story-token-grid&quot;&gt;
-    {[&#39;background&#39;, &#39;card&#39;, &#39;primary&#39;, &#39;destructive&#39;, &#39;border&#39;, &#39;foreground&#39;].map((token) =&gt; &lt;div className=&quot;gshadow-story-token&quot; key={token}&gt;&lt;i style={{ background: `var(--${token})` }} /&gt;&lt;span&gt;{token}&lt;/span&gt;&lt;/div&gt;)}
-  &lt;/div&gt;
+              <pre><code>const Base = () =&gt; &lt;Frame
+  eyebrow=&quot;FOUNDATION / TOKENS / TYPE / FOCUS&quot;
+  title=&quot;A system with a pulse.&quot;
+  summary=&quot;The baseline is warm and legible in light mode, quiet and watchful in void-dark. Violet is an operational signal, never the room itself.&quot;
+  contract=&quot;Semantic names stay stable across modes. Components only consume semantic tokens, so a theme change never requires a component rewrite.&quot;
+&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Semantic color roles&quot;&gt;
+    &lt;div className=&quot;gshadow-story-token-grid&quot;&gt;
+      {[
+        [&#39;background&#39;, &#39;canvas&#39;], [&#39;card&#39;, &#39;surface&#39;], [&#39;foreground&#39;, &#39;primary text&#39;],
+        [&#39;primary&#39;, &#39;action / trace&#39;], [&#39;border&#39;, &#39;structure&#39;], [&#39;destructive&#39;, &#39;danger&#39;],
+      ].map(([token, use]) =&gt; &lt;div className=&quot;gshadow-story-token&quot; key={token}&gt;&lt;i style={{ background: `var(--${token})` }} /&gt;&lt;span&gt;{token}&lt;br /&gt;&lt;small&gt;{use}&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;)}
+    &lt;/div&gt;
+  &lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;
+    &lt;Guidance use=&quot;Use violet for one active action, selected state, focus ring, or a single trace edge in a composition.&quot; avoid=&quot;Do not wash a page in violet gradients, glow every status dot, or use color as the only status signal.&quot; /&gt;
+  &lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -991,11 +1051,17 @@ export const Status = {
               </div>
               
               
-              <pre><code>const Utilities = () =&gt; &lt;Frame&gt;
-  &lt;Label&gt;UTILITY / CLASS COMPOSITION&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;The quiet machinery.&lt;/h1&gt;
-  &lt;p className=&quot;gshadow-story-copy&quot;&gt;The registry’s class merger keeps component contracts predictable when consumers extend them.&lt;/p&gt;
-  &lt;pre className=&quot;gshadow-story-code&quot;&gt;{cn(&#39;gshadow-surface&#39;, &#39;gshadow-surface--trace&#39;, &#39;gshadow-surface--comfortable&#39;)}&lt;/pre&gt;
+              <pre><code>const Utilities = () =&gt; &lt;Frame
+  eyebrow=&quot;UTILITY / CLASS COMPOSITION&quot;
+  title=&quot;The quiet machinery.&quot;
+  summary=&quot;The class merger lets a consumer compose a documented primitive without fighting its contract or duplicating style bundles.&quot;
+  contract=&quot;Utilities protect the system from accidental overrides. They are infrastructure, not a visual feature.&quot;
+&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Composition result&quot;&gt;
+    &lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;GShadowSurface className={cn(&#39;gshadow-surface--trace&#39;)} elevation=&quot;trace&quot; density=&quot;comfortable&quot;&gt;&lt;GShadowStatus state=&quot;info&quot;&gt;UTILITY CONTRACT ACTIVE&lt;/GShadowStatus&gt;&lt;/GShadowSurface&gt;&lt;/div&gt;
+  &lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;The exact class merge&quot;&gt;&lt;pre className=&quot;gshadow-story-code&quot;&gt;{cn(&#39;gshadow-surface&#39;, &#39;gshadow-surface--trace&#39;, &#39;gshadow-surface--comfortable&#39;)}&lt;/pre&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Extend a documented primitive through its named props and a small local class adjustment.&quot; avoid=&quot;Copy a giant visual class string into product pages or invent a one-off color variant.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1005,12 +1071,15 @@ export const Status = {
               </div>
               
               
-              <pre><code>const ModeScript = () =&gt; &lt;Frame&gt;
+              <pre><code>const ModeScript = () =&gt; &lt;Frame
+  eyebrow=&quot;MODE SCRIPT / PRE-PAINT PERSISTENCE&quot;
+  title=&quot;No flash. No guesswork.&quot;
+  summary=&quot;The pre-paint script restores an explicit warm-light or void-dark choice before the interface renders. Without one, it follows the operating system.&quot;
+  contract=&quot;The theme contract is light, dark, or system default. It never asks a component to discover the current theme itself.&quot;
+&gt;
   &lt;GShadowModeScript /&gt;
-  &lt;Label&gt;MODE SCRIPT / PRE-PAINT PERSISTENCE&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;No flash. No guesswork.&lt;/h1&gt;
-  &lt;p className=&quot;gshadow-story-copy&quot;&gt;The pre-paint script restores an explicit warm-light or void-dark choice. Without one, it follows the operating system.&lt;/p&gt;
-  &lt;GShadowStatus state=&quot;success&quot;&gt;MODE CONTRACT ACTIVE&lt;/GShadowStatus&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Live state&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;GShadowStatus state=&quot;success&quot;&gt;MODE CONTRACT ACTIVE&lt;/GShadowStatus&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Mount it once at the document root before product content begins rendering.&quot; avoid=&quot;Mount one script per component, or use it as a visual mode switcher.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1020,11 +1089,14 @@ export const Status = {
               </div>
               
               
-              <pre><code>const ThemeToggle = () =&gt; &lt;Frame&gt;
-  &lt;Label&gt;THEME TOGGLE / LIGHT / DARK / SYSTEM&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Cycle the environment.&lt;/h1&gt;
-  &lt;p className=&quot;gshadow-story-copy&quot;&gt;Click the control to step through system, void-dark, and warm-light. The choice persists for the next visit.&lt;/p&gt;
-  &lt;GShadowThemeToggle /&gt;
+              <pre><code>const ThemeToggle = () =&gt; &lt;Frame
+  eyebrow=&quot;THEME TOGGLE / DIRECT LIGHT-DARK SWITCH&quot;
+  title=&quot;Change the field in one move.&quot;
+  summary=&quot;A single press switches directly between warm-light and void-dark. System preference is only the starting point, not a third stop in the interaction.&quot;
+  contract=&quot;The hit area is 44 px. The control persists an explicit choice and announces the mode it will switch to.&quot;
+&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Live example&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;GShadowThemeToggle /&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Interaction rule&quot;&gt;&lt;Guidance use=&quot;Place this at a global level where users expect environment controls, such as the application rail.&quot; avoid=&quot;Hide the state in a menu without a visible affordance or require repeated taps to change modes.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1034,16 +1106,15 @@ export const Status = {
               </div>
               
               
-              <pre><code>const Button = () =&gt; &lt;Frame&gt;
-  &lt;Label&gt;BUTTON / INTENT / SIZE / LOADING&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Actions with a reason.&lt;/h1&gt;
-  &lt;div className=&quot;gshadow-story-row&quot;&gt;
-    &lt;GShadowButtonComponent intent=&quot;primary&quot;&gt;VIEW EVIDENCE&lt;/GShadowButtonComponent&gt;
-    &lt;GShadowButtonComponent intent=&quot;secondary&quot;&gt;SECONDARY&lt;/GShadowButtonComponent&gt;
-    &lt;GShadowButtonComponent intent=&quot;ghost&quot;&gt;GHOST&lt;/GShadowButtonComponent&gt;
-    &lt;GShadowButtonComponent intent=&quot;danger&quot;&gt;DANGER&lt;/GShadowButtonComponent&gt;
-    &lt;GShadowButtonComponent loading&gt;WORKING&lt;/GShadowButtonComponent&gt;
-  &lt;/div&gt;
+              <pre><code>const Button = () =&gt; &lt;Frame
+  eyebrow=&quot;BUTTON / INTENT / SIZE / LOADING&quot;
+  title=&quot;Actions with a reason.&quot;
+  summary=&quot;Buttons communicate action priority before decoration. The primary action earns the only concentrated violet on this surface.&quot;
+  contract=&quot;Use intent, size, and state. Do not invent color-named buttons or placement-specific variants.&quot;
+&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Intent&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;div className=&quot;gshadow-story-row&quot;&gt;&lt;GShadowButtonComponent intent=&quot;primary&quot;&gt;VIEW EVIDENCE&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent intent=&quot;secondary&quot;&gt;OPEN LOG&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent intent=&quot;ghost&quot;&gt;DISMISS&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent intent=&quot;danger&quot;&gt;PURGE&lt;/GShadowButtonComponent&gt;&lt;/div&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Size and state&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;div className=&quot;gshadow-story-row&quot;&gt;&lt;GShadowButtonComponent size=&quot;sm&quot;&gt;COMPACT&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent size=&quot;md&quot;&gt;DEFAULT&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent size=&quot;lg&quot;&gt;PROMINENT&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent loading&gt;WORKING&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent disabled&gt;UNAVAILABLE&lt;/GShadowButtonComponent&gt;&lt;/div&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use primary for the single next move, secondary for an equal alternative, ghost for low-emphasis actions, and danger for irreversible work.&quot; avoid=&quot;Put two primary actions beside each other or use danger merely to add visual excitement.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1053,12 +1124,15 @@ export const Status = {
               </div>
               
               
-              <pre><code>const Surface = () =&gt; &lt;Frame&gt;
-  &lt;Label&gt;SURFACE / BASE / RAISED / TRACE&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Structure without chrome.&lt;/h1&gt;
-  &lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;
-    {[&#39;base&#39;, &#39;raised&#39;, &#39;trace&#39;].map((elevation) =&gt; &lt;GShadowSurface key={elevation} elevation={elevation} density=&quot;comfortable&quot;&gt;&lt;Label&gt;{elevation}&lt;/Label&gt;&lt;strong&gt;{elevation === &#39;trace&#39; ? &#39;Signal edge&#39; : &#39;Calm containment&#39;}&lt;/strong&gt;&lt;/GShadowSurface&gt;)}
-  &lt;/div&gt;
+              <pre><code>const Surface = () =&gt; &lt;Frame
+  eyebrow=&quot;SURFACE / BASE / RAISED / TRACE&quot;
+  title=&quot;Structure without chrome.&quot;
+  summary=&quot;Surfaces create hierarchy with containment, spacing, and a rare trace. The dark field stays deep, but it does not become a purple fog machine.&quot;
+  contract=&quot;One trace edge per composition. Elevation is semantic: base contains, raised separates, trace directs attention.&quot;
+&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Elevation&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;{[[&#39;base&#39;, &#39;Calm containment&#39;], [&#39;raised&#39;, &#39;Separate a task&#39;], [&#39;trace&#39;, &#39;Direct attention&#39;]].map(([elevation, copy]) =&gt; &lt;GShadowSurface key={elevation} elevation={elevation} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{elevation}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;p className=&quot;gshadow-story-copy&quot;&gt;Use this level only when its hierarchy has a job to do.&lt;/p&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Density&quot;&gt;&lt;div className=&quot;gshadow-story-row&quot;&gt;&lt;GShadowSurface elevation=&quot;base&quot; density=&quot;compact&quot;&gt;Compact: controls and tight metadata&lt;/GShadowSurface&gt;&lt;GShadowSurface elevation=&quot;base&quot; density=&quot;comfortable&quot;&gt;Comfortable: readable task content&lt;/GShadowSurface&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use a base surface for related content, raised for separation, and a trace for the one item that needs a directional cue.&quot; avoid=&quot;Stack raised cards, add decorative gradients, or trace every panel.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1068,14 +1142,14 @@ export const Status = {
               </div>
               
               
-              <pre><code>const Metric = () =&gt; &lt;Frame&gt;
-  &lt;Label&gt;METRIC / TABULAR VALUE / UNIT&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Numbers that hold their line.&lt;/h1&gt;
-  &lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;
-    &lt;GShadowMetric label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;
-    &lt;GShadowMetric label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;
-    &lt;GShadowMetric label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;
-  &lt;/div&gt;
+              <pre><code>const Metric = () =&gt; &lt;Frame
+  eyebrow=&quot;METRIC / TABULAR VALUE / UNIT&quot;
+  title=&quot;Numbers that hold their line.&quot;
+  summary=&quot;Operational values use Manrope with tabular lining figures. Labels are mono. Units breathe at a smaller scale and always keep one space from the value.&quot;
+  contract=&quot;Metric data stays readable at a glance. Syne is identity type, never live operational data.&quot;
+&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Operational examples&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowMetric label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;&lt;GShadowMetric label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;&lt;GShadowMetric label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use for a concise, high-value count, measure, rate, or capacity with a precise label and unit.&quot; avoid=&quot;Use for paragraphs, status messages, or values that need explanatory prose to be understood.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1085,15 +1159,14 @@ export const Status = {
               </div>
               
               
-              <pre><code>const Status = () =&gt; &lt;Frame&gt;
-  &lt;Label&gt;STATUS / TEXT + SIGNAL&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Readable without color.&lt;/h1&gt;
-  &lt;div className=&quot;gshadow-story-status-list&quot;&gt;
-    &lt;GShadowStatus state=&quot;success&quot;&gt;PROBE CLEAN&lt;/GShadowStatus&gt;
-    &lt;GShadowStatus state=&quot;warning&quot;&gt;LATENCY WATCH&lt;/GShadowStatus&gt;
-    &lt;GShadowStatus state=&quot;error&quot;&gt;ACTION REQUIRED&lt;/GShadowStatus&gt;
-    &lt;GShadowStatus state=&quot;info&quot;&gt;LOG INDEXED&lt;/GShadowStatus&gt;
-  &lt;/div&gt;
+              <pre><code>const Status = () =&gt; &lt;Frame
+  eyebrow=&quot;STATUS / TEXT + SIGNAL&quot;
+  title=&quot;Readable without color.&quot;
+  summary=&quot;Status combines a named state, mono label, and a restrained dot. Color reinforces the message; it is never the only message.&quot;
+  contract=&quot;Use the four named states. Keep the wording direct enough that the status survives monochrome or reduced vision.&quot;
+&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;State examples&quot;&gt;&lt;div className=&quot;gshadow-story-status-list&quot;&gt;&lt;GShadowStatus state=&quot;success&quot;&gt;PROBE CLEAN&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;warning&quot;&gt;LATENCY WATCH&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;error&quot;&gt;ACTION REQUIRED&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;info&quot;&gt;LOG INDEXED&lt;/GShadowStatus&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Pair status with a concise observed condition, especially in operational UI and system feedback.&quot; avoid=&quot;Use status color as decoration, or hide a critical action behind a vague label like “Attention.”&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
         </div>
@@ -1333,13 +1406,13 @@ export const CoreLanguage = {
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
-  11 | const Label = ({ children }) =&gt; &lt;p className=&quot;gshadow-story-label&quot;&gt;{children}&lt;/p&gt;
-  12 |
-&gt; 13 | export default { title: &#39;GSHADOW/Registry&#39;, parameters: { layout: &#39;fullscreen&#39; } }
+  38 | )
+  39 |
+&gt; 40 | export default { title: &#39;GSHADOW/Registry&#39;, parameters: { layout: &#39;fullscreen&#39; } }
      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  14 |
-  15 | export const Base = {
-  16 |   render: () =&gt; &lt;Frame&gt;
+  41 |
+  42 | export const Base = {
+  43 |   render: () =&gt; &lt;Frame
 
 ./stories/GShadowPrimitives.stories.jsx:
 import &#39;../registry/styles/gshadow.css&#39;
@@ -1351,96 +1424,146 @@ import { Surface as GShadowSurface } from &#39;../registry/components/surface&#3
 import { ThemeToggle as GShadowThemeToggle } from &#39;../registry/components/theme-toggle&#39;
 import { cn } from &#39;../registry/lib/utils&#39;
 
-const Frame = ({ children }) =&gt; &lt;main className=&quot;gshadow-story-frame&quot;&gt;{children}&lt;/main&gt;
-const Label = ({ children }) =&gt; &lt;p className=&quot;gshadow-story-label&quot;&gt;{children}&lt;/p&gt;
+const Frame = ({ title, eyebrow, summary, contract, children }) =&gt; (
+  &lt;main className=&quot;gshadow-story-frame&quot;&gt;
+    &lt;div className=&quot;gshadow-story-content&quot;&gt;
+      &lt;header className=&quot;gshadow-story-header&quot;&gt;
+        &lt;div&gt;
+          &lt;p className=&quot;gshadow-story-label&quot;&gt;{eyebrow}&lt;/p&gt;
+          &lt;h1 className=&quot;gshadow-story-title&quot;&gt;{title}&lt;/h1&gt;
+          &lt;p className=&quot;gshadow-story-copy&quot;&gt;{summary}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;p className=&quot;gshadow-story-contract&quot;&gt;{contract}&lt;/p&gt;
+      &lt;/header&gt;
+      {children}
+    &lt;/div&gt;
+  &lt;/main&gt;
+)
+
+const Section = ({ title, index, children }) =&gt; (
+  &lt;section className=&quot;gshadow-story-section&quot;&gt;
+    &lt;h2 className=&quot;gshadow-story-section-heading&quot;&gt;&lt;span&gt;{index}&lt;/span&gt;{title}&lt;/h2&gt;
+    {children}
+  &lt;/section&gt;
+)
+
+const Guidance = ({ use, avoid }) =&gt; (
+  &lt;div className=&quot;gshadow-story-guidance&quot;&gt;
+    &lt;div&gt;&lt;h3&gt;USE IT FOR&lt;/h3&gt;&lt;p&gt;{use}&lt;/p&gt;&lt;/div&gt;
+    &lt;div&gt;&lt;h3&gt;NOT FOR&lt;/h3&gt;&lt;p&gt;{avoid}&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+)
 
 export default { title: &#39;GSHADOW/Registry&#39;, parameters: { layout: &#39;fullscreen&#39; } }
 
 export const Base = {
-  render: () =&gt; &lt;Frame&gt;
-    &lt;Label&gt;BASE / TOKENS / TYPOGRAPHY / FOCUS&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;A system with a pulse.&lt;/h1&gt;
-    &lt;p className=&quot;gshadow-story-copy&quot;&gt;Warm light and void-dark share one semantic contract. Display type identifies. Interface type works. Mono labels evidence.&lt;/p&gt;
-    &lt;div className=&quot;gshadow-story-token-grid&quot;&gt;
-      {[&#39;background&#39;, &#39;card&#39;, &#39;primary&#39;, &#39;destructive&#39;, &#39;border&#39;, &#39;foreground&#39;].map((token) =&gt; &lt;div className=&quot;gshadow-story-token&quot; key={token}&gt;&lt;i style={{ background: `var(--${token})` }} /&gt;&lt;span&gt;{token}&lt;/span&gt;&lt;/div&gt;)}
-    &lt;/div&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;FOUNDATION / TOKENS / TYPE / FOCUS&quot;
+    title=&quot;A system with a pulse.&quot;
+    summary=&quot;The baseline is warm and legible in light mode, quiet and watchful in void-dark. Violet is an operational signal, never the room itself.&quot;
+    contract=&quot;Semantic names stay stable across modes. Components only consume semantic tokens, so a theme change never requires a component rewrite.&quot;
+  &gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Semantic color roles&quot;&gt;
+      &lt;div className=&quot;gshadow-story-token-grid&quot;&gt;
+        {[
+          [&#39;background&#39;, &#39;canvas&#39;], [&#39;card&#39;, &#39;surface&#39;], [&#39;foreground&#39;, &#39;primary text&#39;],
+          [&#39;primary&#39;, &#39;action / trace&#39;], [&#39;border&#39;, &#39;structure&#39;], [&#39;destructive&#39;, &#39;danger&#39;],
+        ].map(([token, use]) =&gt; &lt;div className=&quot;gshadow-story-token&quot; key={token}&gt;&lt;i style={{ background: `var(--${token})` }} /&gt;&lt;span&gt;{token}&lt;br /&gt;&lt;small&gt;{use}&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;)}
+      &lt;/div&gt;
+    &lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;
+      &lt;Guidance use=&quot;Use violet for one active action, selected state, focus ring, or a single trace edge in a composition.&quot; avoid=&quot;Do not wash a page in violet gradients, glow every status dot, or use color as the only status signal.&quot; /&gt;
+    &lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
 export const Utilities = {
-  render: () =&gt; &lt;Frame&gt;
-    &lt;Label&gt;UTILITY / CLASS COMPOSITION&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;The quiet machinery.&lt;/h1&gt;
-    &lt;p className=&quot;gshadow-story-copy&quot;&gt;The registry’s class merger keeps component contracts predictable when consumers extend them.&lt;/p&gt;
-    &lt;pre className=&quot;gshadow-story-code&quot;&gt;{cn(&#39;gshadow-surface&#39;, &#39;gshadow-surface--trace&#39;, &#39;gshadow-surface--comfortable&#39;)}&lt;/pre&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;UTILITY / CLASS COMPOSITION&quot;
+    title=&quot;The quiet machinery.&quot;
+    summary=&quot;The class merger lets a consumer compose a documented primitive without fighting its contract or duplicating style bundles.&quot;
+    contract=&quot;Utilities protect the system from accidental overrides. They are infrastructure, not a visual feature.&quot;
+  &gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Composition result&quot;&gt;
+      &lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;GShadowSurface className={cn(&#39;gshadow-surface--trace&#39;)} elevation=&quot;trace&quot; density=&quot;comfortable&quot;&gt;&lt;GShadowStatus state=&quot;info&quot;&gt;UTILITY CONTRACT ACTIVE&lt;/GShadowStatus&gt;&lt;/GShadowSurface&gt;&lt;/div&gt;
+    &lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;The exact class merge&quot;&gt;&lt;pre className=&quot;gshadow-story-code&quot;&gt;{cn(&#39;gshadow-surface&#39;, &#39;gshadow-surface--trace&#39;, &#39;gshadow-surface--comfortable&#39;)}&lt;/pre&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Extend a documented primitive through its named props and a small local class adjustment.&quot; avoid=&quot;Copy a giant visual class string into product pages or invent a one-off color variant.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
 export const ModeScript = {
-  render: () =&gt; &lt;Frame&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;MODE SCRIPT / PRE-PAINT PERSISTENCE&quot;
+    title=&quot;No flash. No guesswork.&quot;
+    summary=&quot;The pre-paint script restores an explicit warm-light or void-dark choice before the interface renders. Without one, it follows the operating system.&quot;
+    contract=&quot;The theme contract is light, dark, or system default. It never asks a component to discover the current theme itself.&quot;
+  &gt;
     &lt;GShadowModeScript /&gt;
-    &lt;Label&gt;MODE SCRIPT / PRE-PAINT PERSISTENCE&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;No flash. No guesswork.&lt;/h1&gt;
-    &lt;p className=&quot;gshadow-story-copy&quot;&gt;The pre-paint script restores an explicit warm-light or void-dark choice. Without one, it follows the operating system.&lt;/p&gt;
-    &lt;GShadowStatus state=&quot;success&quot;&gt;MODE CONTRACT ACTIVE&lt;/GShadowStatus&gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Live state&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;GShadowStatus state=&quot;success&quot;&gt;MODE CONTRACT ACTIVE&lt;/GShadowStatus&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Mount it once at the document root before product content begins rendering.&quot; avoid=&quot;Mount one script per component, or use it as a visual mode switcher.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
 export const ThemeToggle = {
-  render: () =&gt; &lt;Frame&gt;
-    &lt;Label&gt;THEME TOGGLE / LIGHT / DARK / SYSTEM&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Cycle the environment.&lt;/h1&gt;
-    &lt;p className=&quot;gshadow-story-copy&quot;&gt;Click the control to step through system, void-dark, and warm-light. The choice persists for the next visit.&lt;/p&gt;
-    &lt;GShadowThemeToggle /&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;THEME TOGGLE / DIRECT LIGHT-DARK SWITCH&quot;
+    title=&quot;Change the field in one move.&quot;
+    summary=&quot;A single press switches directly between warm-light and void-dark. System preference is only the starting point, not a third stop in the interaction.&quot;
+    contract=&quot;The hit area is 44 px. The control persists an explicit choice and announces the mode it will switch to.&quot;
+  &gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Live example&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;GShadowThemeToggle /&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Interaction rule&quot;&gt;&lt;Guidance use=&quot;Place this at a global level where users expect environment controls, such as the application rail.&quot; avoid=&quot;Hide the state in a menu without a visible affordance or require repeated taps to change modes.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
 export const Button = {
-  render: () =&gt; &lt;Frame&gt;
-    &lt;Label&gt;BUTTON / INTENT / SIZE / LOADING&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Actions with a reason.&lt;/h1&gt;
-    &lt;div className=&quot;gshadow-story-row&quot;&gt;
-      &lt;GShadowButtonComponent intent=&quot;primary&quot;&gt;VIEW EVIDENCE&lt;/GShadowButtonComponent&gt;
-      &lt;GShadowButtonComponent intent=&quot;secondary&quot;&gt;SECONDARY&lt;/GShadowButtonComponent&gt;
-      &lt;GShadowButtonComponent intent=&quot;ghost&quot;&gt;GHOST&lt;/GShadowButtonComponent&gt;
-      &lt;GShadowButtonComponent intent=&quot;danger&quot;&gt;DANGER&lt;/GShadowButtonComponent&gt;
-      &lt;GShadowButtonComponent loading&gt;WORKING&lt;/GShadowButtonComponent&gt;
-    &lt;/div&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;BUTTON / INTENT / SIZE / LOADING&quot;
+    title=&quot;Actions with a reason.&quot;
+    summary=&quot;Buttons communicate action priority before decoration. The primary action earns the only concentrated violet on this surface.&quot;
+    contract=&quot;Use intent, size, and state. Do not invent color-named buttons or placement-specific variants.&quot;
+  &gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Intent&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;div className=&quot;gshadow-story-row&quot;&gt;&lt;GShadowButtonComponent intent=&quot;primary&quot;&gt;VIEW EVIDENCE&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent intent=&quot;secondary&quot;&gt;OPEN LOG&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent intent=&quot;ghost&quot;&gt;DISMISS&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent intent=&quot;danger&quot;&gt;PURGE&lt;/GShadowButtonComponent&gt;&lt;/div&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Size and state&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;div className=&quot;gshadow-story-row&quot;&gt;&lt;GShadowButtonComponent size=&quot;sm&quot;&gt;COMPACT&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent size=&quot;md&quot;&gt;DEFAULT&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent size=&quot;lg&quot;&gt;PROMINENT&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent loading&gt;WORKING&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent disabled&gt;UNAVAILABLE&lt;/GShadowButtonComponent&gt;&lt;/div&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use primary for the single next move, secondary for an equal alternative, ghost for low-emphasis actions, and danger for irreversible work.&quot; avoid=&quot;Put two primary actions beside each other or use danger merely to add visual excitement.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
 export const Surface = {
-  render: () =&gt; &lt;Frame&gt;
-    &lt;Label&gt;SURFACE / BASE / RAISED / TRACE&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Structure without chrome.&lt;/h1&gt;
-    &lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;
-      {[&#39;base&#39;, &#39;raised&#39;, &#39;trace&#39;].map((elevation) =&gt; &lt;GShadowSurface key={elevation} elevation={elevation} density=&quot;comfortable&quot;&gt;&lt;Label&gt;{elevation}&lt;/Label&gt;&lt;strong&gt;{elevation === &#39;trace&#39; ? &#39;Signal edge&#39; : &#39;Calm containment&#39;}&lt;/strong&gt;&lt;/GShadowSurface&gt;)}
-    &lt;/div&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;SURFACE / BASE / RAISED / TRACE&quot;
+    title=&quot;Structure without chrome.&quot;
+    summary=&quot;Surfaces create hierarchy with containment, spacing, and a rare trace. The dark field stays deep, but it does not become a purple fog machine.&quot;
+    contract=&quot;One trace edge per composition. Elevation is semantic: base contains, raised separates, trace directs attention.&quot;
+  &gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Elevation&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;{[[&#39;base&#39;, &#39;Calm containment&#39;], [&#39;raised&#39;, &#39;Separate a task&#39;], [&#39;trace&#39;, &#39;Direct attention&#39;]].map(([elevation, copy]) =&gt; &lt;GShadowSurface key={elevation} elevation={elevation} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{elevation}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;p className=&quot;gshadow-story-copy&quot;&gt;Use this level only when its hierarchy has a job to do.&lt;/p&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Density&quot;&gt;&lt;div className=&quot;gshadow-story-row&quot;&gt;&lt;GShadowSurface elevation=&quot;base&quot; density=&quot;compact&quot;&gt;Compact: controls and tight metadata&lt;/GShadowSurface&gt;&lt;GShadowSurface elevation=&quot;base&quot; density=&quot;comfortable&quot;&gt;Comfortable: readable task content&lt;/GShadowSurface&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use a base surface for related content, raised for separation, and a trace for the one item that needs a directional cue.&quot; avoid=&quot;Stack raised cards, add decorative gradients, or trace every panel.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
 export const Metric = {
-  render: () =&gt; &lt;Frame&gt;
-    &lt;Label&gt;METRIC / TABULAR VALUE / UNIT&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Numbers that hold their line.&lt;/h1&gt;
-    &lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;
-      &lt;GShadowMetric label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;
-      &lt;GShadowMetric label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;
-      &lt;GShadowMetric label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;
-    &lt;/div&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;METRIC / TABULAR VALUE / UNIT&quot;
+    title=&quot;Numbers that hold their line.&quot;
+    summary=&quot;Operational values use Manrope with tabular lining figures. Labels are mono. Units breathe at a smaller scale and always keep one space from the value.&quot;
+    contract=&quot;Metric data stays readable at a glance. Syne is identity type, never live operational data.&quot;
+  &gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Operational examples&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowMetric label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;&lt;GShadowMetric label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;&lt;GShadowMetric label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use for a concise, high-value count, measure, rate, or capacity with a precise label and unit.&quot; avoid=&quot;Use for paragraphs, status messages, or values that need explanatory prose to be understood.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
 export const Status = {
-  render: () =&gt; &lt;Frame&gt;
-    &lt;Label&gt;STATUS / TEXT + SIGNAL&lt;/Label&gt;
-    &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Readable without color.&lt;/h1&gt;
-    &lt;div className=&quot;gshadow-story-status-list&quot;&gt;
-      &lt;GShadowStatus state=&quot;success&quot;&gt;PROBE CLEAN&lt;/GShadowStatus&gt;
-      &lt;GShadowStatus state=&quot;warning&quot;&gt;LATENCY WATCH&lt;/GShadowStatus&gt;
-      &lt;GShadowStatus state=&quot;error&quot;&gt;ACTION REQUIRED&lt;/GShadowStatus&gt;
-      &lt;GShadowStatus state=&quot;info&quot;&gt;LOG INDEXED&lt;/GShadowStatus&gt;
-    &lt;/div&gt;
+  render: () =&gt; &lt;Frame
+    eyebrow=&quot;STATUS / TEXT + SIGNAL&quot;
+    title=&quot;Readable without color.&quot;
+    summary=&quot;Status combines a named state, mono label, and a restrained dot. Color reinforces the message; it is never the only message.&quot;
+    contract=&quot;Use the four named states. Keep the wording direct enough that the status survives monochrome or reduced vision.&quot;
+  &gt;
+    &lt;Section index=&quot;01&quot; title=&quot;State examples&quot;&gt;&lt;div className=&quot;gshadow-story-status-list&quot;&gt;&lt;GShadowStatus state=&quot;success&quot;&gt;PROBE CLEAN&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;warning&quot;&gt;LATENCY WATCH&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;error&quot;&gt;ACTION REQUIRED&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;info&quot;&gt;LOG INDEXED&lt;/GShadowStatus&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Pair status with a concise observed condition, especially in operational UI and system feedback.&quot; avoid=&quot;Use status color as decoration, or hide a critical action behind a vague label like “Attention.”&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 </code></pre></div>
@@ -1482,13 +1605,23 @@ export const Status = {
               </div>
               
               
-              <pre><code>const Base = () =&gt; &lt;Frame&gt;
-  &lt;Label&gt;BASE / TOKENS / TYPOGRAPHY / FOCUS&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;A system with a pulse.&lt;/h1&gt;
-  &lt;p className=&quot;gshadow-story-copy&quot;&gt;Warm light and void-dark share one semantic contract. Display type identifies. Interface type works. Mono labels evidence.&lt;/p&gt;
-  &lt;div className=&quot;gshadow-story-token-grid&quot;&gt;
-    {[&#39;background&#39;, &#39;card&#39;, &#39;primary&#39;, &#39;destructive&#39;, &#39;border&#39;, &#39;foreground&#39;].map((token) =&gt; &lt;div className=&quot;gshadow-story-token&quot; key={token}&gt;&lt;i style={{ background: `var(--${token})` }} /&gt;&lt;span&gt;{token}&lt;/span&gt;&lt;/div&gt;)}
-  &lt;/div&gt;
+              <pre><code>const Base = () =&gt; &lt;Frame
+  eyebrow=&quot;FOUNDATION / TOKENS / TYPE / FOCUS&quot;
+  title=&quot;A system with a pulse.&quot;
+  summary=&quot;The baseline is warm and legible in light mode, quiet and watchful in void-dark. Violet is an operational signal, never the room itself.&quot;
+  contract=&quot;Semantic names stay stable across modes. Components only consume semantic tokens, so a theme change never requires a component rewrite.&quot;
+&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Semantic color roles&quot;&gt;
+    &lt;div className=&quot;gshadow-story-token-grid&quot;&gt;
+      {[
+        [&#39;background&#39;, &#39;canvas&#39;], [&#39;card&#39;, &#39;surface&#39;], [&#39;foreground&#39;, &#39;primary text&#39;],
+        [&#39;primary&#39;, &#39;action / trace&#39;], [&#39;border&#39;, &#39;structure&#39;], [&#39;destructive&#39;, &#39;danger&#39;],
+      ].map(([token, use]) =&gt; &lt;div className=&quot;gshadow-story-token&quot; key={token}&gt;&lt;i style={{ background: `var(--${token})` }} /&gt;&lt;span&gt;{token}&lt;br /&gt;&lt;small&gt;{use}&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;)}
+    &lt;/div&gt;
+  &lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;
+    &lt;Guidance use=&quot;Use violet for one active action, selected state, focus ring, or a single trace edge in a composition.&quot; avoid=&quot;Do not wash a page in violet gradients, glow every status dot, or use color as the only status signal.&quot; /&gt;
+  &lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1498,11 +1631,17 @@ export const Status = {
               </div>
               
               
-              <pre><code>const Utilities = () =&gt; &lt;Frame&gt;
-  &lt;Label&gt;UTILITY / CLASS COMPOSITION&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;The quiet machinery.&lt;/h1&gt;
-  &lt;p className=&quot;gshadow-story-copy&quot;&gt;The registry’s class merger keeps component contracts predictable when consumers extend them.&lt;/p&gt;
-  &lt;pre className=&quot;gshadow-story-code&quot;&gt;{cn(&#39;gshadow-surface&#39;, &#39;gshadow-surface--trace&#39;, &#39;gshadow-surface--comfortable&#39;)}&lt;/pre&gt;
+              <pre><code>const Utilities = () =&gt; &lt;Frame
+  eyebrow=&quot;UTILITY / CLASS COMPOSITION&quot;
+  title=&quot;The quiet machinery.&quot;
+  summary=&quot;The class merger lets a consumer compose a documented primitive without fighting its contract or duplicating style bundles.&quot;
+  contract=&quot;Utilities protect the system from accidental overrides. They are infrastructure, not a visual feature.&quot;
+&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Composition result&quot;&gt;
+    &lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;GShadowSurface className={cn(&#39;gshadow-surface--trace&#39;)} elevation=&quot;trace&quot; density=&quot;comfortable&quot;&gt;&lt;GShadowStatus state=&quot;info&quot;&gt;UTILITY CONTRACT ACTIVE&lt;/GShadowStatus&gt;&lt;/GShadowSurface&gt;&lt;/div&gt;
+  &lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;The exact class merge&quot;&gt;&lt;pre className=&quot;gshadow-story-code&quot;&gt;{cn(&#39;gshadow-surface&#39;, &#39;gshadow-surface--trace&#39;, &#39;gshadow-surface--comfortable&#39;)}&lt;/pre&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Extend a documented primitive through its named props and a small local class adjustment.&quot; avoid=&quot;Copy a giant visual class string into product pages or invent a one-off color variant.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1512,12 +1651,15 @@ export const Status = {
               </div>
               
               
-              <pre><code>const ModeScript = () =&gt; &lt;Frame&gt;
+              <pre><code>const ModeScript = () =&gt; &lt;Frame
+  eyebrow=&quot;MODE SCRIPT / PRE-PAINT PERSISTENCE&quot;
+  title=&quot;No flash. No guesswork.&quot;
+  summary=&quot;The pre-paint script restores an explicit warm-light or void-dark choice before the interface renders. Without one, it follows the operating system.&quot;
+  contract=&quot;The theme contract is light, dark, or system default. It never asks a component to discover the current theme itself.&quot;
+&gt;
   &lt;GShadowModeScript /&gt;
-  &lt;Label&gt;MODE SCRIPT / PRE-PAINT PERSISTENCE&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;No flash. No guesswork.&lt;/h1&gt;
-  &lt;p className=&quot;gshadow-story-copy&quot;&gt;The pre-paint script restores an explicit warm-light or void-dark choice. Without one, it follows the operating system.&lt;/p&gt;
-  &lt;GShadowStatus state=&quot;success&quot;&gt;MODE CONTRACT ACTIVE&lt;/GShadowStatus&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Live state&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;GShadowStatus state=&quot;success&quot;&gt;MODE CONTRACT ACTIVE&lt;/GShadowStatus&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Mount it once at the document root before product content begins rendering.&quot; avoid=&quot;Mount one script per component, or use it as a visual mode switcher.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1527,11 +1669,14 @@ export const Status = {
               </div>
               
               
-              <pre><code>const ThemeToggle = () =&gt; &lt;Frame&gt;
-  &lt;Label&gt;THEME TOGGLE / LIGHT / DARK / SYSTEM&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Cycle the environment.&lt;/h1&gt;
-  &lt;p className=&quot;gshadow-story-copy&quot;&gt;Click the control to step through system, void-dark, and warm-light. The choice persists for the next visit.&lt;/p&gt;
-  &lt;GShadowThemeToggle /&gt;
+              <pre><code>const ThemeToggle = () =&gt; &lt;Frame
+  eyebrow=&quot;THEME TOGGLE / DIRECT LIGHT-DARK SWITCH&quot;
+  title=&quot;Change the field in one move.&quot;
+  summary=&quot;A single press switches directly between warm-light and void-dark. System preference is only the starting point, not a third stop in the interaction.&quot;
+  contract=&quot;The hit area is 44 px. The control persists an explicit choice and announces the mode it will switch to.&quot;
+&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Live example&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;GShadowThemeToggle /&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Interaction rule&quot;&gt;&lt;Guidance use=&quot;Place this at a global level where users expect environment controls, such as the application rail.&quot; avoid=&quot;Hide the state in a menu without a visible affordance or require repeated taps to change modes.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1541,16 +1686,15 @@ export const Status = {
               </div>
               
               
-              <pre><code>const Button = () =&gt; &lt;Frame&gt;
-  &lt;Label&gt;BUTTON / INTENT / SIZE / LOADING&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Actions with a reason.&lt;/h1&gt;
-  &lt;div className=&quot;gshadow-story-row&quot;&gt;
-    &lt;GShadowButtonComponent intent=&quot;primary&quot;&gt;VIEW EVIDENCE&lt;/GShadowButtonComponent&gt;
-    &lt;GShadowButtonComponent intent=&quot;secondary&quot;&gt;SECONDARY&lt;/GShadowButtonComponent&gt;
-    &lt;GShadowButtonComponent intent=&quot;ghost&quot;&gt;GHOST&lt;/GShadowButtonComponent&gt;
-    &lt;GShadowButtonComponent intent=&quot;danger&quot;&gt;DANGER&lt;/GShadowButtonComponent&gt;
-    &lt;GShadowButtonComponent loading&gt;WORKING&lt;/GShadowButtonComponent&gt;
-  &lt;/div&gt;
+              <pre><code>const Button = () =&gt; &lt;Frame
+  eyebrow=&quot;BUTTON / INTENT / SIZE / LOADING&quot;
+  title=&quot;Actions with a reason.&quot;
+  summary=&quot;Buttons communicate action priority before decoration. The primary action earns the only concentrated violet on this surface.&quot;
+  contract=&quot;Use intent, size, and state. Do not invent color-named buttons or placement-specific variants.&quot;
+&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Intent&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;div className=&quot;gshadow-story-row&quot;&gt;&lt;GShadowButtonComponent intent=&quot;primary&quot;&gt;VIEW EVIDENCE&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent intent=&quot;secondary&quot;&gt;OPEN LOG&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent intent=&quot;ghost&quot;&gt;DISMISS&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent intent=&quot;danger&quot;&gt;PURGE&lt;/GShadowButtonComponent&gt;&lt;/div&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Size and state&quot;&gt;&lt;div className=&quot;gshadow-story-stage&quot;&gt;&lt;div className=&quot;gshadow-story-row&quot;&gt;&lt;GShadowButtonComponent size=&quot;sm&quot;&gt;COMPACT&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent size=&quot;md&quot;&gt;DEFAULT&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent size=&quot;lg&quot;&gt;PROMINENT&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent loading&gt;WORKING&lt;/GShadowButtonComponent&gt;&lt;GShadowButtonComponent disabled&gt;UNAVAILABLE&lt;/GShadowButtonComponent&gt;&lt;/div&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use primary for the single next move, secondary for an equal alternative, ghost for low-emphasis actions, and danger for irreversible work.&quot; avoid=&quot;Put two primary actions beside each other or use danger merely to add visual excitement.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1560,12 +1704,15 @@ export const Status = {
               </div>
               
               
-              <pre><code>const Surface = () =&gt; &lt;Frame&gt;
-  &lt;Label&gt;SURFACE / BASE / RAISED / TRACE&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Structure without chrome.&lt;/h1&gt;
-  &lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;
-    {[&#39;base&#39;, &#39;raised&#39;, &#39;trace&#39;].map((elevation) =&gt; &lt;GShadowSurface key={elevation} elevation={elevation} density=&quot;comfortable&quot;&gt;&lt;Label&gt;{elevation}&lt;/Label&gt;&lt;strong&gt;{elevation === &#39;trace&#39; ? &#39;Signal edge&#39; : &#39;Calm containment&#39;}&lt;/strong&gt;&lt;/GShadowSurface&gt;)}
-  &lt;/div&gt;
+              <pre><code>const Surface = () =&gt; &lt;Frame
+  eyebrow=&quot;SURFACE / BASE / RAISED / TRACE&quot;
+  title=&quot;Structure without chrome.&quot;
+  summary=&quot;Surfaces create hierarchy with containment, spacing, and a rare trace. The dark field stays deep, but it does not become a purple fog machine.&quot;
+  contract=&quot;One trace edge per composition. Elevation is semantic: base contains, raised separates, trace directs attention.&quot;
+&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Elevation&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;{[[&#39;base&#39;, &#39;Calm containment&#39;], [&#39;raised&#39;, &#39;Separate a task&#39;], [&#39;trace&#39;, &#39;Direct attention&#39;]].map(([elevation, copy]) =&gt; &lt;GShadowSurface key={elevation} elevation={elevation} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{elevation}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;p className=&quot;gshadow-story-copy&quot;&gt;Use this level only when its hierarchy has a job to do.&lt;/p&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Density&quot;&gt;&lt;div className=&quot;gshadow-story-row&quot;&gt;&lt;GShadowSurface elevation=&quot;base&quot; density=&quot;compact&quot;&gt;Compact: controls and tight metadata&lt;/GShadowSurface&gt;&lt;GShadowSurface elevation=&quot;base&quot; density=&quot;comfortable&quot;&gt;Comfortable: readable task content&lt;/GShadowSurface&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use a base surface for related content, raised for separation, and a trace for the one item that needs a directional cue.&quot; avoid=&quot;Stack raised cards, add decorative gradients, or trace every panel.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1575,14 +1722,14 @@ export const Status = {
               </div>
               
               
-              <pre><code>const Metric = () =&gt; &lt;Frame&gt;
-  &lt;Label&gt;METRIC / TABULAR VALUE / UNIT&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Numbers that hold their line.&lt;/h1&gt;
-  &lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;
-    &lt;GShadowMetric label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;
-    &lt;GShadowMetric label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;
-    &lt;GShadowMetric label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;
-  &lt;/div&gt;
+              <pre><code>const Metric = () =&gt; &lt;Frame
+  eyebrow=&quot;METRIC / TABULAR VALUE / UNIT&quot;
+  title=&quot;Numbers that hold their line.&quot;
+  summary=&quot;Operational values use Manrope with tabular lining figures. Labels are mono. Units breathe at a smaller scale and always keep one space from the value.&quot;
+  contract=&quot;Metric data stays readable at a glance. Syne is identity type, never live operational data.&quot;
+&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Operational examples&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowMetric label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;&lt;GShadowMetric label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;&lt;GShadowMetric label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use for a concise, high-value count, measure, rate, or capacity with a precise label and unit.&quot; avoid=&quot;Use for paragraphs, status messages, or values that need explanatory prose to be understood.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1592,15 +1739,14 @@ export const Status = {
               </div>
               
               
-              <pre><code>const Status = () =&gt; &lt;Frame&gt;
-  &lt;Label&gt;STATUS / TEXT + SIGNAL&lt;/Label&gt;
-  &lt;h1 className=&quot;gshadow-story-title&quot;&gt;Readable without color.&lt;/h1&gt;
-  &lt;div className=&quot;gshadow-story-status-list&quot;&gt;
-    &lt;GShadowStatus state=&quot;success&quot;&gt;PROBE CLEAN&lt;/GShadowStatus&gt;
-    &lt;GShadowStatus state=&quot;warning&quot;&gt;LATENCY WATCH&lt;/GShadowStatus&gt;
-    &lt;GShadowStatus state=&quot;error&quot;&gt;ACTION REQUIRED&lt;/GShadowStatus&gt;
-    &lt;GShadowStatus state=&quot;info&quot;&gt;LOG INDEXED&lt;/GShadowStatus&gt;
-  &lt;/div&gt;
+              <pre><code>const Status = () =&gt; &lt;Frame
+  eyebrow=&quot;STATUS / TEXT + SIGNAL&quot;
+  title=&quot;Readable without color.&quot;
+  summary=&quot;Status combines a named state, mono label, and a restrained dot. Color reinforces the message; it is never the only message.&quot;
+  contract=&quot;Use the four named states. Keep the wording direct enough that the status survives monochrome or reduced vision.&quot;
+&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;State examples&quot;&gt;&lt;div className=&quot;gshadow-story-status-list&quot;&gt;&lt;GShadowStatus state=&quot;success&quot;&gt;PROBE CLEAN&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;warning&quot;&gt;LATENCY WATCH&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;error&quot;&gt;ACTION REQUIRED&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;info&quot;&gt;LOG INDEXED&lt;/GShadowStatus&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Pair status with a concise observed condition, especially in operational UI and system feedback.&quot; avoid=&quot;Use status color as decoration, or hide a critical action behind a vague label like “Attention.”&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
         </div>
