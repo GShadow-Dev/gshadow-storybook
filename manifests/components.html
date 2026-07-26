@@ -594,7 +594,7 @@
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.3s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.5s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -617,7 +617,7 @@
       <h2><span class="status-dot dot-err"></span> Foundation</h2>
       <div class="badges">
         <label for="c-0-gshadow-foundation-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-0-gshadow-foundation-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-0-gshadow-foundation-info" class="badge info as-toggle">1 info</label>
         <label for="c-0-gshadow-foundation-stories" class="badge ok as-toggle">1 story</label>
         
         
@@ -644,25 +644,34 @@
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
-  4 | const metrics = [[&#39;SIGNAL INDEX&#39;, &#39;84.2&#39;, &#39;+12.4%&#39;, &#39;spectral&#39;], [&#39;PROTOCOL LOAD&#39;, &#39;66.8&#39;, &#39;+8.7%&#39;, &#39;amber&#39;], [&#39;ACTIVE THREADS&#39;, &#39;1,284&#39;, &#39;+9.3%&#39;, &#39;spectral&#39;], [&#39;LOCKED FLOWS&#39;, &#39;18&#39;, &#39;NOMINAL&#39;, &#39;amber&#39;]]
-  5 |
-&gt; 6 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  7 |
-  8 | export const CoreLanguage = {
-  9 |   render: () =&gt; (
+   5 | const metrics = [[&#39;SIGNAL INDEX&#39;, &#39;84.2&#39;, &#39;+12.4%&#39;, &#39;spectral&#39;], [&#39;PROTOCOL LOAD&#39;, &#39;66.8&#39;, &#39;+8.7%&#39;, &#39;amber&#39;], [&#39;ACTIVE THREADS&#39;, &#39;1,284&#39;, &#39;+9.3%&#39;, &#39;spectral&#39;], [&#39;LOCKED FLOWS&#39;, &#39;18&#39;, &#39;NOMINAL&#39;, &#39;amber&#39;]]
+   6 |
+&gt;  7 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | function FoundationCanvas() {
+  10 |   const reduceMotion = useReducedMotion()
 
 ./stories/GShadowFoundation.stories.jsx:
 import &#39;../registry/styles/gshadow.css&#39;
 import mark from &#39;../brand/gshadow-mark.svg&#39;
+import { motion, useReducedMotion } from &#39;motion/react&#39;
 
 const metrics = [[&#39;SIGNAL INDEX&#39;, &#39;84.2&#39;, &#39;+12.4%&#39;, &#39;spectral&#39;], [&#39;PROTOCOL LOAD&#39;, &#39;66.8&#39;, &#39;+8.7%&#39;, &#39;amber&#39;], [&#39;ACTIVE THREADS&#39;, &#39;1,284&#39;, &#39;+9.3%&#39;, &#39;spectral&#39;], [&#39;LOCKED FLOWS&#39;, &#39;18&#39;, &#39;NOMINAL&#39;, &#39;amber&#39;]]
 
 export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
 
-export const CoreLanguage = {
-  render: () =&gt; (
+function FoundationCanvas() {
+  const reduceMotion = useReducedMotion()
+
+  const drift = reduceMotion ? {} : { x: [0, 24, -12, 0], y: [0, -16, 10, 0], opacity: [.38, .62, .44, .38] }
+
+  return (
     &lt;main className=&quot;gshadow-foundation&quot;&gt;
+      &lt;div className=&quot;gshadow-foundation__atmosphere&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;motion.div className=&quot;gshadow-foundation__atmosphere-field gshadow-foundation__atmosphere-field--spectral&quot; animate={drift} transition={{ duration: 16, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;
+        &lt;motion.div className=&quot;gshadow-foundation__atmosphere-field gshadow-foundation__atmosphere-field--amber&quot; animate={reduceMotion ? {} : { x: [0, -20, 14, 0], y: [0, 14, -12, 0], opacity: [.30, .58, .40, .30] }} transition={{ duration: 18, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;
+      &lt;/div&gt;
       &lt;div className=&quot;gshadow-foundation__wrap&quot;&gt;
         &lt;header className=&quot;gshadow-foundation__rail&quot;&gt;
           &lt;div className=&quot;gshadow-foundation__identity&quot;&gt;&lt;img className=&quot;gshadow-foundation__mark&quot; src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;GSHADOW&lt;/span&gt;&lt;/div&gt;
@@ -670,10 +679,10 @@ export const CoreLanguage = {
         &lt;/header&gt;
         &lt;section className=&quot;gshadow-foundation__hero&quot;&gt;
           &lt;div&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;ONE FIELD. TWO SIGNALS.&lt;/p&gt;&lt;h1 className=&quot;gshadow-foundation__title&quot;&gt;Watch the &lt;span&gt;dark.&lt;/span&gt;&lt;br /&gt;Mark the heat.&lt;/h1&gt;&lt;p className=&quot;gshadow-foundation__copy&quot;&gt;A dual-signal system for operational interfaces. Spectral tracks what is hidden. Amber marks what needs deliberate focus. Both share the same calm substrate.&lt;/p&gt;&lt;div className=&quot;gshadow-foundation__actions&quot;&gt;&lt;button className=&quot;gshadow-foundation__action gshadow-foundation__action--spectral&quot;&gt;EXPLORE SIGNAL →&lt;/button&gt;&lt;button className=&quot;gshadow-foundation__action gshadow-foundation__action--amber&quot;&gt;OPEN PROTOCOL →&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
-          &lt;div className=&quot;gshadow-foundation__convergence&quot;&gt;&lt;div className=&quot;gshadow-foundation__orb gshadow-foundation__orb--spectral&quot;&gt;&lt;img src={mark} alt=&quot;&quot; /&gt;&lt;/div&gt;&lt;div className=&quot;gshadow-foundation__seam&quot; /&gt;&lt;div className=&quot;gshadow-foundation__orb gshadow-foundation__orb--amber&quot;&gt;↯&lt;/div&gt;&lt;/div&gt;
+          &lt;div className=&quot;gshadow-foundation__convergence&quot;&gt;&lt;motion.div className=&quot;gshadow-foundation__orb gshadow-foundation__orb--spectral&quot; animate={reduceMotion ? {} : { y: [0, -7, 0], rotate: [0, -2, 0] }} transition={{ duration: 5.5, ease: &#39;easeInOut&#39;, repeat: Infinity }}&gt;&lt;img src={mark} alt=&quot;&quot; /&gt;&lt;/motion.div&gt;&lt;motion.div className=&quot;gshadow-foundation__seam&quot; animate={reduceMotion ? {} : { opacity: [.45, 1, .45], scaleY: [.88, 1, .88] }} transition={{ duration: 3.6, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;&lt;motion.div className=&quot;gshadow-foundation__orb gshadow-foundation__orb--amber&quot; animate={reduceMotion ? {} : { y: [0, 7, 0], rotate: [0, 2, 0] }} transition={{ duration: 6.2, ease: &#39;easeInOut&#39;, repeat: Infinity }}&gt;↯&lt;/motion.div&gt;&lt;/div&gt;
           &lt;aside className=&quot;gshadow-foundation__signal&quot;&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;AMBER PROTOCOL&lt;/p&gt;&lt;strong&gt;CONTAINMENT READY&lt;/strong&gt;&lt;p&gt;Use amber as a bounded operational callout. It is not a second primary color.&lt;/p&gt;&lt;/aside&gt;
         &lt;/section&gt;
-        &lt;section className=&quot;gshadow-foundation__metrics&quot;&gt;{metrics.map(([label, value, delta, family]) =&gt; &lt;article className={`gshadow-foundation__metric gshadow-foundation__metric--${family}`} key={label}&gt;&lt;p&gt;{label}&lt;/p&gt;&lt;strong&gt;{value}&lt;/strong&gt;&lt;span&gt;{delta}&lt;/span&gt;&lt;i /&gt;&lt;/article&gt;)}&lt;/section&gt;
+        &lt;section className=&quot;gshadow-foundation__metrics&quot;&gt;{metrics.map(([label, value, delta, family], index) =&gt; &lt;motion.article className={`gshadow-foundation__metric gshadow-foundation__metric--${family}`} key={label} initial={reduceMotion ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .15 + index * .07, duration: .38, ease: &#39;easeOut&#39; }} whileHover={reduceMotion ? undefined : { y: -3, transition: { duration: .16 } }}&gt;&lt;p&gt;{label}&lt;/p&gt;&lt;strong&gt;{value}&lt;/strong&gt;&lt;span&gt;{delta}&lt;/span&gt;&lt;i /&gt;&lt;/motion.article&gt;)}&lt;/section&gt;
         &lt;section className=&quot;gshadow-foundation__bridge&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;CONVERGENCE / SHARED FIELD&lt;/p&gt;&lt;h2&gt;Two signals.&lt;br /&gt;One operating field.&lt;/h2&gt;&lt;/div&gt;&lt;p&gt;Violet owns discovery and motion. Amber owns scrutiny and commitment. Between them, the system uses a short, controlled gradient handoff.&lt;/p&gt;&lt;div className=&quot;gshadow-foundation__bridge-mark&quot;&gt;&lt;img src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;↯&lt;/span&gt;&lt;/div&gt;&lt;/section&gt;
         &lt;section className=&quot;gshadow-foundation__protocols&quot; aria-label=&quot;GSHADOW signal families&quot;&gt;
           &lt;article className=&quot;gshadow-protocol gshadow-protocol--spectral&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;SPECTRAL SIGNAL / DEFAULT&lt;/p&gt;&lt;h2&gt;Observe the hidden.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Black-blue, electric violet, and deep ultraviolet create a strong signal without turning the interface into a purple wash.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#6821DE&#39; }} /&gt;ELECTRIC VIOLET&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#100829&#39; }} /&gt;ULTRAVIOLET DEPTH&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
@@ -682,7 +691,11 @@ export const CoreLanguage = {
         &lt;p className=&quot;gshadow-foundation__rule&quot;&gt;&lt;strong&gt;COMPOSITION RULE&lt;/strong&gt;&lt;span&gt;Use one signal family to lead a region. Spectral and amber can share a page through common neutrals, structure, and typography. Do not layer both glow systems into the same component.&lt;/span&gt;&lt;/p&gt;
       &lt;/div&gt;
     &lt;/main&gt;
-  ),
+  )
+}
+
+export const CoreLanguage = {
+  render: () =&gt; &lt;FoundationCanvas /&gt;,
 }
 </code></pre></div>
     </div>
@@ -694,10 +707,6 @@ export const CoreLanguage = {
       <div class="note-title">Info</div>
       <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
     </div>
-    <div class="note info">
-      <div class="note-title">Info</div>
-      <div class="note-body">Specify an @import jsdoc tag on your component or your stories meta such as @import import { Foundation } from &#39;my-design-system&#39;;</div>
-    </div>
         </div>
     
     
@@ -705,7 +714,12 @@ export const CoreLanguage = {
           
           
           
-          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { motion } from "motion/react";</code></pre>
+              </div>
           
           
             <div class="note ok">
@@ -715,28 +729,7 @@ export const CoreLanguage = {
               </div>
               
               
-              <pre><code>const CoreLanguage = () =&gt; (
-  &lt;main className=&quot;gshadow-foundation&quot;&gt;
-    &lt;div className=&quot;gshadow-foundation__wrap&quot;&gt;
-      &lt;header className=&quot;gshadow-foundation__rail&quot;&gt;
-        &lt;div className=&quot;gshadow-foundation__identity&quot;&gt;&lt;img className=&quot;gshadow-foundation__mark&quot; src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;GSHADOW&lt;/span&gt;&lt;/div&gt;
-        &lt;span className=&quot;gshadow-foundation__meta&quot;&gt;FOUNDATION / SIGNAL FAMILIES&lt;/span&gt;
-      &lt;/header&gt;
-      &lt;section className=&quot;gshadow-foundation__hero&quot;&gt;
-        &lt;div&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;ONE FIELD. TWO SIGNALS.&lt;/p&gt;&lt;h1 className=&quot;gshadow-foundation__title&quot;&gt;Watch the &lt;span&gt;dark.&lt;/span&gt;&lt;br /&gt;Mark the heat.&lt;/h1&gt;&lt;p className=&quot;gshadow-foundation__copy&quot;&gt;A dual-signal system for operational interfaces. Spectral tracks what is hidden. Amber marks what needs deliberate focus. Both share the same calm substrate.&lt;/p&gt;&lt;div className=&quot;gshadow-foundation__actions&quot;&gt;&lt;button className=&quot;gshadow-foundation__action gshadow-foundation__action--spectral&quot;&gt;EXPLORE SIGNAL →&lt;/button&gt;&lt;button className=&quot;gshadow-foundation__action gshadow-foundation__action--amber&quot;&gt;OPEN PROTOCOL →&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
-        &lt;div className=&quot;gshadow-foundation__convergence&quot;&gt;&lt;div className=&quot;gshadow-foundation__orb gshadow-foundation__orb--spectral&quot;&gt;&lt;img src={mark} alt=&quot;&quot; /&gt;&lt;/div&gt;&lt;div className=&quot;gshadow-foundation__seam&quot; /&gt;&lt;div className=&quot;gshadow-foundation__orb gshadow-foundation__orb--amber&quot;&gt;↯&lt;/div&gt;&lt;/div&gt;
-        &lt;aside className=&quot;gshadow-foundation__signal&quot;&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;AMBER PROTOCOL&lt;/p&gt;&lt;strong&gt;CONTAINMENT READY&lt;/strong&gt;&lt;p&gt;Use amber as a bounded operational callout. It is not a second primary color.&lt;/p&gt;&lt;/aside&gt;
-      &lt;/section&gt;
-      &lt;section className=&quot;gshadow-foundation__metrics&quot;&gt;{metrics.map(([label, value, delta, family]) =&gt; &lt;article className={`gshadow-foundation__metric gshadow-foundation__metric--${family}`} key={label}&gt;&lt;p&gt;{label}&lt;/p&gt;&lt;strong&gt;{value}&lt;/strong&gt;&lt;span&gt;{delta}&lt;/span&gt;&lt;i /&gt;&lt;/article&gt;)}&lt;/section&gt;
-      &lt;section className=&quot;gshadow-foundation__bridge&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;CONVERGENCE / SHARED FIELD&lt;/p&gt;&lt;h2&gt;Two signals.&lt;br /&gt;One operating field.&lt;/h2&gt;&lt;/div&gt;&lt;p&gt;Violet owns discovery and motion. Amber owns scrutiny and commitment. Between them, the system uses a short, controlled gradient handoff.&lt;/p&gt;&lt;div className=&quot;gshadow-foundation__bridge-mark&quot;&gt;&lt;img src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;↯&lt;/span&gt;&lt;/div&gt;&lt;/section&gt;
-      &lt;section className=&quot;gshadow-foundation__protocols&quot; aria-label=&quot;GSHADOW signal families&quot;&gt;
-        &lt;article className=&quot;gshadow-protocol gshadow-protocol--spectral&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;SPECTRAL SIGNAL / DEFAULT&lt;/p&gt;&lt;h2&gt;Observe the hidden.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Black-blue, electric violet, and deep ultraviolet create a strong signal without turning the interface into a purple wash.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#6821DE&#39; }} /&gt;ELECTRIC VIOLET&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#100829&#39; }} /&gt;ULTRAVIOLET DEPTH&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
-        &lt;article className=&quot;gshadow-protocol gshadow-protocol--amber&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;AMBER PROTOCOL / ESCALATION&lt;/p&gt;&lt;h2&gt;Contain the heat.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Burnt gold and warm ember are reserved for focus, scrutiny, and an intentional next move. The family shares the same black-blue substrate.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#E79222&#39; }} /&gt;GOLD TRACE&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#2B1503&#39; }} /&gt;EMBER DEPTH&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
-      &lt;/section&gt;
-      &lt;p className=&quot;gshadow-foundation__rule&quot;&gt;&lt;strong&gt;COMPOSITION RULE&lt;/strong&gt;&lt;span&gt;Use one signal family to lead a region. Spectral and amber can share a page through common neutrals, structure, and typography. Do not layer both glow systems into the same component.&lt;/span&gt;&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/main&gt;
-);</code></pre>
+              <pre><code>const CoreLanguage = () =&gt; &lt;FoundationCanvas /&gt;;</code></pre>
             </div>
         </div>
     
@@ -1154,7 +1147,7 @@ export const Status = {
       <h2><span class="status-dot dot-err"></span> Foundation</h2>
       <div class="badges">
         <label for="c-error-0-gshadow-foundation-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-error-0-gshadow-foundation-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-error-0-gshadow-foundation-info" class="badge info as-toggle">1 info</label>
         <label for="c-error-0-gshadow-foundation-stories" class="badge ok as-toggle">1 story</label>
         
         
@@ -1181,25 +1174,34 @@ export const Status = {
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
-  4 | const metrics = [[&#39;SIGNAL INDEX&#39;, &#39;84.2&#39;, &#39;+12.4%&#39;, &#39;spectral&#39;], [&#39;PROTOCOL LOAD&#39;, &#39;66.8&#39;, &#39;+8.7%&#39;, &#39;amber&#39;], [&#39;ACTIVE THREADS&#39;, &#39;1,284&#39;, &#39;+9.3%&#39;, &#39;spectral&#39;], [&#39;LOCKED FLOWS&#39;, &#39;18&#39;, &#39;NOMINAL&#39;, &#39;amber&#39;]]
-  5 |
-&gt; 6 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  7 |
-  8 | export const CoreLanguage = {
-  9 |   render: () =&gt; (
+   5 | const metrics = [[&#39;SIGNAL INDEX&#39;, &#39;84.2&#39;, &#39;+12.4%&#39;, &#39;spectral&#39;], [&#39;PROTOCOL LOAD&#39;, &#39;66.8&#39;, &#39;+8.7%&#39;, &#39;amber&#39;], [&#39;ACTIVE THREADS&#39;, &#39;1,284&#39;, &#39;+9.3%&#39;, &#39;spectral&#39;], [&#39;LOCKED FLOWS&#39;, &#39;18&#39;, &#39;NOMINAL&#39;, &#39;amber&#39;]]
+   6 |
+&gt;  7 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | function FoundationCanvas() {
+  10 |   const reduceMotion = useReducedMotion()
 
 ./stories/GShadowFoundation.stories.jsx:
 import &#39;../registry/styles/gshadow.css&#39;
 import mark from &#39;../brand/gshadow-mark.svg&#39;
+import { motion, useReducedMotion } from &#39;motion/react&#39;
 
 const metrics = [[&#39;SIGNAL INDEX&#39;, &#39;84.2&#39;, &#39;+12.4%&#39;, &#39;spectral&#39;], [&#39;PROTOCOL LOAD&#39;, &#39;66.8&#39;, &#39;+8.7%&#39;, &#39;amber&#39;], [&#39;ACTIVE THREADS&#39;, &#39;1,284&#39;, &#39;+9.3%&#39;, &#39;spectral&#39;], [&#39;LOCKED FLOWS&#39;, &#39;18&#39;, &#39;NOMINAL&#39;, &#39;amber&#39;]]
 
 export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
 
-export const CoreLanguage = {
-  render: () =&gt; (
+function FoundationCanvas() {
+  const reduceMotion = useReducedMotion()
+
+  const drift = reduceMotion ? {} : { x: [0, 24, -12, 0], y: [0, -16, 10, 0], opacity: [.38, .62, .44, .38] }
+
+  return (
     &lt;main className=&quot;gshadow-foundation&quot;&gt;
+      &lt;div className=&quot;gshadow-foundation__atmosphere&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;motion.div className=&quot;gshadow-foundation__atmosphere-field gshadow-foundation__atmosphere-field--spectral&quot; animate={drift} transition={{ duration: 16, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;
+        &lt;motion.div className=&quot;gshadow-foundation__atmosphere-field gshadow-foundation__atmosphere-field--amber&quot; animate={reduceMotion ? {} : { x: [0, -20, 14, 0], y: [0, 14, -12, 0], opacity: [.30, .58, .40, .30] }} transition={{ duration: 18, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;
+      &lt;/div&gt;
       &lt;div className=&quot;gshadow-foundation__wrap&quot;&gt;
         &lt;header className=&quot;gshadow-foundation__rail&quot;&gt;
           &lt;div className=&quot;gshadow-foundation__identity&quot;&gt;&lt;img className=&quot;gshadow-foundation__mark&quot; src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;GSHADOW&lt;/span&gt;&lt;/div&gt;
@@ -1207,10 +1209,10 @@ export const CoreLanguage = {
         &lt;/header&gt;
         &lt;section className=&quot;gshadow-foundation__hero&quot;&gt;
           &lt;div&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;ONE FIELD. TWO SIGNALS.&lt;/p&gt;&lt;h1 className=&quot;gshadow-foundation__title&quot;&gt;Watch the &lt;span&gt;dark.&lt;/span&gt;&lt;br /&gt;Mark the heat.&lt;/h1&gt;&lt;p className=&quot;gshadow-foundation__copy&quot;&gt;A dual-signal system for operational interfaces. Spectral tracks what is hidden. Amber marks what needs deliberate focus. Both share the same calm substrate.&lt;/p&gt;&lt;div className=&quot;gshadow-foundation__actions&quot;&gt;&lt;button className=&quot;gshadow-foundation__action gshadow-foundation__action--spectral&quot;&gt;EXPLORE SIGNAL →&lt;/button&gt;&lt;button className=&quot;gshadow-foundation__action gshadow-foundation__action--amber&quot;&gt;OPEN PROTOCOL →&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
-          &lt;div className=&quot;gshadow-foundation__convergence&quot;&gt;&lt;div className=&quot;gshadow-foundation__orb gshadow-foundation__orb--spectral&quot;&gt;&lt;img src={mark} alt=&quot;&quot; /&gt;&lt;/div&gt;&lt;div className=&quot;gshadow-foundation__seam&quot; /&gt;&lt;div className=&quot;gshadow-foundation__orb gshadow-foundation__orb--amber&quot;&gt;↯&lt;/div&gt;&lt;/div&gt;
+          &lt;div className=&quot;gshadow-foundation__convergence&quot;&gt;&lt;motion.div className=&quot;gshadow-foundation__orb gshadow-foundation__orb--spectral&quot; animate={reduceMotion ? {} : { y: [0, -7, 0], rotate: [0, -2, 0] }} transition={{ duration: 5.5, ease: &#39;easeInOut&#39;, repeat: Infinity }}&gt;&lt;img src={mark} alt=&quot;&quot; /&gt;&lt;/motion.div&gt;&lt;motion.div className=&quot;gshadow-foundation__seam&quot; animate={reduceMotion ? {} : { opacity: [.45, 1, .45], scaleY: [.88, 1, .88] }} transition={{ duration: 3.6, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;&lt;motion.div className=&quot;gshadow-foundation__orb gshadow-foundation__orb--amber&quot; animate={reduceMotion ? {} : { y: [0, 7, 0], rotate: [0, 2, 0] }} transition={{ duration: 6.2, ease: &#39;easeInOut&#39;, repeat: Infinity }}&gt;↯&lt;/motion.div&gt;&lt;/div&gt;
           &lt;aside className=&quot;gshadow-foundation__signal&quot;&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;AMBER PROTOCOL&lt;/p&gt;&lt;strong&gt;CONTAINMENT READY&lt;/strong&gt;&lt;p&gt;Use amber as a bounded operational callout. It is not a second primary color.&lt;/p&gt;&lt;/aside&gt;
         &lt;/section&gt;
-        &lt;section className=&quot;gshadow-foundation__metrics&quot;&gt;{metrics.map(([label, value, delta, family]) =&gt; &lt;article className={`gshadow-foundation__metric gshadow-foundation__metric--${family}`} key={label}&gt;&lt;p&gt;{label}&lt;/p&gt;&lt;strong&gt;{value}&lt;/strong&gt;&lt;span&gt;{delta}&lt;/span&gt;&lt;i /&gt;&lt;/article&gt;)}&lt;/section&gt;
+        &lt;section className=&quot;gshadow-foundation__metrics&quot;&gt;{metrics.map(([label, value, delta, family], index) =&gt; &lt;motion.article className={`gshadow-foundation__metric gshadow-foundation__metric--${family}`} key={label} initial={reduceMotion ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .15 + index * .07, duration: .38, ease: &#39;easeOut&#39; }} whileHover={reduceMotion ? undefined : { y: -3, transition: { duration: .16 } }}&gt;&lt;p&gt;{label}&lt;/p&gt;&lt;strong&gt;{value}&lt;/strong&gt;&lt;span&gt;{delta}&lt;/span&gt;&lt;i /&gt;&lt;/motion.article&gt;)}&lt;/section&gt;
         &lt;section className=&quot;gshadow-foundation__bridge&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;CONVERGENCE / SHARED FIELD&lt;/p&gt;&lt;h2&gt;Two signals.&lt;br /&gt;One operating field.&lt;/h2&gt;&lt;/div&gt;&lt;p&gt;Violet owns discovery and motion. Amber owns scrutiny and commitment. Between them, the system uses a short, controlled gradient handoff.&lt;/p&gt;&lt;div className=&quot;gshadow-foundation__bridge-mark&quot;&gt;&lt;img src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;↯&lt;/span&gt;&lt;/div&gt;&lt;/section&gt;
         &lt;section className=&quot;gshadow-foundation__protocols&quot; aria-label=&quot;GSHADOW signal families&quot;&gt;
           &lt;article className=&quot;gshadow-protocol gshadow-protocol--spectral&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;SPECTRAL SIGNAL / DEFAULT&lt;/p&gt;&lt;h2&gt;Observe the hidden.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Black-blue, electric violet, and deep ultraviolet create a strong signal without turning the interface into a purple wash.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#6821DE&#39; }} /&gt;ELECTRIC VIOLET&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#100829&#39; }} /&gt;ULTRAVIOLET DEPTH&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
@@ -1219,7 +1221,11 @@ export const CoreLanguage = {
         &lt;p className=&quot;gshadow-foundation__rule&quot;&gt;&lt;strong&gt;COMPOSITION RULE&lt;/strong&gt;&lt;span&gt;Use one signal family to lead a region. Spectral and amber can share a page through common neutrals, structure, and typography. Do not layer both glow systems into the same component.&lt;/span&gt;&lt;/p&gt;
       &lt;/div&gt;
     &lt;/main&gt;
-  ),
+  )
+}
+
+export const CoreLanguage = {
+  render: () =&gt; &lt;FoundationCanvas /&gt;,
 }
 </code></pre></div>
     </div>
@@ -1231,10 +1237,6 @@ export const CoreLanguage = {
       <div class="note-title">Info</div>
       <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
     </div>
-    <div class="note info">
-      <div class="note-title">Info</div>
-      <div class="note-body">Specify an @import jsdoc tag on your component or your stories meta such as @import import { Foundation } from &#39;my-design-system&#39;;</div>
-    </div>
         </div>
     
     
@@ -1242,7 +1244,12 @@ export const CoreLanguage = {
           
           
           
-          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { motion } from "motion/react";</code></pre>
+              </div>
           
           
             <div class="note ok">
@@ -1252,28 +1259,7 @@ export const CoreLanguage = {
               </div>
               
               
-              <pre><code>const CoreLanguage = () =&gt; (
-  &lt;main className=&quot;gshadow-foundation&quot;&gt;
-    &lt;div className=&quot;gshadow-foundation__wrap&quot;&gt;
-      &lt;header className=&quot;gshadow-foundation__rail&quot;&gt;
-        &lt;div className=&quot;gshadow-foundation__identity&quot;&gt;&lt;img className=&quot;gshadow-foundation__mark&quot; src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;GSHADOW&lt;/span&gt;&lt;/div&gt;
-        &lt;span className=&quot;gshadow-foundation__meta&quot;&gt;FOUNDATION / SIGNAL FAMILIES&lt;/span&gt;
-      &lt;/header&gt;
-      &lt;section className=&quot;gshadow-foundation__hero&quot;&gt;
-        &lt;div&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;ONE FIELD. TWO SIGNALS.&lt;/p&gt;&lt;h1 className=&quot;gshadow-foundation__title&quot;&gt;Watch the &lt;span&gt;dark.&lt;/span&gt;&lt;br /&gt;Mark the heat.&lt;/h1&gt;&lt;p className=&quot;gshadow-foundation__copy&quot;&gt;A dual-signal system for operational interfaces. Spectral tracks what is hidden. Amber marks what needs deliberate focus. Both share the same calm substrate.&lt;/p&gt;&lt;div className=&quot;gshadow-foundation__actions&quot;&gt;&lt;button className=&quot;gshadow-foundation__action gshadow-foundation__action--spectral&quot;&gt;EXPLORE SIGNAL →&lt;/button&gt;&lt;button className=&quot;gshadow-foundation__action gshadow-foundation__action--amber&quot;&gt;OPEN PROTOCOL →&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
-        &lt;div className=&quot;gshadow-foundation__convergence&quot;&gt;&lt;div className=&quot;gshadow-foundation__orb gshadow-foundation__orb--spectral&quot;&gt;&lt;img src={mark} alt=&quot;&quot; /&gt;&lt;/div&gt;&lt;div className=&quot;gshadow-foundation__seam&quot; /&gt;&lt;div className=&quot;gshadow-foundation__orb gshadow-foundation__orb--amber&quot;&gt;↯&lt;/div&gt;&lt;/div&gt;
-        &lt;aside className=&quot;gshadow-foundation__signal&quot;&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;AMBER PROTOCOL&lt;/p&gt;&lt;strong&gt;CONTAINMENT READY&lt;/strong&gt;&lt;p&gt;Use amber as a bounded operational callout. It is not a second primary color.&lt;/p&gt;&lt;/aside&gt;
-      &lt;/section&gt;
-      &lt;section className=&quot;gshadow-foundation__metrics&quot;&gt;{metrics.map(([label, value, delta, family]) =&gt; &lt;article className={`gshadow-foundation__metric gshadow-foundation__metric--${family}`} key={label}&gt;&lt;p&gt;{label}&lt;/p&gt;&lt;strong&gt;{value}&lt;/strong&gt;&lt;span&gt;{delta}&lt;/span&gt;&lt;i /&gt;&lt;/article&gt;)}&lt;/section&gt;
-      &lt;section className=&quot;gshadow-foundation__bridge&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;CONVERGENCE / SHARED FIELD&lt;/p&gt;&lt;h2&gt;Two signals.&lt;br /&gt;One operating field.&lt;/h2&gt;&lt;/div&gt;&lt;p&gt;Violet owns discovery and motion. Amber owns scrutiny and commitment. Between them, the system uses a short, controlled gradient handoff.&lt;/p&gt;&lt;div className=&quot;gshadow-foundation__bridge-mark&quot;&gt;&lt;img src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;↯&lt;/span&gt;&lt;/div&gt;&lt;/section&gt;
-      &lt;section className=&quot;gshadow-foundation__protocols&quot; aria-label=&quot;GSHADOW signal families&quot;&gt;
-        &lt;article className=&quot;gshadow-protocol gshadow-protocol--spectral&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;SPECTRAL SIGNAL / DEFAULT&lt;/p&gt;&lt;h2&gt;Observe the hidden.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Black-blue, electric violet, and deep ultraviolet create a strong signal without turning the interface into a purple wash.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#6821DE&#39; }} /&gt;ELECTRIC VIOLET&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#100829&#39; }} /&gt;ULTRAVIOLET DEPTH&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
-        &lt;article className=&quot;gshadow-protocol gshadow-protocol--amber&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;AMBER PROTOCOL / ESCALATION&lt;/p&gt;&lt;h2&gt;Contain the heat.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Burnt gold and warm ember are reserved for focus, scrutiny, and an intentional next move. The family shares the same black-blue substrate.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#E79222&#39; }} /&gt;GOLD TRACE&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#2B1503&#39; }} /&gt;EMBER DEPTH&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
-      &lt;/section&gt;
-      &lt;p className=&quot;gshadow-foundation__rule&quot;&gt;&lt;strong&gt;COMPOSITION RULE&lt;/strong&gt;&lt;span&gt;Use one signal family to lead a region. Spectral and amber can share a page through common neutrals, structure, and typography. Do not layer both glow systems into the same component.&lt;/span&gt;&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/main&gt;
-);</code></pre>
+              <pre><code>const CoreLanguage = () =&gt; &lt;FoundationCanvas /&gt;;</code></pre>
             </div>
         </div>
     
