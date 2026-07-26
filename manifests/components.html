@@ -644,13 +644,13 @@
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
-   5 | const metrics = [[&#39;SIGNAL INDEX&#39;, &#39;84.2&#39;, &#39;+12.4%&#39;, &#39;spectral&#39;], [&#39;PROTOCOL LOAD&#39;, &#39;66.8&#39;, &#39;+8.7%&#39;, &#39;amber&#39;], [&#39;ACTIVE THREADS&#39;, &#39;1,284&#39;, &#39;+9.3%&#39;, &#39;spectral&#39;], [&#39;LOCKED FLOWS&#39;, &#39;18&#39;, &#39;NOMINAL&#39;, &#39;amber&#39;]]
-   6 |
-&gt;  7 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
+  11 | ]
+  12 |
+&gt; 13 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   8 |
-   9 | function FoundationCanvas() {
-  10 |   const reduceMotion = useReducedMotion()
+  14 |
+  15 | function FoundationCanvas() {
+  16 |   const reduceMotion = useReducedMotion()
 
 ./stories/GShadowFoundation.stories.jsx:
 import &#39;../registry/styles/gshadow.css&#39;
@@ -658,6 +658,12 @@ import mark from &#39;../brand/gshadow-mark.svg&#39;
 import { motion, useReducedMotion } from &#39;motion/react&#39;
 
 const metrics = [[&#39;SIGNAL INDEX&#39;, &#39;84.2&#39;, &#39;+12.4%&#39;, &#39;spectral&#39;], [&#39;PROTOCOL LOAD&#39;, &#39;66.8&#39;, &#39;+8.7%&#39;, &#39;amber&#39;], [&#39;ACTIVE THREADS&#39;, &#39;1,284&#39;, &#39;+9.3%&#39;, &#39;spectral&#39;], [&#39;LOCKED FLOWS&#39;, &#39;18&#39;, &#39;NOMINAL&#39;, &#39;amber&#39;]]
+const combinations = [
+  [&#39;SPECTRAL LEAD&#39;, &#39;Explore → commit&#39;, &#39;Use violet for the active workspace, then use one amber control for the irreversible action.&#39;, &#39;spectral-lead&#39;],
+  [&#39;AMBER LEAD&#39;, &#39;Scrutinize → verify&#39;, &#39;Use amber for a bounded review, exception, or policy surface; spectral remains supporting metadata.&#39;, &#39;amber-lead&#39;],
+  [&#39;CONVERGENCE&#39;, &#39;Compare → hand off&#39;, &#39;Use the gradient seam only when two systems, assets, or signals meet. Keep it brief and centered on the handoff.&#39;, &#39;convergence&#39;],
+  [&#39;NEUTRAL FIELD&#39;, &#39;Read → orient&#39;, &#39;Use the black-blue substrate for routine content. Neither signal family is required just because a panel exists.&#39;, &#39;neutral-field&#39;],
+]
 
 export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
 
@@ -687,6 +693,10 @@ function FoundationCanvas() {
         &lt;section className=&quot;gshadow-foundation__protocols&quot; aria-label=&quot;GSHADOW signal families&quot;&gt;
           &lt;article className=&quot;gshadow-protocol gshadow-protocol--spectral&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;SPECTRAL SIGNAL / DEFAULT&lt;/p&gt;&lt;h2&gt;Observe the hidden.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Black-blue, electric violet, and deep ultraviolet create a strong signal without turning the interface into a purple wash.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#6821DE&#39; }} /&gt;ELECTRIC VIOLET&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#100829&#39; }} /&gt;ULTRAVIOLET DEPTH&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
           &lt;article className=&quot;gshadow-protocol gshadow-protocol--amber&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;AMBER PROTOCOL / ESCALATION&lt;/p&gt;&lt;h2&gt;Contain the heat.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Burnt gold and warm ember are reserved for focus, scrutiny, and an intentional next move. The family shares the same black-blue substrate.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#E79222&#39; }} /&gt;GOLD TRACE&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#2B1503&#39; }} /&gt;EMBER DEPTH&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
+        &lt;/section&gt;
+        &lt;section className=&quot;gshadow-foundation__combinations&quot; aria-labelledby=&quot;combination-title&quot;&gt;
+          &lt;div className=&quot;gshadow-foundation__combination-heading&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;DUAL-SIGNAL PROTOCOL&lt;/p&gt;&lt;h2 id=&quot;combination-title&quot;&gt;Color has a job.&lt;/h2&gt;&lt;p&gt;Choose a relationship based on the user’s task—not to make the screen louder. A region gets one lead, one supporting family, or a neutral field.&lt;/p&gt;&lt;/div&gt;
+          &lt;div className=&quot;gshadow-foundation__combination-grid&quot;&gt;{combinations.map(([label, use, description, style]) =&gt; &lt;article className={`gshadow-foundation__combination gshadow-foundation__combination--${style}`} key={label}&gt;&lt;p&gt;{label}&lt;/p&gt;&lt;strong&gt;{use}&lt;/strong&gt;&lt;span&gt;{description}&lt;/span&gt;&lt;/article&gt;)}&lt;/div&gt;
         &lt;/section&gt;
         &lt;p className=&quot;gshadow-foundation__rule&quot;&gt;&lt;strong&gt;COMPOSITION RULE&lt;/strong&gt;&lt;span&gt;Use one signal family to lead a region. Spectral and amber can share a page through common neutrals, structure, and typography. Do not layer both glow systems into the same component.&lt;/span&gt;&lt;/p&gt;
       &lt;/div&gt;
@@ -1174,13 +1184,13 @@ export const Status = {
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
-   5 | const metrics = [[&#39;SIGNAL INDEX&#39;, &#39;84.2&#39;, &#39;+12.4%&#39;, &#39;spectral&#39;], [&#39;PROTOCOL LOAD&#39;, &#39;66.8&#39;, &#39;+8.7%&#39;, &#39;amber&#39;], [&#39;ACTIVE THREADS&#39;, &#39;1,284&#39;, &#39;+9.3%&#39;, &#39;spectral&#39;], [&#39;LOCKED FLOWS&#39;, &#39;18&#39;, &#39;NOMINAL&#39;, &#39;amber&#39;]]
-   6 |
-&gt;  7 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
+  11 | ]
+  12 |
+&gt; 13 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   8 |
-   9 | function FoundationCanvas() {
-  10 |   const reduceMotion = useReducedMotion()
+  14 |
+  15 | function FoundationCanvas() {
+  16 |   const reduceMotion = useReducedMotion()
 
 ./stories/GShadowFoundation.stories.jsx:
 import &#39;../registry/styles/gshadow.css&#39;
@@ -1188,6 +1198,12 @@ import mark from &#39;../brand/gshadow-mark.svg&#39;
 import { motion, useReducedMotion } from &#39;motion/react&#39;
 
 const metrics = [[&#39;SIGNAL INDEX&#39;, &#39;84.2&#39;, &#39;+12.4%&#39;, &#39;spectral&#39;], [&#39;PROTOCOL LOAD&#39;, &#39;66.8&#39;, &#39;+8.7%&#39;, &#39;amber&#39;], [&#39;ACTIVE THREADS&#39;, &#39;1,284&#39;, &#39;+9.3%&#39;, &#39;spectral&#39;], [&#39;LOCKED FLOWS&#39;, &#39;18&#39;, &#39;NOMINAL&#39;, &#39;amber&#39;]]
+const combinations = [
+  [&#39;SPECTRAL LEAD&#39;, &#39;Explore → commit&#39;, &#39;Use violet for the active workspace, then use one amber control for the irreversible action.&#39;, &#39;spectral-lead&#39;],
+  [&#39;AMBER LEAD&#39;, &#39;Scrutinize → verify&#39;, &#39;Use amber for a bounded review, exception, or policy surface; spectral remains supporting metadata.&#39;, &#39;amber-lead&#39;],
+  [&#39;CONVERGENCE&#39;, &#39;Compare → hand off&#39;, &#39;Use the gradient seam only when two systems, assets, or signals meet. Keep it brief and centered on the handoff.&#39;, &#39;convergence&#39;],
+  [&#39;NEUTRAL FIELD&#39;, &#39;Read → orient&#39;, &#39;Use the black-blue substrate for routine content. Neither signal family is required just because a panel exists.&#39;, &#39;neutral-field&#39;],
+]
 
 export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
 
@@ -1217,6 +1233,10 @@ function FoundationCanvas() {
         &lt;section className=&quot;gshadow-foundation__protocols&quot; aria-label=&quot;GSHADOW signal families&quot;&gt;
           &lt;article className=&quot;gshadow-protocol gshadow-protocol--spectral&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;SPECTRAL SIGNAL / DEFAULT&lt;/p&gt;&lt;h2&gt;Observe the hidden.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Black-blue, electric violet, and deep ultraviolet create a strong signal without turning the interface into a purple wash.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#6821DE&#39; }} /&gt;ELECTRIC VIOLET&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#100829&#39; }} /&gt;ULTRAVIOLET DEPTH&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
           &lt;article className=&quot;gshadow-protocol gshadow-protocol--amber&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;AMBER PROTOCOL / ESCALATION&lt;/p&gt;&lt;h2&gt;Contain the heat.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Burnt gold and warm ember are reserved for focus, scrutiny, and an intentional next move. The family shares the same black-blue substrate.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#E79222&#39; }} /&gt;GOLD TRACE&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#2B1503&#39; }} /&gt;EMBER DEPTH&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
+        &lt;/section&gt;
+        &lt;section className=&quot;gshadow-foundation__combinations&quot; aria-labelledby=&quot;combination-title&quot;&gt;
+          &lt;div className=&quot;gshadow-foundation__combination-heading&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;DUAL-SIGNAL PROTOCOL&lt;/p&gt;&lt;h2 id=&quot;combination-title&quot;&gt;Color has a job.&lt;/h2&gt;&lt;p&gt;Choose a relationship based on the user’s task—not to make the screen louder. A region gets one lead, one supporting family, or a neutral field.&lt;/p&gt;&lt;/div&gt;
+          &lt;div className=&quot;gshadow-foundation__combination-grid&quot;&gt;{combinations.map(([label, use, description, style]) =&gt; &lt;article className={`gshadow-foundation__combination gshadow-foundation__combination--${style}`} key={label}&gt;&lt;p&gt;{label}&lt;/p&gt;&lt;strong&gt;{use}&lt;/strong&gt;&lt;span&gt;{description}&lt;/span&gt;&lt;/article&gt;)}&lt;/div&gt;
         &lt;/section&gt;
         &lt;p className=&quot;gshadow-foundation__rule&quot;&gt;&lt;strong&gt;COMPOSITION RULE&lt;/strong&gt;&lt;span&gt;Use one signal family to lead a region. Spectral and amber can share a page through common neutrals, structure, and typography. Do not layer both glow systems into the same component.&lt;/span&gt;&lt;/p&gt;
       &lt;/div&gt;
