@@ -644,70 +644,38 @@
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
-  15 | ]
-  16 |
-&gt; 17 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
-     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  18 |
-  19 | export const CoreLanguage = {
-  20 |   render: () =&gt; (
+  2 | import mark from &#39;../brand/gshadow-mark.svg&#39;
+  3 |
+&gt; 4 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | export const CoreLanguage = {
+  7 |   render: () =&gt; (
 
 ./stories/GShadowFoundation.stories.jsx:
 import &#39;../registry/styles/gshadow.css&#39;
 import mark from &#39;../brand/gshadow-mark.svg&#39;
 
-const Action = ({ intent = &#39;primary&#39;, children }) =&gt; (
-  &lt;button className={`gshadow-button gshadow-button--${intent} gshadow-button--md gshadow-focus`}&gt;
-    {children}
-  &lt;/button&gt;
-)
-
-const metrics = [
-  [&#39;MEDIA FREE&#39;, &#39;321&#39;, &#39;GB&#39;, &#39;36.6% held in reserve&#39;, &#39;info&#39;],
-  [&#39;QUEUE DEPTH&#39;, &#39;148&#39;, &#39;&#39;, &#39;signal under watch&#39;, &#39;warning&#39;],
-  [&#39;FAILED JOBS&#39;, &#39;12&#39;, &#39;&#39;, &#39;action required&#39;, &#39;error&#39;],
-  [&#39;SERVICES UP&#39;, &#39;11 / 11&#39;, &#39;&#39;, &#39;probes clean&#39;, &#39;success&#39;],
-]
-
 export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
 
 export const CoreLanguage = {
   render: () =&gt; (
-    &lt;main className=&quot;gshadow-console&quot;&gt;
-      &lt;header className=&quot;gshadow-console__rail&quot;&gt;
-        &lt;div className=&quot;gshadow-console__identity&quot;&gt;
-          &lt;img className=&quot;gshadow-console__mark&quot; src={mark} alt=&quot;&quot; /&gt;
-          &lt;span&gt;GSHADOW&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;span className=&quot;gshadow-console__label&quot;&gt;FOUNDATION / 0.1 / VOID READY&lt;/span&gt;
-      &lt;/header&gt;
-
-      &lt;section className=&quot;gshadow-console__grid&quot;&gt;
-        &lt;div&gt;
-          &lt;p className=&quot;gshadow-console__label&quot;&gt;EVIDENCE CONSOLE&lt;/p&gt;
-          &lt;h1 className=&quot;gshadow-console__title&quot;&gt;Evidence first.&lt;br /&gt;&lt;em&gt;Noise suppressed.&lt;/em&gt;&lt;/h1&gt;
-          &lt;p className=&quot;gshadow-console__intro&quot;&gt;A component language for systems that need to read clean under pressure. Warm light for ordinary work. Void-dark when the signal matters.&lt;/p&gt;
-          &lt;div className=&quot;gshadow-console__actions&quot;&gt;
-            &lt;Action&gt;VIEW EVIDENCE&lt;/Action&gt;
-            &lt;Action intent=&quot;secondary&quot;&gt;COMPONENT LOG&lt;/Action&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;aside className=&quot;gshadow-console__signal&quot;&gt;
-          &lt;p className=&quot;gshadow-console__label&quot;&gt;SIGNAL STATE&lt;/p&gt;
-          &lt;p className=&quot;gshadow-metric__value&quot;&gt;LOCKED&lt;/p&gt;
-          &lt;span className=&quot;gshadow-status gshadow-status--success&quot;&gt;&lt;i className=&quot;gshadow-status__dot&quot; /&gt;SYSTEMS NOMINAL&lt;/span&gt;
-        &lt;/aside&gt;
-      &lt;/section&gt;
-
-      &lt;section className=&quot;gshadow-console__metric-grid&quot; aria-label=&quot;Operational metrics&quot;&gt;
-        {metrics.map(([label, value, unit, detail, state]) =&gt; (
-          &lt;article className=&quot;gshadow-console__metric&quot; key={label}&gt;
-            &lt;p className=&quot;gshadow-metric__label&quot;&gt;{label}&lt;/p&gt;
-            &lt;div className=&quot;gshadow-metric__value&quot;&gt;{value}{unit &amp;&amp; &lt;span className=&quot;gshadow-metric__unit&quot;&gt;{unit}&lt;/span&gt;}&lt;/div&gt;
-            &lt;span className={`gshadow-status gshadow-status--${state}`}&gt;&lt;i className=&quot;gshadow-status__dot&quot; /&gt;{detail}&lt;/span&gt;
-          &lt;/article&gt;
-        ))}
-      &lt;/section&gt;
+    &lt;main className=&quot;gshadow-foundation&quot;&gt;
+      &lt;div className=&quot;gshadow-foundation__wrap&quot;&gt;
+        &lt;header className=&quot;gshadow-foundation__rail&quot;&gt;
+          &lt;div className=&quot;gshadow-foundation__identity&quot;&gt;&lt;img className=&quot;gshadow-foundation__mark&quot; src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;GSHADOW&lt;/span&gt;&lt;/div&gt;
+          &lt;span className=&quot;gshadow-foundation__meta&quot;&gt;FOUNDATION / SIGNAL FAMILIES&lt;/span&gt;
+        &lt;/header&gt;
+        &lt;section className=&quot;gshadow-foundation__hero&quot;&gt;
+          &lt;div&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;ONE FIELD. TWO SIGNALS.&lt;/p&gt;&lt;h1 className=&quot;gshadow-foundation__title&quot;&gt;Watch the dark.&lt;br /&gt;&lt;span&gt;Mark the heat.&lt;/span&gt;&lt;/h1&gt;&lt;p className=&quot;gshadow-foundation__copy&quot;&gt;Night Signal handles discovery, intelligence, and normal operation. Amber Protocol handles containment, elevated focus, and irreversible action. The neutral field is shared, so they can live together without fighting.&lt;/p&gt;&lt;/div&gt;
+          &lt;aside className=&quot;gshadow-foundation__signal&quot;&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;AMBER PROTOCOL&lt;/p&gt;&lt;strong&gt;CONTAINMENT READY&lt;/strong&gt;&lt;p&gt;Use amber as a bounded operational callout. It is not a second primary color.&lt;/p&gt;&lt;/aside&gt;
+        &lt;/section&gt;
+        &lt;section className=&quot;gshadow-foundation__protocols&quot; aria-label=&quot;GSHADOW signal families&quot;&gt;
+          &lt;article className=&quot;gshadow-protocol gshadow-protocol--spectral&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;NIGHT SIGNAL / DEFAULT&lt;/p&gt;&lt;h2&gt;Observe the hidden.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Ink, plum shadow, and berry signal. The active state has presence without flooding the interface.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#C21F79&#39; }} /&gt;BERRY SIGNAL&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#251424&#39; }} /&gt;BRUISE SHADOW&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
+          &lt;article className=&quot;gshadow-protocol gshadow-protocol--amber&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;AMBER PROTOCOL / ESCALATION&lt;/p&gt;&lt;h2&gt;Contain the heat.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Burnt amber, ash, and warm paper. It enters only when a workflow needs focus, scrutiny, or a deliberate next move.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#F2A23A&#39; }} /&gt;AMBER TRACE&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#332010&#39; }} /&gt;EMBER SHADOW&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
+        &lt;/section&gt;
+        &lt;p className=&quot;gshadow-foundation__rule&quot;&gt;&lt;strong&gt;COMPOSITION RULE&lt;/strong&gt;&lt;span&gt;Use one signal family to lead a region. Spectral and amber can share a page through common neutrals, structure, and typography. Do not layer both glow systems into the same component.&lt;/span&gt;&lt;/p&gt;
+      &lt;/div&gt;
     &lt;/main&gt;
   ),
 }
@@ -743,41 +711,22 @@ export const CoreLanguage = {
               
               
               <pre><code>const CoreLanguage = () =&gt; (
-  &lt;main className=&quot;gshadow-console&quot;&gt;
-    &lt;header className=&quot;gshadow-console__rail&quot;&gt;
-      &lt;div className=&quot;gshadow-console__identity&quot;&gt;
-        &lt;img className=&quot;gshadow-console__mark&quot; src={mark} alt=&quot;&quot; /&gt;
-        &lt;span&gt;GSHADOW&lt;/span&gt;
-      &lt;/div&gt;
-      &lt;span className=&quot;gshadow-console__label&quot;&gt;FOUNDATION / 0.1 / VOID READY&lt;/span&gt;
-    &lt;/header&gt;
-
-    &lt;section className=&quot;gshadow-console__grid&quot;&gt;
-      &lt;div&gt;
-        &lt;p className=&quot;gshadow-console__label&quot;&gt;EVIDENCE CONSOLE&lt;/p&gt;
-        &lt;h1 className=&quot;gshadow-console__title&quot;&gt;Evidence first.&lt;br /&gt;&lt;em&gt;Noise suppressed.&lt;/em&gt;&lt;/h1&gt;
-        &lt;p className=&quot;gshadow-console__intro&quot;&gt;A component language for systems that need to read clean under pressure. Warm light for ordinary work. Void-dark when the signal matters.&lt;/p&gt;
-        &lt;div className=&quot;gshadow-console__actions&quot;&gt;
-          &lt;Action&gt;VIEW EVIDENCE&lt;/Action&gt;
-          &lt;Action intent=&quot;secondary&quot;&gt;COMPONENT LOG&lt;/Action&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;aside className=&quot;gshadow-console__signal&quot;&gt;
-        &lt;p className=&quot;gshadow-console__label&quot;&gt;SIGNAL STATE&lt;/p&gt;
-        &lt;p className=&quot;gshadow-metric__value&quot;&gt;LOCKED&lt;/p&gt;
-        &lt;span className=&quot;gshadow-status gshadow-status--success&quot;&gt;&lt;i className=&quot;gshadow-status__dot&quot; /&gt;SYSTEMS NOMINAL&lt;/span&gt;
-      &lt;/aside&gt;
-    &lt;/section&gt;
-
-    &lt;section className=&quot;gshadow-console__metric-grid&quot; aria-label=&quot;Operational metrics&quot;&gt;
-      {metrics.map(([label, value, unit, detail, state]) =&gt; (
-        &lt;article className=&quot;gshadow-console__metric&quot; key={label}&gt;
-          &lt;p className=&quot;gshadow-metric__label&quot;&gt;{label}&lt;/p&gt;
-          &lt;div className=&quot;gshadow-metric__value&quot;&gt;{value}{unit &amp;&amp; &lt;span className=&quot;gshadow-metric__unit&quot;&gt;{unit}&lt;/span&gt;}&lt;/div&gt;
-          &lt;span className={`gshadow-status gshadow-status--${state}`}&gt;&lt;i className=&quot;gshadow-status__dot&quot; /&gt;{detail}&lt;/span&gt;
-        &lt;/article&gt;
-      ))}
-    &lt;/section&gt;
+  &lt;main className=&quot;gshadow-foundation&quot;&gt;
+    &lt;div className=&quot;gshadow-foundation__wrap&quot;&gt;
+      &lt;header className=&quot;gshadow-foundation__rail&quot;&gt;
+        &lt;div className=&quot;gshadow-foundation__identity&quot;&gt;&lt;img className=&quot;gshadow-foundation__mark&quot; src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;GSHADOW&lt;/span&gt;&lt;/div&gt;
+        &lt;span className=&quot;gshadow-foundation__meta&quot;&gt;FOUNDATION / SIGNAL FAMILIES&lt;/span&gt;
+      &lt;/header&gt;
+      &lt;section className=&quot;gshadow-foundation__hero&quot;&gt;
+        &lt;div&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;ONE FIELD. TWO SIGNALS.&lt;/p&gt;&lt;h1 className=&quot;gshadow-foundation__title&quot;&gt;Watch the dark.&lt;br /&gt;&lt;span&gt;Mark the heat.&lt;/span&gt;&lt;/h1&gt;&lt;p className=&quot;gshadow-foundation__copy&quot;&gt;Night Signal handles discovery, intelligence, and normal operation. Amber Protocol handles containment, elevated focus, and irreversible action. The neutral field is shared, so they can live together without fighting.&lt;/p&gt;&lt;/div&gt;
+        &lt;aside className=&quot;gshadow-foundation__signal&quot;&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;AMBER PROTOCOL&lt;/p&gt;&lt;strong&gt;CONTAINMENT READY&lt;/strong&gt;&lt;p&gt;Use amber as a bounded operational callout. It is not a second primary color.&lt;/p&gt;&lt;/aside&gt;
+      &lt;/section&gt;
+      &lt;section className=&quot;gshadow-foundation__protocols&quot; aria-label=&quot;GSHADOW signal families&quot;&gt;
+        &lt;article className=&quot;gshadow-protocol gshadow-protocol--spectral&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;NIGHT SIGNAL / DEFAULT&lt;/p&gt;&lt;h2&gt;Observe the hidden.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Ink, plum shadow, and berry signal. The active state has presence without flooding the interface.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#C21F79&#39; }} /&gt;BERRY SIGNAL&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#251424&#39; }} /&gt;BRUISE SHADOW&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
+        &lt;article className=&quot;gshadow-protocol gshadow-protocol--amber&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;AMBER PROTOCOL / ESCALATION&lt;/p&gt;&lt;h2&gt;Contain the heat.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Burnt amber, ash, and warm paper. It enters only when a workflow needs focus, scrutiny, or a deliberate next move.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#F2A23A&#39; }} /&gt;AMBER TRACE&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#332010&#39; }} /&gt;EMBER SHADOW&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
+      &lt;/section&gt;
+      &lt;p className=&quot;gshadow-foundation__rule&quot;&gt;&lt;strong&gt;COMPOSITION RULE&lt;/strong&gt;&lt;span&gt;Use one signal family to lead a region. Spectral and amber can share a page through common neutrals, structure, and typography. Do not layer both glow systems into the same component.&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
   &lt;/main&gt;
 );</code></pre>
             </div>
@@ -1224,70 +1173,38 @@ export const Status = {
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
-  15 | ]
-  16 |
-&gt; 17 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
-     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  18 |
-  19 | export const CoreLanguage = {
-  20 |   render: () =&gt; (
+  2 | import mark from &#39;../brand/gshadow-mark.svg&#39;
+  3 |
+&gt; 4 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | export const CoreLanguage = {
+  7 |   render: () =&gt; (
 
 ./stories/GShadowFoundation.stories.jsx:
 import &#39;../registry/styles/gshadow.css&#39;
 import mark from &#39;../brand/gshadow-mark.svg&#39;
 
-const Action = ({ intent = &#39;primary&#39;, children }) =&gt; (
-  &lt;button className={`gshadow-button gshadow-button--${intent} gshadow-button--md gshadow-focus`}&gt;
-    {children}
-  &lt;/button&gt;
-)
-
-const metrics = [
-  [&#39;MEDIA FREE&#39;, &#39;321&#39;, &#39;GB&#39;, &#39;36.6% held in reserve&#39;, &#39;info&#39;],
-  [&#39;QUEUE DEPTH&#39;, &#39;148&#39;, &#39;&#39;, &#39;signal under watch&#39;, &#39;warning&#39;],
-  [&#39;FAILED JOBS&#39;, &#39;12&#39;, &#39;&#39;, &#39;action required&#39;, &#39;error&#39;],
-  [&#39;SERVICES UP&#39;, &#39;11 / 11&#39;, &#39;&#39;, &#39;probes clean&#39;, &#39;success&#39;],
-]
-
 export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
 
 export const CoreLanguage = {
   render: () =&gt; (
-    &lt;main className=&quot;gshadow-console&quot;&gt;
-      &lt;header className=&quot;gshadow-console__rail&quot;&gt;
-        &lt;div className=&quot;gshadow-console__identity&quot;&gt;
-          &lt;img className=&quot;gshadow-console__mark&quot; src={mark} alt=&quot;&quot; /&gt;
-          &lt;span&gt;GSHADOW&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;span className=&quot;gshadow-console__label&quot;&gt;FOUNDATION / 0.1 / VOID READY&lt;/span&gt;
-      &lt;/header&gt;
-
-      &lt;section className=&quot;gshadow-console__grid&quot;&gt;
-        &lt;div&gt;
-          &lt;p className=&quot;gshadow-console__label&quot;&gt;EVIDENCE CONSOLE&lt;/p&gt;
-          &lt;h1 className=&quot;gshadow-console__title&quot;&gt;Evidence first.&lt;br /&gt;&lt;em&gt;Noise suppressed.&lt;/em&gt;&lt;/h1&gt;
-          &lt;p className=&quot;gshadow-console__intro&quot;&gt;A component language for systems that need to read clean under pressure. Warm light for ordinary work. Void-dark when the signal matters.&lt;/p&gt;
-          &lt;div className=&quot;gshadow-console__actions&quot;&gt;
-            &lt;Action&gt;VIEW EVIDENCE&lt;/Action&gt;
-            &lt;Action intent=&quot;secondary&quot;&gt;COMPONENT LOG&lt;/Action&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;aside className=&quot;gshadow-console__signal&quot;&gt;
-          &lt;p className=&quot;gshadow-console__label&quot;&gt;SIGNAL STATE&lt;/p&gt;
-          &lt;p className=&quot;gshadow-metric__value&quot;&gt;LOCKED&lt;/p&gt;
-          &lt;span className=&quot;gshadow-status gshadow-status--success&quot;&gt;&lt;i className=&quot;gshadow-status__dot&quot; /&gt;SYSTEMS NOMINAL&lt;/span&gt;
-        &lt;/aside&gt;
-      &lt;/section&gt;
-
-      &lt;section className=&quot;gshadow-console__metric-grid&quot; aria-label=&quot;Operational metrics&quot;&gt;
-        {metrics.map(([label, value, unit, detail, state]) =&gt; (
-          &lt;article className=&quot;gshadow-console__metric&quot; key={label}&gt;
-            &lt;p className=&quot;gshadow-metric__label&quot;&gt;{label}&lt;/p&gt;
-            &lt;div className=&quot;gshadow-metric__value&quot;&gt;{value}{unit &amp;&amp; &lt;span className=&quot;gshadow-metric__unit&quot;&gt;{unit}&lt;/span&gt;}&lt;/div&gt;
-            &lt;span className={`gshadow-status gshadow-status--${state}`}&gt;&lt;i className=&quot;gshadow-status__dot&quot; /&gt;{detail}&lt;/span&gt;
-          &lt;/article&gt;
-        ))}
-      &lt;/section&gt;
+    &lt;main className=&quot;gshadow-foundation&quot;&gt;
+      &lt;div className=&quot;gshadow-foundation__wrap&quot;&gt;
+        &lt;header className=&quot;gshadow-foundation__rail&quot;&gt;
+          &lt;div className=&quot;gshadow-foundation__identity&quot;&gt;&lt;img className=&quot;gshadow-foundation__mark&quot; src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;GSHADOW&lt;/span&gt;&lt;/div&gt;
+          &lt;span className=&quot;gshadow-foundation__meta&quot;&gt;FOUNDATION / SIGNAL FAMILIES&lt;/span&gt;
+        &lt;/header&gt;
+        &lt;section className=&quot;gshadow-foundation__hero&quot;&gt;
+          &lt;div&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;ONE FIELD. TWO SIGNALS.&lt;/p&gt;&lt;h1 className=&quot;gshadow-foundation__title&quot;&gt;Watch the dark.&lt;br /&gt;&lt;span&gt;Mark the heat.&lt;/span&gt;&lt;/h1&gt;&lt;p className=&quot;gshadow-foundation__copy&quot;&gt;Night Signal handles discovery, intelligence, and normal operation. Amber Protocol handles containment, elevated focus, and irreversible action. The neutral field is shared, so they can live together without fighting.&lt;/p&gt;&lt;/div&gt;
+          &lt;aside className=&quot;gshadow-foundation__signal&quot;&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;AMBER PROTOCOL&lt;/p&gt;&lt;strong&gt;CONTAINMENT READY&lt;/strong&gt;&lt;p&gt;Use amber as a bounded operational callout. It is not a second primary color.&lt;/p&gt;&lt;/aside&gt;
+        &lt;/section&gt;
+        &lt;section className=&quot;gshadow-foundation__protocols&quot; aria-label=&quot;GSHADOW signal families&quot;&gt;
+          &lt;article className=&quot;gshadow-protocol gshadow-protocol--spectral&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;NIGHT SIGNAL / DEFAULT&lt;/p&gt;&lt;h2&gt;Observe the hidden.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Ink, plum shadow, and berry signal. The active state has presence without flooding the interface.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#C21F79&#39; }} /&gt;BERRY SIGNAL&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#251424&#39; }} /&gt;BRUISE SHADOW&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
+          &lt;article className=&quot;gshadow-protocol gshadow-protocol--amber&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;AMBER PROTOCOL / ESCALATION&lt;/p&gt;&lt;h2&gt;Contain the heat.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Burnt amber, ash, and warm paper. It enters only when a workflow needs focus, scrutiny, or a deliberate next move.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#F2A23A&#39; }} /&gt;AMBER TRACE&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#332010&#39; }} /&gt;EMBER SHADOW&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
+        &lt;/section&gt;
+        &lt;p className=&quot;gshadow-foundation__rule&quot;&gt;&lt;strong&gt;COMPOSITION RULE&lt;/strong&gt;&lt;span&gt;Use one signal family to lead a region. Spectral and amber can share a page through common neutrals, structure, and typography. Do not layer both glow systems into the same component.&lt;/span&gt;&lt;/p&gt;
+      &lt;/div&gt;
     &lt;/main&gt;
   ),
 }
@@ -1323,41 +1240,22 @@ export const CoreLanguage = {
               
               
               <pre><code>const CoreLanguage = () =&gt; (
-  &lt;main className=&quot;gshadow-console&quot;&gt;
-    &lt;header className=&quot;gshadow-console__rail&quot;&gt;
-      &lt;div className=&quot;gshadow-console__identity&quot;&gt;
-        &lt;img className=&quot;gshadow-console__mark&quot; src={mark} alt=&quot;&quot; /&gt;
-        &lt;span&gt;GSHADOW&lt;/span&gt;
-      &lt;/div&gt;
-      &lt;span className=&quot;gshadow-console__label&quot;&gt;FOUNDATION / 0.1 / VOID READY&lt;/span&gt;
-    &lt;/header&gt;
-
-    &lt;section className=&quot;gshadow-console__grid&quot;&gt;
-      &lt;div&gt;
-        &lt;p className=&quot;gshadow-console__label&quot;&gt;EVIDENCE CONSOLE&lt;/p&gt;
-        &lt;h1 className=&quot;gshadow-console__title&quot;&gt;Evidence first.&lt;br /&gt;&lt;em&gt;Noise suppressed.&lt;/em&gt;&lt;/h1&gt;
-        &lt;p className=&quot;gshadow-console__intro&quot;&gt;A component language for systems that need to read clean under pressure. Warm light for ordinary work. Void-dark when the signal matters.&lt;/p&gt;
-        &lt;div className=&quot;gshadow-console__actions&quot;&gt;
-          &lt;Action&gt;VIEW EVIDENCE&lt;/Action&gt;
-          &lt;Action intent=&quot;secondary&quot;&gt;COMPONENT LOG&lt;/Action&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;aside className=&quot;gshadow-console__signal&quot;&gt;
-        &lt;p className=&quot;gshadow-console__label&quot;&gt;SIGNAL STATE&lt;/p&gt;
-        &lt;p className=&quot;gshadow-metric__value&quot;&gt;LOCKED&lt;/p&gt;
-        &lt;span className=&quot;gshadow-status gshadow-status--success&quot;&gt;&lt;i className=&quot;gshadow-status__dot&quot; /&gt;SYSTEMS NOMINAL&lt;/span&gt;
-      &lt;/aside&gt;
-    &lt;/section&gt;
-
-    &lt;section className=&quot;gshadow-console__metric-grid&quot; aria-label=&quot;Operational metrics&quot;&gt;
-      {metrics.map(([label, value, unit, detail, state]) =&gt; (
-        &lt;article className=&quot;gshadow-console__metric&quot; key={label}&gt;
-          &lt;p className=&quot;gshadow-metric__label&quot;&gt;{label}&lt;/p&gt;
-          &lt;div className=&quot;gshadow-metric__value&quot;&gt;{value}{unit &amp;&amp; &lt;span className=&quot;gshadow-metric__unit&quot;&gt;{unit}&lt;/span&gt;}&lt;/div&gt;
-          &lt;span className={`gshadow-status gshadow-status--${state}`}&gt;&lt;i className=&quot;gshadow-status__dot&quot; /&gt;{detail}&lt;/span&gt;
-        &lt;/article&gt;
-      ))}
-    &lt;/section&gt;
+  &lt;main className=&quot;gshadow-foundation&quot;&gt;
+    &lt;div className=&quot;gshadow-foundation__wrap&quot;&gt;
+      &lt;header className=&quot;gshadow-foundation__rail&quot;&gt;
+        &lt;div className=&quot;gshadow-foundation__identity&quot;&gt;&lt;img className=&quot;gshadow-foundation__mark&quot; src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;GSHADOW&lt;/span&gt;&lt;/div&gt;
+        &lt;span className=&quot;gshadow-foundation__meta&quot;&gt;FOUNDATION / SIGNAL FAMILIES&lt;/span&gt;
+      &lt;/header&gt;
+      &lt;section className=&quot;gshadow-foundation__hero&quot;&gt;
+        &lt;div&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;ONE FIELD. TWO SIGNALS.&lt;/p&gt;&lt;h1 className=&quot;gshadow-foundation__title&quot;&gt;Watch the dark.&lt;br /&gt;&lt;span&gt;Mark the heat.&lt;/span&gt;&lt;/h1&gt;&lt;p className=&quot;gshadow-foundation__copy&quot;&gt;Night Signal handles discovery, intelligence, and normal operation. Amber Protocol handles containment, elevated focus, and irreversible action. The neutral field is shared, so they can live together without fighting.&lt;/p&gt;&lt;/div&gt;
+        &lt;aside className=&quot;gshadow-foundation__signal&quot;&gt;&lt;p className=&quot;gshadow-foundation__meta&quot;&gt;AMBER PROTOCOL&lt;/p&gt;&lt;strong&gt;CONTAINMENT READY&lt;/strong&gt;&lt;p&gt;Use amber as a bounded operational callout. It is not a second primary color.&lt;/p&gt;&lt;/aside&gt;
+      &lt;/section&gt;
+      &lt;section className=&quot;gshadow-foundation__protocols&quot; aria-label=&quot;GSHADOW signal families&quot;&gt;
+        &lt;article className=&quot;gshadow-protocol gshadow-protocol--spectral&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;NIGHT SIGNAL / DEFAULT&lt;/p&gt;&lt;h2&gt;Observe the hidden.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Ink, plum shadow, and berry signal. The active state has presence without flooding the interface.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#C21F79&#39; }} /&gt;BERRY SIGNAL&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#251424&#39; }} /&gt;BRUISE SHADOW&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
+        &lt;article className=&quot;gshadow-protocol gshadow-protocol--amber&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;AMBER PROTOCOL / ESCALATION&lt;/p&gt;&lt;h2&gt;Contain the heat.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Burnt amber, ash, and warm paper. It enters only when a workflow needs focus, scrutiny, or a deliberate next move.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#F2A23A&#39; }} /&gt;AMBER TRACE&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#332010&#39; }} /&gt;EMBER SHADOW&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
+      &lt;/section&gt;
+      &lt;p className=&quot;gshadow-foundation__rule&quot;&gt;&lt;strong&gt;COMPOSITION RULE&lt;/strong&gt;&lt;span&gt;Use one signal family to lead a region. Spectral and amber can share a page through common neutrals, structure, and typography. Do not layer both glow systems into the same component.&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
   &lt;/main&gt;
 );</code></pre>
             </div>
