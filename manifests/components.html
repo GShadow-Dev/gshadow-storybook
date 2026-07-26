@@ -594,7 +594,7 @@
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.4s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.3s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -644,13 +644,13 @@
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
-  11 | ]
-  12 |
-&gt; 13 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
+  10 | ]
+  11 |
+&gt; 12 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  14 |
-  15 | function FoundationCanvas() {
-  16 |   const reduceMotion = useReducedMotion()
+  13 |
+  14 | function FoundationCanvas() {
+  15 |   const reduceMotion = useReducedMotion()
 
 ./stories/GShadowFoundation.stories.jsx:
 import &#39;../registry/styles/gshadow.css&#39;
@@ -662,7 +662,6 @@ const combinations = [
   [&#39;SPECTRAL LEAD&#39;, &#39;Explore → commit&#39;, &#39;Use violet for the active workspace, then use one amber control for the irreversible action.&#39;, &#39;spectral-lead&#39;],
   [&#39;AMBER LEAD&#39;, &#39;Scrutinize → verify&#39;, &#39;Use amber for a bounded review, exception, or policy surface; spectral remains supporting metadata.&#39;, &#39;amber-lead&#39;],
   [&#39;CONVERGENCE&#39;, &#39;Compare → hand off&#39;, &#39;Use the gradient seam only when two systems, assets, or signals meet. Keep it brief and centered on the handoff.&#39;, &#39;convergence&#39;],
-  [&#39;NEUTRAL FIELD&#39;, &#39;Read → orient&#39;, &#39;Use the cool midnight substrate for routine content. Neither signal family is required just because a panel exists.&#39;, &#39;neutral-field&#39;],
 ]
 
 export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
@@ -696,10 +695,10 @@ function FoundationCanvas() {
           &lt;article className=&quot;gshadow-protocol gshadow-protocol--amber&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;AMBER PROTOCOL / ESCALATION&lt;/p&gt;&lt;h2&gt;Contain the heat.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Burnt gold and warm ember are reserved for focus, scrutiny, and an intentional next move. The family shares the same black-blue substrate.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#E79222&#39; }} /&gt;GOLD TRACE&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#2B1503&#39; }} /&gt;EMBER DEPTH&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
         &lt;/section&gt;
         &lt;section className=&quot;gshadow-foundation__combinations&quot; aria-labelledby=&quot;combination-title&quot;&gt;
-          &lt;div className=&quot;gshadow-foundation__combination-heading&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;DUAL-SIGNAL PROTOCOL&lt;/p&gt;&lt;h2 id=&quot;combination-title&quot;&gt;Color has a job.&lt;/h2&gt;&lt;p&gt;Choose a relationship based on the user’s task—not to make the screen louder. A region gets one lead, one supporting family, or a neutral field.&lt;/p&gt;&lt;/div&gt;
+          &lt;div className=&quot;gshadow-foundation__combination-heading&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;DUAL-SIGNAL PROTOCOL&lt;/p&gt;&lt;h2 id=&quot;combination-title&quot;&gt;Color has a job.&lt;/h2&gt;&lt;p&gt;Choose a relationship based on the user’s task—not to make the screen louder. A region gets one lead, one supporting family, or the void.&lt;/p&gt;&lt;/div&gt;
           &lt;div className=&quot;gshadow-foundation__combination-grid&quot;&gt;{combinations.map(([label, use, description, style]) =&gt; &lt;article className={`gshadow-foundation__combination gshadow-foundation__combination--${style}`} key={label}&gt;&lt;p&gt;{label}&lt;/p&gt;&lt;strong&gt;{use}&lt;/strong&gt;&lt;span&gt;{description}&lt;/span&gt;&lt;/article&gt;)}&lt;/div&gt;
         &lt;/section&gt;
-        &lt;p className=&quot;gshadow-foundation__rule&quot;&gt;&lt;strong&gt;COMPOSITION RULE&lt;/strong&gt;&lt;span&gt;Use one signal family to lead a region. Spectral and amber can share a page through common neutrals, structure, and typography. Do not layer both glow systems into the same component.&lt;/span&gt;&lt;/p&gt;
+        &lt;p className=&quot;gshadow-foundation__rule&quot;&gt;&lt;strong&gt;COMPOSITION RULE&lt;/strong&gt;&lt;span&gt;Use one signal family to lead a region. Spectral and amber share a page through the void, structure, and typography. Do not layer both glow systems into the same component.&lt;/span&gt;&lt;/p&gt;
       &lt;/div&gt;
     &lt;/main&gt;
   )
@@ -916,11 +915,11 @@ export const Surface = {
     eyebrow=&quot;SURFACE / BASE / RAISED / TRACE&quot;
     title=&quot;Structure without chrome.&quot;
     summary=&quot;Surfaces create hierarchy with containment, spacing, and a rare trace. The dark field stays deep, but it does not become a purple fog machine.&quot;
-    contract=&quot;Elevation sets hierarchy. Signal sets the job: neutral reads, spectral explores, amber verifies, and convergence compares or hands off.&quot;
+    contract=&quot;Elevation sets hierarchy. Signal sets the job: spectral explores, amber verifies, and convergence compares or hands off. The base surface is the void.&quot;
   &gt;
     &lt;Section index=&quot;01&quot; title=&quot;Elevation&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;{[[&#39;base&#39;, &#39;Calm containment&#39;], [&#39;raised&#39;, &#39;Separate a task&#39;], [&#39;trace&#39;, &#39;Direct attention&#39;]].map(([elevation, copy]) =&gt; &lt;GShadowSurface key={elevation} elevation={elevation} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{elevation}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;p className=&quot;gshadow-story-copy&quot;&gt;Use this level only when its hierarchy has a job to do.&lt;/p&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
-    &lt;Section index=&quot;02&quot; title=&quot;Signal family&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;{[[&#39;neutral&#39;, &#39;Routine reading&#39;], [&#39;spectral&#39;, &#39;Discovery workspace&#39;], [&#39;amber&#39;, &#39;Review boundary&#39;], [&#39;convergence&#39;, &#39;Comparison / handoff&#39;]].map(([signal, copy]) =&gt; &lt;GShadowSurface key={signal} elevation=&quot;base&quot; signal={signal} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{signal}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
-    &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use neutral for routine reading, spectral for discovery, amber for a bounded review or verification, and convergence only where two systems actually meet.&quot; avoid=&quot;Stack raised cards, add decorative gradients, or apply convergence to a generic container.&quot; /&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Signal family&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowSurface elevation=&quot;base&quot; density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;VOID BASE&lt;/p&gt;&lt;strong&gt;Routine reading&lt;/strong&gt;&lt;/GShadowSurface&gt;{[[&#39;spectral&#39;, &#39;Discovery workspace&#39;], [&#39;amber&#39;, &#39;Review boundary&#39;], [&#39;convergence&#39;, &#39;Comparison / handoff&#39;]].map(([signal, copy]) =&gt; &lt;GShadowSurface key={signal} elevation=&quot;base&quot; signal={signal} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{signal}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use the void base for routine reading, spectral for discovery, amber for a bounded review or verification, and convergence only where two systems actually meet.&quot; avoid=&quot;Stack raised cards, add decorative gradients, or apply convergence to a generic container.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
@@ -929,10 +928,10 @@ export const Metric = {
     eyebrow=&quot;METRIC / TABULAR VALUE / UNIT&quot;
     title=&quot;Numbers that hold their line.&quot;
     summary=&quot;Operational values use Manrope with tabular lining figures. Labels are mono. Units breathe at a smaller scale and always keep one space from the value.&quot;
-    contract=&quot;Metric data stays readable at a glance. Its signal treatment follows the region it belongs to; it never assigns importance by color alone.&quot;
+    contract=&quot;Metric data stays readable at a glance. Its signal treatment follows the region it belongs to; the default remains the void.&quot;
   &gt;
-    &lt;Section index=&quot;01&quot; title=&quot;Operational examples&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowMetric signal=&quot;spectral&quot; label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;&lt;GShadowMetric signal=&quot;amber&quot; label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;&lt;GShadowMetric signal=&quot;neutral&quot; label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;&lt;/div&gt;&lt;/Section&gt;
-    &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use spectral metrics for discovery data, amber metrics inside review or protocol regions, and neutral metrics for routine reading. Every metric still needs a precise label and unit.&quot; avoid=&quot;Use metrics for paragraphs, status messages, or values that need explanatory prose to be understood.&quot; /&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Operational examples&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowMetric signal=&quot;spectral&quot; label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;&lt;GShadowMetric signal=&quot;amber&quot; label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;&lt;GShadowMetric label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use spectral metrics for discovery data, amber metrics inside review or protocol regions, and the void baseline for routine values. Every metric still needs a precise label and unit.&quot; avoid=&quot;Use metrics for paragraphs, status messages, or values that need explanatory prose to be understood.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
@@ -1089,11 +1088,11 @@ export const Status = {
   eyebrow=&quot;SURFACE / BASE / RAISED / TRACE&quot;
   title=&quot;Structure without chrome.&quot;
   summary=&quot;Surfaces create hierarchy with containment, spacing, and a rare trace. The dark field stays deep, but it does not become a purple fog machine.&quot;
-  contract=&quot;Elevation sets hierarchy. Signal sets the job: neutral reads, spectral explores, amber verifies, and convergence compares or hands off.&quot;
+  contract=&quot;Elevation sets hierarchy. Signal sets the job: spectral explores, amber verifies, and convergence compares or hands off. The base surface is the void.&quot;
 &gt;
   &lt;Section index=&quot;01&quot; title=&quot;Elevation&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;{[[&#39;base&#39;, &#39;Calm containment&#39;], [&#39;raised&#39;, &#39;Separate a task&#39;], [&#39;trace&#39;, &#39;Direct attention&#39;]].map(([elevation, copy]) =&gt; &lt;GShadowSurface key={elevation} elevation={elevation} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{elevation}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;p className=&quot;gshadow-story-copy&quot;&gt;Use this level only when its hierarchy has a job to do.&lt;/p&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
-  &lt;Section index=&quot;02&quot; title=&quot;Signal family&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;{[[&#39;neutral&#39;, &#39;Routine reading&#39;], [&#39;spectral&#39;, &#39;Discovery workspace&#39;], [&#39;amber&#39;, &#39;Review boundary&#39;], [&#39;convergence&#39;, &#39;Comparison / handoff&#39;]].map(([signal, copy]) =&gt; &lt;GShadowSurface key={signal} elevation=&quot;base&quot; signal={signal} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{signal}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
-  &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use neutral for routine reading, spectral for discovery, amber for a bounded review or verification, and convergence only where two systems actually meet.&quot; avoid=&quot;Stack raised cards, add decorative gradients, or apply convergence to a generic container.&quot; /&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Signal family&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowSurface elevation=&quot;base&quot; density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;VOID BASE&lt;/p&gt;&lt;strong&gt;Routine reading&lt;/strong&gt;&lt;/GShadowSurface&gt;{[[&#39;spectral&#39;, &#39;Discovery workspace&#39;], [&#39;amber&#39;, &#39;Review boundary&#39;], [&#39;convergence&#39;, &#39;Comparison / handoff&#39;]].map(([signal, copy]) =&gt; &lt;GShadowSurface key={signal} elevation=&quot;base&quot; signal={signal} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{signal}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use the void base for routine reading, spectral for discovery, amber for a bounded review or verification, and convergence only where two systems actually meet.&quot; avoid=&quot;Stack raised cards, add decorative gradients, or apply convergence to a generic container.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1107,10 +1106,10 @@ export const Status = {
   eyebrow=&quot;METRIC / TABULAR VALUE / UNIT&quot;
   title=&quot;Numbers that hold their line.&quot;
   summary=&quot;Operational values use Manrope with tabular lining figures. Labels are mono. Units breathe at a smaller scale and always keep one space from the value.&quot;
-  contract=&quot;Metric data stays readable at a glance. Its signal treatment follows the region it belongs to; it never assigns importance by color alone.&quot;
+  contract=&quot;Metric data stays readable at a glance. Its signal treatment follows the region it belongs to; the default remains the void.&quot;
 &gt;
-  &lt;Section index=&quot;01&quot; title=&quot;Operational examples&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowMetric signal=&quot;spectral&quot; label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;&lt;GShadowMetric signal=&quot;amber&quot; label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;&lt;GShadowMetric signal=&quot;neutral&quot; label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;&lt;/div&gt;&lt;/Section&gt;
-  &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use spectral metrics for discovery data, amber metrics inside review or protocol regions, and neutral metrics for routine reading. Every metric still needs a precise label and unit.&quot; avoid=&quot;Use metrics for paragraphs, status messages, or values that need explanatory prose to be understood.&quot; /&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Operational examples&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowMetric signal=&quot;spectral&quot; label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;&lt;GShadowMetric signal=&quot;amber&quot; label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;&lt;GShadowMetric label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use spectral metrics for discovery data, amber metrics inside review or protocol regions, and the void baseline for routine values. Every metric still needs a precise label and unit.&quot; avoid=&quot;Use metrics for paragraphs, status messages, or values that need explanatory prose to be understood.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1229,9 +1228,9 @@ export const RelayControl = {
 
         &lt;section className=&quot;gshadow-showcase__metrics&quot; aria-label=&quot;Relay metrics&quot;&gt;
           &lt;Metric signal=&quot;spectral&quot; label=&quot;LIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;RELAYS&quot; /&gt;
-          &lt;Metric signal=&quot;neutral&quot; label=&quot;ROUTE INTEGRITY&quot; value=&quot;99.98&quot; unit=&quot;%&quot; /&gt;
+          &lt;Metric label=&quot;ROUTE INTEGRITY&quot; value=&quot;99.98&quot; unit=&quot;%&quot; /&gt;
           &lt;Metric signal=&quot;amber&quot; label=&quot;PENDING REVIEW&quot; value=&quot;07&quot; unit=&quot;ITEMS&quot; /&gt;
-          &lt;Metric signal=&quot;neutral&quot; label=&quot;LATENCY&quot; value=&quot;23&quot; unit=&quot;MS&quot; /&gt;
+          &lt;Metric label=&quot;LATENCY&quot; value=&quot;23&quot; unit=&quot;MS&quot; /&gt;
         &lt;/section&gt;
 
         &lt;section className=&quot;gshadow-showcase__grid&quot; id=&quot;network&quot;&gt;
@@ -1246,8 +1245,8 @@ export const RelayControl = {
               &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;AMBER LEAD&lt;/p&gt;&lt;h2&gt;Protocol queue&lt;/h2&gt;&lt;/div&gt;&lt;Status state=&quot;warning&quot;&gt;07 OPEN&lt;/Status&gt;&lt;/div&gt;
               &lt;ol&gt;{[&#39;Route 42 attestation&#39;, &#39;North-array capacity shift&#39;, &#39;Relay 17 access scope&#39;].map((item, index) =&gt; &lt;li key={item}&gt;&lt;span&gt;0{index + 1}&lt;/span&gt;&lt;strong&gt;{item}&lt;/strong&gt;&lt;GShadowButton intent=&quot;ghost&quot; size=&quot;sm&quot;&gt;REVIEW&lt;/GShadowButton&gt;&lt;/li&gt;)}&lt;/ol&gt;
             &lt;/Surface&gt;
-            &lt;Surface signal=&quot;neutral&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__activity&quot; id=&quot;ledger&quot;&gt;
-              &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;NEUTRAL FIELD&lt;/p&gt;&lt;h2&gt;Relay ledger&lt;/h2&gt;&lt;/div&gt;&lt;a href=&quot;#ledger&quot;&gt;VIEW ALL →&lt;/a&gt;&lt;/div&gt;
+            &lt;Surface density=&quot;comfortable&quot; className=&quot;gshadow-showcase__activity&quot; id=&quot;ledger&quot;&gt;
+              &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;VOID BASE&lt;/p&gt;&lt;h2&gt;Relay ledger&lt;/h2&gt;&lt;/div&gt;&lt;a href=&quot;#ledger&quot;&gt;VIEW ALL →&lt;/a&gt;&lt;/div&gt;
               &lt;ul&gt;{activity.map(([title, detail, state]) =&gt; &lt;li key={title}&gt;&lt;Status state={state}&gt;{title.toUpperCase()}&lt;/Status&gt;&lt;span&gt;{detail}&lt;/span&gt;&lt;/li&gt;)}&lt;/ul&gt;
             &lt;/Surface&gt;
           &lt;/div&gt;
@@ -1318,9 +1317,9 @@ export const RelayControl = {
 
       &lt;section className=&quot;gshadow-showcase__metrics&quot; aria-label=&quot;Relay metrics&quot;&gt;
         &lt;Metric signal=&quot;spectral&quot; label=&quot;LIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;RELAYS&quot; /&gt;
-        &lt;Metric signal=&quot;neutral&quot; label=&quot;ROUTE INTEGRITY&quot; value=&quot;99.98&quot; unit=&quot;%&quot; /&gt;
+        &lt;Metric label=&quot;ROUTE INTEGRITY&quot; value=&quot;99.98&quot; unit=&quot;%&quot; /&gt;
         &lt;Metric signal=&quot;amber&quot; label=&quot;PENDING REVIEW&quot; value=&quot;07&quot; unit=&quot;ITEMS&quot; /&gt;
-        &lt;Metric signal=&quot;neutral&quot; label=&quot;LATENCY&quot; value=&quot;23&quot; unit=&quot;MS&quot; /&gt;
+        &lt;Metric label=&quot;LATENCY&quot; value=&quot;23&quot; unit=&quot;MS&quot; /&gt;
       &lt;/section&gt;
 
       &lt;section className=&quot;gshadow-showcase__grid&quot; id=&quot;network&quot;&gt;
@@ -1335,8 +1334,8 @@ export const RelayControl = {
             &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;AMBER LEAD&lt;/p&gt;&lt;h2&gt;Protocol queue&lt;/h2&gt;&lt;/div&gt;&lt;Status state=&quot;warning&quot;&gt;07 OPEN&lt;/Status&gt;&lt;/div&gt;
             &lt;ol&gt;{[&#39;Route 42 attestation&#39;, &#39;North-array capacity shift&#39;, &#39;Relay 17 access scope&#39;].map((item, index) =&gt; &lt;li key={item}&gt;&lt;span&gt;0{index + 1}&lt;/span&gt;&lt;strong&gt;{item}&lt;/strong&gt;&lt;GShadowButton intent=&quot;ghost&quot; size=&quot;sm&quot;&gt;REVIEW&lt;/GShadowButton&gt;&lt;/li&gt;)}&lt;/ol&gt;
           &lt;/Surface&gt;
-          &lt;Surface signal=&quot;neutral&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__activity&quot; id=&quot;ledger&quot;&gt;
-            &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;NEUTRAL FIELD&lt;/p&gt;&lt;h2&gt;Relay ledger&lt;/h2&gt;&lt;/div&gt;&lt;a href=&quot;#ledger&quot;&gt;VIEW ALL →&lt;/a&gt;&lt;/div&gt;
+          &lt;Surface density=&quot;comfortable&quot; className=&quot;gshadow-showcase__activity&quot; id=&quot;ledger&quot;&gt;
+            &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;VOID BASE&lt;/p&gt;&lt;h2&gt;Relay ledger&lt;/h2&gt;&lt;/div&gt;&lt;a href=&quot;#ledger&quot;&gt;VIEW ALL →&lt;/a&gt;&lt;/div&gt;
             &lt;ul&gt;{activity.map(([title, detail, state]) =&gt; &lt;li key={title}&gt;&lt;Status state={state}&gt;{title.toUpperCase()}&lt;/Status&gt;&lt;span&gt;{detail}&lt;/span&gt;&lt;/li&gt;)}&lt;/ul&gt;
           &lt;/Surface&gt;
         &lt;/div&gt;
@@ -1402,13 +1401,13 @@ export const RelayControl = {
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
-  11 | ]
-  12 |
-&gt; 13 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
+  10 | ]
+  11 |
+&gt; 12 | export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  14 |
-  15 | function FoundationCanvas() {
-  16 |   const reduceMotion = useReducedMotion()
+  13 |
+  14 | function FoundationCanvas() {
+  15 |   const reduceMotion = useReducedMotion()
 
 ./stories/GShadowFoundation.stories.jsx:
 import &#39;../registry/styles/gshadow.css&#39;
@@ -1420,7 +1419,6 @@ const combinations = [
   [&#39;SPECTRAL LEAD&#39;, &#39;Explore → commit&#39;, &#39;Use violet for the active workspace, then use one amber control for the irreversible action.&#39;, &#39;spectral-lead&#39;],
   [&#39;AMBER LEAD&#39;, &#39;Scrutinize → verify&#39;, &#39;Use amber for a bounded review, exception, or policy surface; spectral remains supporting metadata.&#39;, &#39;amber-lead&#39;],
   [&#39;CONVERGENCE&#39;, &#39;Compare → hand off&#39;, &#39;Use the gradient seam only when two systems, assets, or signals meet. Keep it brief and centered on the handoff.&#39;, &#39;convergence&#39;],
-  [&#39;NEUTRAL FIELD&#39;, &#39;Read → orient&#39;, &#39;Use the cool midnight substrate for routine content. Neither signal family is required just because a panel exists.&#39;, &#39;neutral-field&#39;],
 ]
 
 export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39;fullscreen&#39; } }
@@ -1454,10 +1452,10 @@ function FoundationCanvas() {
           &lt;article className=&quot;gshadow-protocol gshadow-protocol--amber&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;AMBER PROTOCOL / ESCALATION&lt;/p&gt;&lt;h2&gt;Contain the heat.&lt;/h2&gt;&lt;p className=&quot;gshadow-protocol__copy&quot;&gt;Burnt gold and warm ember are reserved for focus, scrutiny, and an intentional next move. The family shares the same black-blue substrate.&lt;/p&gt;&lt;div className=&quot;gshadow-protocol__tokens&quot;&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#E79222&#39; }} /&gt;GOLD TRACE&lt;/span&gt;&lt;span className=&quot;gshadow-protocol__token&quot;&gt;&lt;i style={{ background: &#39;#2B1503&#39; }} /&gt;EMBER DEPTH&lt;/span&gt;&lt;/div&gt;&lt;/article&gt;
         &lt;/section&gt;
         &lt;section className=&quot;gshadow-foundation__combinations&quot; aria-labelledby=&quot;combination-title&quot;&gt;
-          &lt;div className=&quot;gshadow-foundation__combination-heading&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;DUAL-SIGNAL PROTOCOL&lt;/p&gt;&lt;h2 id=&quot;combination-title&quot;&gt;Color has a job.&lt;/h2&gt;&lt;p&gt;Choose a relationship based on the user’s task—not to make the screen louder. A region gets one lead, one supporting family, or a neutral field.&lt;/p&gt;&lt;/div&gt;
+          &lt;div className=&quot;gshadow-foundation__combination-heading&quot;&gt;&lt;p className=&quot;gshadow-protocol__eyebrow&quot;&gt;DUAL-SIGNAL PROTOCOL&lt;/p&gt;&lt;h2 id=&quot;combination-title&quot;&gt;Color has a job.&lt;/h2&gt;&lt;p&gt;Choose a relationship based on the user’s task—not to make the screen louder. A region gets one lead, one supporting family, or the void.&lt;/p&gt;&lt;/div&gt;
           &lt;div className=&quot;gshadow-foundation__combination-grid&quot;&gt;{combinations.map(([label, use, description, style]) =&gt; &lt;article className={`gshadow-foundation__combination gshadow-foundation__combination--${style}`} key={label}&gt;&lt;p&gt;{label}&lt;/p&gt;&lt;strong&gt;{use}&lt;/strong&gt;&lt;span&gt;{description}&lt;/span&gt;&lt;/article&gt;)}&lt;/div&gt;
         &lt;/section&gt;
-        &lt;p className=&quot;gshadow-foundation__rule&quot;&gt;&lt;strong&gt;COMPOSITION RULE&lt;/strong&gt;&lt;span&gt;Use one signal family to lead a region. Spectral and amber can share a page through common neutrals, structure, and typography. Do not layer both glow systems into the same component.&lt;/span&gt;&lt;/p&gt;
+        &lt;p className=&quot;gshadow-foundation__rule&quot;&gt;&lt;strong&gt;COMPOSITION RULE&lt;/strong&gt;&lt;span&gt;Use one signal family to lead a region. Spectral and amber share a page through the void, structure, and typography. Do not layer both glow systems into the same component.&lt;/span&gt;&lt;/p&gt;
       &lt;/div&gt;
     &lt;/main&gt;
   )
@@ -1674,11 +1672,11 @@ export const Surface = {
     eyebrow=&quot;SURFACE / BASE / RAISED / TRACE&quot;
     title=&quot;Structure without chrome.&quot;
     summary=&quot;Surfaces create hierarchy with containment, spacing, and a rare trace. The dark field stays deep, but it does not become a purple fog machine.&quot;
-    contract=&quot;Elevation sets hierarchy. Signal sets the job: neutral reads, spectral explores, amber verifies, and convergence compares or hands off.&quot;
+    contract=&quot;Elevation sets hierarchy. Signal sets the job: spectral explores, amber verifies, and convergence compares or hands off. The base surface is the void.&quot;
   &gt;
     &lt;Section index=&quot;01&quot; title=&quot;Elevation&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;{[[&#39;base&#39;, &#39;Calm containment&#39;], [&#39;raised&#39;, &#39;Separate a task&#39;], [&#39;trace&#39;, &#39;Direct attention&#39;]].map(([elevation, copy]) =&gt; &lt;GShadowSurface key={elevation} elevation={elevation} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{elevation}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;p className=&quot;gshadow-story-copy&quot;&gt;Use this level only when its hierarchy has a job to do.&lt;/p&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
-    &lt;Section index=&quot;02&quot; title=&quot;Signal family&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;{[[&#39;neutral&#39;, &#39;Routine reading&#39;], [&#39;spectral&#39;, &#39;Discovery workspace&#39;], [&#39;amber&#39;, &#39;Review boundary&#39;], [&#39;convergence&#39;, &#39;Comparison / handoff&#39;]].map(([signal, copy]) =&gt; &lt;GShadowSurface key={signal} elevation=&quot;base&quot; signal={signal} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{signal}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
-    &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use neutral for routine reading, spectral for discovery, amber for a bounded review or verification, and convergence only where two systems actually meet.&quot; avoid=&quot;Stack raised cards, add decorative gradients, or apply convergence to a generic container.&quot; /&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Signal family&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowSurface elevation=&quot;base&quot; density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;VOID BASE&lt;/p&gt;&lt;strong&gt;Routine reading&lt;/strong&gt;&lt;/GShadowSurface&gt;{[[&#39;spectral&#39;, &#39;Discovery workspace&#39;], [&#39;amber&#39;, &#39;Review boundary&#39;], [&#39;convergence&#39;, &#39;Comparison / handoff&#39;]].map(([signal, copy]) =&gt; &lt;GShadowSurface key={signal} elevation=&quot;base&quot; signal={signal} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{signal}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use the void base for routine reading, spectral for discovery, amber for a bounded review or verification, and convergence only where two systems actually meet.&quot; avoid=&quot;Stack raised cards, add decorative gradients, or apply convergence to a generic container.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
@@ -1687,10 +1685,10 @@ export const Metric = {
     eyebrow=&quot;METRIC / TABULAR VALUE / UNIT&quot;
     title=&quot;Numbers that hold their line.&quot;
     summary=&quot;Operational values use Manrope with tabular lining figures. Labels are mono. Units breathe at a smaller scale and always keep one space from the value.&quot;
-    contract=&quot;Metric data stays readable at a glance. Its signal treatment follows the region it belongs to; it never assigns importance by color alone.&quot;
+    contract=&quot;Metric data stays readable at a glance. Its signal treatment follows the region it belongs to; the default remains the void.&quot;
   &gt;
-    &lt;Section index=&quot;01&quot; title=&quot;Operational examples&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowMetric signal=&quot;spectral&quot; label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;&lt;GShadowMetric signal=&quot;amber&quot; label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;&lt;GShadowMetric signal=&quot;neutral&quot; label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;&lt;/div&gt;&lt;/Section&gt;
-    &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use spectral metrics for discovery data, amber metrics inside review or protocol regions, and neutral metrics for routine reading. Every metric still needs a precise label and unit.&quot; avoid=&quot;Use metrics for paragraphs, status messages, or values that need explanatory prose to be understood.&quot; /&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;01&quot; title=&quot;Operational examples&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowMetric signal=&quot;spectral&quot; label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;&lt;GShadowMetric signal=&quot;amber&quot; label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;&lt;GShadowMetric label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;&lt;/div&gt;&lt;/Section&gt;
+    &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use spectral metrics for discovery data, amber metrics inside review or protocol regions, and the void baseline for routine values. Every metric still needs a precise label and unit.&quot; avoid=&quot;Use metrics for paragraphs, status messages, or values that need explanatory prose to be understood.&quot; /&gt;&lt;/Section&gt;
   &lt;/Frame&gt;,
 }
 
@@ -1847,11 +1845,11 @@ export const Status = {
   eyebrow=&quot;SURFACE / BASE / RAISED / TRACE&quot;
   title=&quot;Structure without chrome.&quot;
   summary=&quot;Surfaces create hierarchy with containment, spacing, and a rare trace. The dark field stays deep, but it does not become a purple fog machine.&quot;
-  contract=&quot;Elevation sets hierarchy. Signal sets the job: neutral reads, spectral explores, amber verifies, and convergence compares or hands off.&quot;
+  contract=&quot;Elevation sets hierarchy. Signal sets the job: spectral explores, amber verifies, and convergence compares or hands off. The base surface is the void.&quot;
 &gt;
   &lt;Section index=&quot;01&quot; title=&quot;Elevation&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;{[[&#39;base&#39;, &#39;Calm containment&#39;], [&#39;raised&#39;, &#39;Separate a task&#39;], [&#39;trace&#39;, &#39;Direct attention&#39;]].map(([elevation, copy]) =&gt; &lt;GShadowSurface key={elevation} elevation={elevation} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{elevation}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;p className=&quot;gshadow-story-copy&quot;&gt;Use this level only when its hierarchy has a job to do.&lt;/p&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
-  &lt;Section index=&quot;02&quot; title=&quot;Signal family&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;{[[&#39;neutral&#39;, &#39;Routine reading&#39;], [&#39;spectral&#39;, &#39;Discovery workspace&#39;], [&#39;amber&#39;, &#39;Review boundary&#39;], [&#39;convergence&#39;, &#39;Comparison / handoff&#39;]].map(([signal, copy]) =&gt; &lt;GShadowSurface key={signal} elevation=&quot;base&quot; signal={signal} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{signal}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
-  &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use neutral for routine reading, spectral for discovery, amber for a bounded review or verification, and convergence only where two systems actually meet.&quot; avoid=&quot;Stack raised cards, add decorative gradients, or apply convergence to a generic container.&quot; /&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Signal family&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowSurface elevation=&quot;base&quot; density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;VOID BASE&lt;/p&gt;&lt;strong&gt;Routine reading&lt;/strong&gt;&lt;/GShadowSurface&gt;{[[&#39;spectral&#39;, &#39;Discovery workspace&#39;], [&#39;amber&#39;, &#39;Review boundary&#39;], [&#39;convergence&#39;, &#39;Comparison / handoff&#39;]].map(([signal, copy]) =&gt; &lt;GShadowSurface key={signal} elevation=&quot;base&quot; signal={signal} density=&quot;comfortable&quot;&gt;&lt;p className=&quot;gshadow-story-label&quot;&gt;{signal}&lt;/p&gt;&lt;strong&gt;{copy}&lt;/strong&gt;&lt;/GShadowSurface&gt;)}&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;03&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use the void base for routine reading, spectral for discovery, amber for a bounded review or verification, and convergence only where two systems actually meet.&quot; avoid=&quot;Stack raised cards, add decorative gradients, or apply convergence to a generic container.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1865,10 +1863,10 @@ export const Status = {
   eyebrow=&quot;METRIC / TABULAR VALUE / UNIT&quot;
   title=&quot;Numbers that hold their line.&quot;
   summary=&quot;Operational values use Manrope with tabular lining figures. Labels are mono. Units breathe at a smaller scale and always keep one space from the value.&quot;
-  contract=&quot;Metric data stays readable at a glance. Its signal treatment follows the region it belongs to; it never assigns importance by color alone.&quot;
+  contract=&quot;Metric data stays readable at a glance. Its signal treatment follows the region it belongs to; the default remains the void.&quot;
 &gt;
-  &lt;Section index=&quot;01&quot; title=&quot;Operational examples&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowMetric signal=&quot;spectral&quot; label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;&lt;GShadowMetric signal=&quot;amber&quot; label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;&lt;GShadowMetric signal=&quot;neutral&quot; label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;&lt;/div&gt;&lt;/Section&gt;
-  &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use spectral metrics for discovery data, amber metrics inside review or protocol regions, and neutral metrics for routine reading. Every metric still needs a precise label and unit.&quot; avoid=&quot;Use metrics for paragraphs, status messages, or values that need explanatory prose to be understood.&quot; /&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;01&quot; title=&quot;Operational examples&quot;&gt;&lt;div className=&quot;gshadow-story-surface-grid&quot;&gt;&lt;GShadowMetric signal=&quot;spectral&quot; label=&quot;ACTIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;OPS&quot; /&gt;&lt;GShadowMetric signal=&quot;amber&quot; label=&quot;RESERVE&quot; value=&quot;321&quot; unit=&quot;GB&quot; /&gt;&lt;GShadowMetric label=&quot;SUCCESS RATE&quot; value=&quot;99.8&quot; unit=&quot;%&quot; /&gt;&lt;/div&gt;&lt;/Section&gt;
+  &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Use spectral metrics for discovery data, amber metrics inside review or protocol regions, and the void baseline for routine values. Every metric still needs a precise label and unit.&quot; avoid=&quot;Use metrics for paragraphs, status messages, or values that need explanatory prose to be understood.&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -1987,9 +1985,9 @@ export const RelayControl = {
 
         &lt;section className=&quot;gshadow-showcase__metrics&quot; aria-label=&quot;Relay metrics&quot;&gt;
           &lt;Metric signal=&quot;spectral&quot; label=&quot;LIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;RELAYS&quot; /&gt;
-          &lt;Metric signal=&quot;neutral&quot; label=&quot;ROUTE INTEGRITY&quot; value=&quot;99.98&quot; unit=&quot;%&quot; /&gt;
+          &lt;Metric label=&quot;ROUTE INTEGRITY&quot; value=&quot;99.98&quot; unit=&quot;%&quot; /&gt;
           &lt;Metric signal=&quot;amber&quot; label=&quot;PENDING REVIEW&quot; value=&quot;07&quot; unit=&quot;ITEMS&quot; /&gt;
-          &lt;Metric signal=&quot;neutral&quot; label=&quot;LATENCY&quot; value=&quot;23&quot; unit=&quot;MS&quot; /&gt;
+          &lt;Metric label=&quot;LATENCY&quot; value=&quot;23&quot; unit=&quot;MS&quot; /&gt;
         &lt;/section&gt;
 
         &lt;section className=&quot;gshadow-showcase__grid&quot; id=&quot;network&quot;&gt;
@@ -2004,8 +2002,8 @@ export const RelayControl = {
               &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;AMBER LEAD&lt;/p&gt;&lt;h2&gt;Protocol queue&lt;/h2&gt;&lt;/div&gt;&lt;Status state=&quot;warning&quot;&gt;07 OPEN&lt;/Status&gt;&lt;/div&gt;
               &lt;ol&gt;{[&#39;Route 42 attestation&#39;, &#39;North-array capacity shift&#39;, &#39;Relay 17 access scope&#39;].map((item, index) =&gt; &lt;li key={item}&gt;&lt;span&gt;0{index + 1}&lt;/span&gt;&lt;strong&gt;{item}&lt;/strong&gt;&lt;GShadowButton intent=&quot;ghost&quot; size=&quot;sm&quot;&gt;REVIEW&lt;/GShadowButton&gt;&lt;/li&gt;)}&lt;/ol&gt;
             &lt;/Surface&gt;
-            &lt;Surface signal=&quot;neutral&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__activity&quot; id=&quot;ledger&quot;&gt;
-              &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;NEUTRAL FIELD&lt;/p&gt;&lt;h2&gt;Relay ledger&lt;/h2&gt;&lt;/div&gt;&lt;a href=&quot;#ledger&quot;&gt;VIEW ALL →&lt;/a&gt;&lt;/div&gt;
+            &lt;Surface density=&quot;comfortable&quot; className=&quot;gshadow-showcase__activity&quot; id=&quot;ledger&quot;&gt;
+              &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;VOID BASE&lt;/p&gt;&lt;h2&gt;Relay ledger&lt;/h2&gt;&lt;/div&gt;&lt;a href=&quot;#ledger&quot;&gt;VIEW ALL →&lt;/a&gt;&lt;/div&gt;
               &lt;ul&gt;{activity.map(([title, detail, state]) =&gt; &lt;li key={title}&gt;&lt;Status state={state}&gt;{title.toUpperCase()}&lt;/Status&gt;&lt;span&gt;{detail}&lt;/span&gt;&lt;/li&gt;)}&lt;/ul&gt;
             &lt;/Surface&gt;
           &lt;/div&gt;
@@ -2076,9 +2074,9 @@ export const RelayControl = {
 
       &lt;section className=&quot;gshadow-showcase__metrics&quot; aria-label=&quot;Relay metrics&quot;&gt;
         &lt;Metric signal=&quot;spectral&quot; label=&quot;LIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;RELAYS&quot; /&gt;
-        &lt;Metric signal=&quot;neutral&quot; label=&quot;ROUTE INTEGRITY&quot; value=&quot;99.98&quot; unit=&quot;%&quot; /&gt;
+        &lt;Metric label=&quot;ROUTE INTEGRITY&quot; value=&quot;99.98&quot; unit=&quot;%&quot; /&gt;
         &lt;Metric signal=&quot;amber&quot; label=&quot;PENDING REVIEW&quot; value=&quot;07&quot; unit=&quot;ITEMS&quot; /&gt;
-        &lt;Metric signal=&quot;neutral&quot; label=&quot;LATENCY&quot; value=&quot;23&quot; unit=&quot;MS&quot; /&gt;
+        &lt;Metric label=&quot;LATENCY&quot; value=&quot;23&quot; unit=&quot;MS&quot; /&gt;
       &lt;/section&gt;
 
       &lt;section className=&quot;gshadow-showcase__grid&quot; id=&quot;network&quot;&gt;
@@ -2093,8 +2091,8 @@ export const RelayControl = {
             &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;AMBER LEAD&lt;/p&gt;&lt;h2&gt;Protocol queue&lt;/h2&gt;&lt;/div&gt;&lt;Status state=&quot;warning&quot;&gt;07 OPEN&lt;/Status&gt;&lt;/div&gt;
             &lt;ol&gt;{[&#39;Route 42 attestation&#39;, &#39;North-array capacity shift&#39;, &#39;Relay 17 access scope&#39;].map((item, index) =&gt; &lt;li key={item}&gt;&lt;span&gt;0{index + 1}&lt;/span&gt;&lt;strong&gt;{item}&lt;/strong&gt;&lt;GShadowButton intent=&quot;ghost&quot; size=&quot;sm&quot;&gt;REVIEW&lt;/GShadowButton&gt;&lt;/li&gt;)}&lt;/ol&gt;
           &lt;/Surface&gt;
-          &lt;Surface signal=&quot;neutral&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__activity&quot; id=&quot;ledger&quot;&gt;
-            &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;NEUTRAL FIELD&lt;/p&gt;&lt;h2&gt;Relay ledger&lt;/h2&gt;&lt;/div&gt;&lt;a href=&quot;#ledger&quot;&gt;VIEW ALL →&lt;/a&gt;&lt;/div&gt;
+          &lt;Surface density=&quot;comfortable&quot; className=&quot;gshadow-showcase__activity&quot; id=&quot;ledger&quot;&gt;
+            &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;VOID BASE&lt;/p&gt;&lt;h2&gt;Relay ledger&lt;/h2&gt;&lt;/div&gt;&lt;a href=&quot;#ledger&quot;&gt;VIEW ALL →&lt;/a&gt;&lt;/div&gt;
             &lt;ul&gt;{activity.map(([title, detail, state]) =&gt; &lt;li key={title}&gt;&lt;Status state={state}&gt;{title.toUpperCase()}&lt;/Status&gt;&lt;span&gt;{detail}&lt;/span&gt;&lt;/li&gt;)}&lt;/ul&gt;
           &lt;/Surface&gt;
         &lt;/div&gt;
