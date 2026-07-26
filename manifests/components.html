@@ -588,13 +588,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">2/2 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">2/2 infos</a><span class="filter-pill ok" aria-disabled="true">9 stories ok</span></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">3/3 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">3/3 infos</a><span class="filter-pill ok" aria-disabled="true">10 stories ok</span></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.3s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.4s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -1135,6 +1135,223 @@ export const Status = {
     
   </div>
 </article>
+<article
+  class="card 
+  has-error 
+  has-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="Showcase">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-err"></span> Showcase</h2>
+      <div class="badges">
+        <label for="c-2-gshadow-showcase-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-2-gshadow-showcase-info" class="badge info as-toggle">1 info</label>
+        <label for="c-2-gshadow-showcase-stories" class="badge ok as-toggle">1 story</label>
+        
+        
+      </div>
+    </div>
+    <div class="meta" title="./stories/GShadowShowcase.stories.jsx">gshadow-showcase · ./stories/GShadowShowcase.stories.jsx</div>
+    
+    
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  <input id="c-2-gshadow-showcase-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-2-gshadow-showcase-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-2-gshadow-showcase-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  
+  
+
+  <div class="panels">
+    
+        <div class="panel panel-err">
+          
+    <div class="note err">
+      <div class="note-title">Prop type error</div>
+      <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
+  13 | ]
+  14 |
+&gt; 15 | export default { title: &#39;GSHADOW/Showcase&#39;, parameters: { layout: &#39;fullscreen&#39; } }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  16 |
+  17 | export const RelayControl = {
+  18 |   render: () =&gt; (
+
+./stories/GShadowShowcase.stories.jsx:
+import &#39;../registry/styles/gshadow.css&#39;
+import mark from &#39;../brand/gshadow-mark.svg&#39;
+import { GShadowButton } from &#39;../registry/components/button&#39;
+import { Metric } from &#39;../registry/components/metric&#39;
+import { Status } from &#39;../registry/components/status&#39;
+import { Surface } from &#39;../registry/components/surface&#39;
+import { ThemeToggle } from &#39;../registry/components/theme-toggle&#39;
+
+const activity = [
+  [&#39;Spectral sweep&#39;, &#39;Array 09 / 14 nodes resolved&#39;, &#39;success&#39;],
+  [&#39;Protocol review&#39;, &#39;Operator approval required&#39;, &#39;warning&#39;],
+  [&#39;Relay ledger&#39;, &#39;No drift detected&#39;, &#39;info&#39;],
+]
+
+export default { title: &#39;GSHADOW/Showcase&#39;, parameters: { layout: &#39;fullscreen&#39; } }
+
+export const RelayControl = {
+  render: () =&gt; (
+    &lt;main className=&quot;gshadow-showcase&quot;&gt;
+      &lt;div className=&quot;gshadow-showcase__atmosphere&quot; aria-hidden=&quot;true&quot;&gt;&lt;span /&gt;&lt;i /&gt;&lt;b /&gt;&lt;/div&gt;
+      &lt;div className=&quot;gshadow-showcase__wrap&quot;&gt;
+        &lt;header className=&quot;gshadow-showcase__rail&quot;&gt;
+          &lt;div className=&quot;gshadow-showcase__brand&quot;&gt;&lt;img src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;ARCLIGHT RELAY&lt;/span&gt;&lt;small&gt;FIELD CONSOLE&lt;/small&gt;&lt;/div&gt;
+          &lt;nav aria-label=&quot;Primary navigation&quot;&gt;&lt;a href=&quot;#overview&quot;&gt;Overview&lt;/a&gt;&lt;a href=&quot;#network&quot;&gt;Network&lt;/a&gt;&lt;a href=&quot;#ledger&quot;&gt;Ledger&lt;/a&gt;&lt;/nav&gt;
+          &lt;div className=&quot;gshadow-showcase__rail-actions&quot;&gt;&lt;Status state=&quot;success&quot;&gt;SYSTEM NOMINAL&lt;/Status&gt;&lt;ThemeToggle /&gt;&lt;/div&gt;
+        &lt;/header&gt;
+
+        &lt;section className=&quot;gshadow-showcase__hero&quot; id=&quot;overview&quot;&gt;
+          &lt;div&gt;
+            &lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;NORTH SECTOR / 06:14 UTC&lt;/p&gt;
+            &lt;h1&gt;Signals hold.&lt;br /&gt;&lt;span&gt;Routes resolve.&lt;/span&gt;&lt;/h1&gt;
+            &lt;p className=&quot;gshadow-showcase__intro&quot;&gt;Arclight maps unverified relay traffic before it becomes an operational problem. Observe the system, review the handoff, then commit with intention.&lt;/p&gt;
+            &lt;div className=&quot;gshadow-showcase__actions&quot;&gt;&lt;GShadowButton&gt;OPEN SIGNAL MAP&lt;/GShadowButton&gt;&lt;GShadowButton intent=&quot;protocol&quot;&gt;VERIFY ROUTE&lt;/GShadowButton&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;Surface elevation=&quot;raised&quot; signal=&quot;convergence&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__handoff&quot;&gt;
+            &lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;ACTIVE HANDOFF&lt;/p&gt;
+            &lt;strong&gt;Array 09 → Relay 42&lt;/strong&gt;
+            &lt;p&gt;Two systems agree on the route. One operator confirmation remains.&lt;/p&gt;
+            &lt;div className=&quot;gshadow-showcase__handoff-line&quot;&gt;&lt;span&gt;09&lt;/span&gt;&lt;i /&gt;&lt;span&gt;42&lt;/span&gt;&lt;/div&gt;
+            &lt;Status state=&quot;warning&quot;&gt;CONFIRMATION WINDOW / 04:32&lt;/Status&gt;
+          &lt;/Surface&gt;
+        &lt;/section&gt;
+
+        &lt;section className=&quot;gshadow-showcase__metrics&quot; aria-label=&quot;Relay metrics&quot;&gt;
+          &lt;Metric signal=&quot;spectral&quot; label=&quot;LIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;RELAYS&quot; /&gt;
+          &lt;Metric signal=&quot;neutral&quot; label=&quot;ROUTE INTEGRITY&quot; value=&quot;99.98&quot; unit=&quot;%&quot; /&gt;
+          &lt;Metric signal=&quot;amber&quot; label=&quot;PENDING REVIEW&quot; value=&quot;07&quot; unit=&quot;ITEMS&quot; /&gt;
+          &lt;Metric signal=&quot;neutral&quot; label=&quot;LATENCY&quot; value=&quot;23&quot; unit=&quot;MS&quot; /&gt;
+        &lt;/section&gt;
+
+        &lt;section className=&quot;gshadow-showcase__grid&quot; id=&quot;network&quot;&gt;
+          &lt;Surface signal=&quot;spectral&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__map&quot;&gt;
+            &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;SPECTRAL LEAD&lt;/p&gt;&lt;h2&gt;Signal field&lt;/h2&gt;&lt;/div&gt;&lt;Status state=&quot;info&quot;&gt;12 NEW PATHS&lt;/Status&gt;&lt;/div&gt;
+            &lt;div className=&quot;gshadow-showcase__map-grid&quot; aria-label=&quot;Abstract relay map&quot;&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--start&quot;&gt;N&lt;/span&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--one&quot;&gt;A&lt;/span&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--two&quot;&gt;R&lt;/span&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--end&quot;&gt;9&lt;/span&gt;&lt;i className=&quot;gshadow-showcase__path gshadow-showcase__path--one&quot; /&gt;&lt;i className=&quot;gshadow-showcase__path gshadow-showcase__path--two&quot; /&gt;&lt;i className=&quot;gshadow-showcase__path gshadow-showcase__path--three&quot; /&gt;&lt;/div&gt;
+            &lt;p className=&quot;gshadow-showcase__caption&quot;&gt;Use spectral for discovery: live topology, selected paths, and reversible investigation.&lt;/p&gt;
+          &lt;/Surface&gt;
+
+          &lt;div className=&quot;gshadow-showcase__right-column&quot;&gt;
+            &lt;Surface signal=&quot;amber&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__review&quot;&gt;
+              &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;AMBER LEAD&lt;/p&gt;&lt;h2&gt;Protocol queue&lt;/h2&gt;&lt;/div&gt;&lt;Status state=&quot;warning&quot;&gt;07 OPEN&lt;/Status&gt;&lt;/div&gt;
+              &lt;ol&gt;{[&#39;Route 42 attestation&#39;, &#39;North-array capacity shift&#39;, &#39;Relay 17 access scope&#39;].map((item, index) =&gt; &lt;li key={item}&gt;&lt;span&gt;0{index + 1}&lt;/span&gt;&lt;strong&gt;{item}&lt;/strong&gt;&lt;GShadowButton intent=&quot;ghost&quot; size=&quot;sm&quot;&gt;REVIEW&lt;/GShadowButton&gt;&lt;/li&gt;)}&lt;/ol&gt;
+            &lt;/Surface&gt;
+            &lt;Surface signal=&quot;neutral&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__activity&quot; id=&quot;ledger&quot;&gt;
+              &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;NEUTRAL FIELD&lt;/p&gt;&lt;h2&gt;Relay ledger&lt;/h2&gt;&lt;/div&gt;&lt;a href=&quot;#ledger&quot;&gt;VIEW ALL →&lt;/a&gt;&lt;/div&gt;
+              &lt;ul&gt;{activity.map(([title, detail, state]) =&gt; &lt;li key={title}&gt;&lt;Status state={state}&gt;{title.toUpperCase()}&lt;/Status&gt;&lt;span&gt;{detail}&lt;/span&gt;&lt;/li&gt;)}&lt;/ul&gt;
+            &lt;/Surface&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;footer className=&quot;gshadow-showcase__footer&quot;&gt;&lt;span&gt;ARCLIGHT RELAY / FIELD OPERATIONS&lt;/span&gt;&lt;span&gt;ONE FIELD. TWO SIGNALS. NO NOISE.&lt;/span&gt;&lt;/footer&gt;
+      &lt;/div&gt;
+    &lt;/main&gt;
+  ),
+}
+</code></pre></div>
+    </div>
+        </div>
+    
+        <div class="panel panel-info">
+          
+    <div class="note info">
+      <div class="note-title">Info</div>
+      <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
+    </div>
+        </div>
+    
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { GShadowButton, Metric, Status, Surface, ThemeToggle } from "@gshadow/shadcn-registry";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Relay Control</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const RelayControl = () =&gt; (
+  &lt;main className=&quot;gshadow-showcase&quot;&gt;
+    &lt;div className=&quot;gshadow-showcase__atmosphere&quot; aria-hidden=&quot;true&quot;&gt;&lt;span /&gt;&lt;i /&gt;&lt;b /&gt;&lt;/div&gt;
+    &lt;div className=&quot;gshadow-showcase__wrap&quot;&gt;
+      &lt;header className=&quot;gshadow-showcase__rail&quot;&gt;
+        &lt;div className=&quot;gshadow-showcase__brand&quot;&gt;&lt;img src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;ARCLIGHT RELAY&lt;/span&gt;&lt;small&gt;FIELD CONSOLE&lt;/small&gt;&lt;/div&gt;
+        &lt;nav aria-label=&quot;Primary navigation&quot;&gt;&lt;a href=&quot;#overview&quot;&gt;Overview&lt;/a&gt;&lt;a href=&quot;#network&quot;&gt;Network&lt;/a&gt;&lt;a href=&quot;#ledger&quot;&gt;Ledger&lt;/a&gt;&lt;/nav&gt;
+        &lt;div className=&quot;gshadow-showcase__rail-actions&quot;&gt;&lt;Status state=&quot;success&quot;&gt;SYSTEM NOMINAL&lt;/Status&gt;&lt;ThemeToggle /&gt;&lt;/div&gt;
+      &lt;/header&gt;
+
+      &lt;section className=&quot;gshadow-showcase__hero&quot; id=&quot;overview&quot;&gt;
+        &lt;div&gt;
+          &lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;NORTH SECTOR / 06:14 UTC&lt;/p&gt;
+          &lt;h1&gt;Signals hold.&lt;br /&gt;&lt;span&gt;Routes resolve.&lt;/span&gt;&lt;/h1&gt;
+          &lt;p className=&quot;gshadow-showcase__intro&quot;&gt;Arclight maps unverified relay traffic before it becomes an operational problem. Observe the system, review the handoff, then commit with intention.&lt;/p&gt;
+          &lt;div className=&quot;gshadow-showcase__actions&quot;&gt;&lt;GShadowButton&gt;OPEN SIGNAL MAP&lt;/GShadowButton&gt;&lt;GShadowButton intent=&quot;protocol&quot;&gt;VERIFY ROUTE&lt;/GShadowButton&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;Surface elevation=&quot;raised&quot; signal=&quot;convergence&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__handoff&quot;&gt;
+          &lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;ACTIVE HANDOFF&lt;/p&gt;
+          &lt;strong&gt;Array 09 → Relay 42&lt;/strong&gt;
+          &lt;p&gt;Two systems agree on the route. One operator confirmation remains.&lt;/p&gt;
+          &lt;div className=&quot;gshadow-showcase__handoff-line&quot;&gt;&lt;span&gt;09&lt;/span&gt;&lt;i /&gt;&lt;span&gt;42&lt;/span&gt;&lt;/div&gt;
+          &lt;Status state=&quot;warning&quot;&gt;CONFIRMATION WINDOW / 04:32&lt;/Status&gt;
+        &lt;/Surface&gt;
+      &lt;/section&gt;
+
+      &lt;section className=&quot;gshadow-showcase__metrics&quot; aria-label=&quot;Relay metrics&quot;&gt;
+        &lt;Metric signal=&quot;spectral&quot; label=&quot;LIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;RELAYS&quot; /&gt;
+        &lt;Metric signal=&quot;neutral&quot; label=&quot;ROUTE INTEGRITY&quot; value=&quot;99.98&quot; unit=&quot;%&quot; /&gt;
+        &lt;Metric signal=&quot;amber&quot; label=&quot;PENDING REVIEW&quot; value=&quot;07&quot; unit=&quot;ITEMS&quot; /&gt;
+        &lt;Metric signal=&quot;neutral&quot; label=&quot;LATENCY&quot; value=&quot;23&quot; unit=&quot;MS&quot; /&gt;
+      &lt;/section&gt;
+
+      &lt;section className=&quot;gshadow-showcase__grid&quot; id=&quot;network&quot;&gt;
+        &lt;Surface signal=&quot;spectral&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__map&quot;&gt;
+          &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;SPECTRAL LEAD&lt;/p&gt;&lt;h2&gt;Signal field&lt;/h2&gt;&lt;/div&gt;&lt;Status state=&quot;info&quot;&gt;12 NEW PATHS&lt;/Status&gt;&lt;/div&gt;
+          &lt;div className=&quot;gshadow-showcase__map-grid&quot; aria-label=&quot;Abstract relay map&quot;&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--start&quot;&gt;N&lt;/span&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--one&quot;&gt;A&lt;/span&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--two&quot;&gt;R&lt;/span&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--end&quot;&gt;9&lt;/span&gt;&lt;i className=&quot;gshadow-showcase__path gshadow-showcase__path--one&quot; /&gt;&lt;i className=&quot;gshadow-showcase__path gshadow-showcase__path--two&quot; /&gt;&lt;i className=&quot;gshadow-showcase__path gshadow-showcase__path--three&quot; /&gt;&lt;/div&gt;
+          &lt;p className=&quot;gshadow-showcase__caption&quot;&gt;Use spectral for discovery: live topology, selected paths, and reversible investigation.&lt;/p&gt;
+        &lt;/Surface&gt;
+
+        &lt;div className=&quot;gshadow-showcase__right-column&quot;&gt;
+          &lt;Surface signal=&quot;amber&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__review&quot;&gt;
+            &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;AMBER LEAD&lt;/p&gt;&lt;h2&gt;Protocol queue&lt;/h2&gt;&lt;/div&gt;&lt;Status state=&quot;warning&quot;&gt;07 OPEN&lt;/Status&gt;&lt;/div&gt;
+            &lt;ol&gt;{[&#39;Route 42 attestation&#39;, &#39;North-array capacity shift&#39;, &#39;Relay 17 access scope&#39;].map((item, index) =&gt; &lt;li key={item}&gt;&lt;span&gt;0{index + 1}&lt;/span&gt;&lt;strong&gt;{item}&lt;/strong&gt;&lt;GShadowButton intent=&quot;ghost&quot; size=&quot;sm&quot;&gt;REVIEW&lt;/GShadowButton&gt;&lt;/li&gt;)}&lt;/ol&gt;
+          &lt;/Surface&gt;
+          &lt;Surface signal=&quot;neutral&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__activity&quot; id=&quot;ledger&quot;&gt;
+            &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;NEUTRAL FIELD&lt;/p&gt;&lt;h2&gt;Relay ledger&lt;/h2&gt;&lt;/div&gt;&lt;a href=&quot;#ledger&quot;&gt;VIEW ALL →&lt;/a&gt;&lt;/div&gt;
+            &lt;ul&gt;{activity.map(([title, detail, state]) =&gt; &lt;li key={title}&gt;&lt;Status state={state}&gt;{title.toUpperCase()}&lt;/Status&gt;&lt;span&gt;{detail}&lt;/span&gt;&lt;/li&gt;)}&lt;/ul&gt;
+          &lt;/Surface&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;footer className=&quot;gshadow-showcase__footer&quot;&gt;&lt;span&gt;ARCLIGHT RELAY / FIELD OPERATIONS&lt;/span&gt;&lt;span&gt;ONE FIELD. TWO SIGNALS. NO NOISE.&lt;/span&gt;&lt;/footer&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+);</code></pre>
+            </div>
+        </div>
+    
+    
+  </div>
+</article>
     </div>
     <div class="error-groups" role="region" aria-label="Prop type error groups">
         <section class="group">
@@ -1142,7 +1359,7 @@ export const Status = {
           <label for="no-component-found-toggle" class="group-header">
             <span class="caret">▸</span>
             <span class="group-title">No component found</span>
-            <span class="group-count">2</span>
+            <span class="group-count">3</span>
           </label>
           <div class="group-cards">
 <article
@@ -1670,6 +1887,223 @@ export const Status = {
   &lt;Section index=&quot;01&quot; title=&quot;State examples&quot;&gt;&lt;div className=&quot;gshadow-story-status-list&quot;&gt;&lt;GShadowStatus state=&quot;success&quot;&gt;PROBE CLEAN&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;warning&quot;&gt;LATENCY WATCH&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;error&quot;&gt;ACTION REQUIRED&lt;/GShadowStatus&gt;&lt;GShadowStatus state=&quot;info&quot;&gt;LOG INDEXED&lt;/GShadowStatus&gt;&lt;/div&gt;&lt;/Section&gt;
   &lt;Section index=&quot;02&quot; title=&quot;Usage boundary&quot;&gt;&lt;Guidance use=&quot;Pair status with a concise observed condition, especially in operational UI and system feedback.&quot; avoid=&quot;Use status color as decoration, or hide a critical action behind a vague label like “Attention.”&quot; /&gt;&lt;/Section&gt;
 &lt;/Frame&gt;;</code></pre>
+            </div>
+        </div>
+    
+    
+  </div>
+</article>
+<article
+  class="card 
+  has-error 
+  has-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="Showcase">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-err"></span> Showcase</h2>
+      <div class="badges">
+        <label for="c-error-2-gshadow-showcase-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-error-2-gshadow-showcase-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-2-gshadow-showcase-stories" class="badge ok as-toggle">1 story</label>
+        
+        
+      </div>
+    </div>
+    <div class="meta" title="./stories/GShadowShowcase.stories.jsx">gshadow-showcase · ./stories/GShadowShowcase.stories.jsx</div>
+    
+    
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  <input id="c-error-2-gshadow-showcase-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-2-gshadow-showcase-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-2-gshadow-showcase-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  
+  
+
+  <div class="panels">
+    
+        <div class="panel panel-err">
+          
+    <div class="note err">
+      <div class="note-title">Prop type error</div>
+      <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
+  13 | ]
+  14 |
+&gt; 15 | export default { title: &#39;GSHADOW/Showcase&#39;, parameters: { layout: &#39;fullscreen&#39; } }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  16 |
+  17 | export const RelayControl = {
+  18 |   render: () =&gt; (
+
+./stories/GShadowShowcase.stories.jsx:
+import &#39;../registry/styles/gshadow.css&#39;
+import mark from &#39;../brand/gshadow-mark.svg&#39;
+import { GShadowButton } from &#39;../registry/components/button&#39;
+import { Metric } from &#39;../registry/components/metric&#39;
+import { Status } from &#39;../registry/components/status&#39;
+import { Surface } from &#39;../registry/components/surface&#39;
+import { ThemeToggle } from &#39;../registry/components/theme-toggle&#39;
+
+const activity = [
+  [&#39;Spectral sweep&#39;, &#39;Array 09 / 14 nodes resolved&#39;, &#39;success&#39;],
+  [&#39;Protocol review&#39;, &#39;Operator approval required&#39;, &#39;warning&#39;],
+  [&#39;Relay ledger&#39;, &#39;No drift detected&#39;, &#39;info&#39;],
+]
+
+export default { title: &#39;GSHADOW/Showcase&#39;, parameters: { layout: &#39;fullscreen&#39; } }
+
+export const RelayControl = {
+  render: () =&gt; (
+    &lt;main className=&quot;gshadow-showcase&quot;&gt;
+      &lt;div className=&quot;gshadow-showcase__atmosphere&quot; aria-hidden=&quot;true&quot;&gt;&lt;span /&gt;&lt;i /&gt;&lt;b /&gt;&lt;/div&gt;
+      &lt;div className=&quot;gshadow-showcase__wrap&quot;&gt;
+        &lt;header className=&quot;gshadow-showcase__rail&quot;&gt;
+          &lt;div className=&quot;gshadow-showcase__brand&quot;&gt;&lt;img src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;ARCLIGHT RELAY&lt;/span&gt;&lt;small&gt;FIELD CONSOLE&lt;/small&gt;&lt;/div&gt;
+          &lt;nav aria-label=&quot;Primary navigation&quot;&gt;&lt;a href=&quot;#overview&quot;&gt;Overview&lt;/a&gt;&lt;a href=&quot;#network&quot;&gt;Network&lt;/a&gt;&lt;a href=&quot;#ledger&quot;&gt;Ledger&lt;/a&gt;&lt;/nav&gt;
+          &lt;div className=&quot;gshadow-showcase__rail-actions&quot;&gt;&lt;Status state=&quot;success&quot;&gt;SYSTEM NOMINAL&lt;/Status&gt;&lt;ThemeToggle /&gt;&lt;/div&gt;
+        &lt;/header&gt;
+
+        &lt;section className=&quot;gshadow-showcase__hero&quot; id=&quot;overview&quot;&gt;
+          &lt;div&gt;
+            &lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;NORTH SECTOR / 06:14 UTC&lt;/p&gt;
+            &lt;h1&gt;Signals hold.&lt;br /&gt;&lt;span&gt;Routes resolve.&lt;/span&gt;&lt;/h1&gt;
+            &lt;p className=&quot;gshadow-showcase__intro&quot;&gt;Arclight maps unverified relay traffic before it becomes an operational problem. Observe the system, review the handoff, then commit with intention.&lt;/p&gt;
+            &lt;div className=&quot;gshadow-showcase__actions&quot;&gt;&lt;GShadowButton&gt;OPEN SIGNAL MAP&lt;/GShadowButton&gt;&lt;GShadowButton intent=&quot;protocol&quot;&gt;VERIFY ROUTE&lt;/GShadowButton&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;Surface elevation=&quot;raised&quot; signal=&quot;convergence&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__handoff&quot;&gt;
+            &lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;ACTIVE HANDOFF&lt;/p&gt;
+            &lt;strong&gt;Array 09 → Relay 42&lt;/strong&gt;
+            &lt;p&gt;Two systems agree on the route. One operator confirmation remains.&lt;/p&gt;
+            &lt;div className=&quot;gshadow-showcase__handoff-line&quot;&gt;&lt;span&gt;09&lt;/span&gt;&lt;i /&gt;&lt;span&gt;42&lt;/span&gt;&lt;/div&gt;
+            &lt;Status state=&quot;warning&quot;&gt;CONFIRMATION WINDOW / 04:32&lt;/Status&gt;
+          &lt;/Surface&gt;
+        &lt;/section&gt;
+
+        &lt;section className=&quot;gshadow-showcase__metrics&quot; aria-label=&quot;Relay metrics&quot;&gt;
+          &lt;Metric signal=&quot;spectral&quot; label=&quot;LIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;RELAYS&quot; /&gt;
+          &lt;Metric signal=&quot;neutral&quot; label=&quot;ROUTE INTEGRITY&quot; value=&quot;99.98&quot; unit=&quot;%&quot; /&gt;
+          &lt;Metric signal=&quot;amber&quot; label=&quot;PENDING REVIEW&quot; value=&quot;07&quot; unit=&quot;ITEMS&quot; /&gt;
+          &lt;Metric signal=&quot;neutral&quot; label=&quot;LATENCY&quot; value=&quot;23&quot; unit=&quot;MS&quot; /&gt;
+        &lt;/section&gt;
+
+        &lt;section className=&quot;gshadow-showcase__grid&quot; id=&quot;network&quot;&gt;
+          &lt;Surface signal=&quot;spectral&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__map&quot;&gt;
+            &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;SPECTRAL LEAD&lt;/p&gt;&lt;h2&gt;Signal field&lt;/h2&gt;&lt;/div&gt;&lt;Status state=&quot;info&quot;&gt;12 NEW PATHS&lt;/Status&gt;&lt;/div&gt;
+            &lt;div className=&quot;gshadow-showcase__map-grid&quot; aria-label=&quot;Abstract relay map&quot;&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--start&quot;&gt;N&lt;/span&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--one&quot;&gt;A&lt;/span&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--two&quot;&gt;R&lt;/span&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--end&quot;&gt;9&lt;/span&gt;&lt;i className=&quot;gshadow-showcase__path gshadow-showcase__path--one&quot; /&gt;&lt;i className=&quot;gshadow-showcase__path gshadow-showcase__path--two&quot; /&gt;&lt;i className=&quot;gshadow-showcase__path gshadow-showcase__path--three&quot; /&gt;&lt;/div&gt;
+            &lt;p className=&quot;gshadow-showcase__caption&quot;&gt;Use spectral for discovery: live topology, selected paths, and reversible investigation.&lt;/p&gt;
+          &lt;/Surface&gt;
+
+          &lt;div className=&quot;gshadow-showcase__right-column&quot;&gt;
+            &lt;Surface signal=&quot;amber&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__review&quot;&gt;
+              &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;AMBER LEAD&lt;/p&gt;&lt;h2&gt;Protocol queue&lt;/h2&gt;&lt;/div&gt;&lt;Status state=&quot;warning&quot;&gt;07 OPEN&lt;/Status&gt;&lt;/div&gt;
+              &lt;ol&gt;{[&#39;Route 42 attestation&#39;, &#39;North-array capacity shift&#39;, &#39;Relay 17 access scope&#39;].map((item, index) =&gt; &lt;li key={item}&gt;&lt;span&gt;0{index + 1}&lt;/span&gt;&lt;strong&gt;{item}&lt;/strong&gt;&lt;GShadowButton intent=&quot;ghost&quot; size=&quot;sm&quot;&gt;REVIEW&lt;/GShadowButton&gt;&lt;/li&gt;)}&lt;/ol&gt;
+            &lt;/Surface&gt;
+            &lt;Surface signal=&quot;neutral&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__activity&quot; id=&quot;ledger&quot;&gt;
+              &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;NEUTRAL FIELD&lt;/p&gt;&lt;h2&gt;Relay ledger&lt;/h2&gt;&lt;/div&gt;&lt;a href=&quot;#ledger&quot;&gt;VIEW ALL →&lt;/a&gt;&lt;/div&gt;
+              &lt;ul&gt;{activity.map(([title, detail, state]) =&gt; &lt;li key={title}&gt;&lt;Status state={state}&gt;{title.toUpperCase()}&lt;/Status&gt;&lt;span&gt;{detail}&lt;/span&gt;&lt;/li&gt;)}&lt;/ul&gt;
+            &lt;/Surface&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;footer className=&quot;gshadow-showcase__footer&quot;&gt;&lt;span&gt;ARCLIGHT RELAY / FIELD OPERATIONS&lt;/span&gt;&lt;span&gt;ONE FIELD. TWO SIGNALS. NO NOISE.&lt;/span&gt;&lt;/footer&gt;
+      &lt;/div&gt;
+    &lt;/main&gt;
+  ),
+}
+</code></pre></div>
+    </div>
+        </div>
+    
+        <div class="panel panel-info">
+          
+    <div class="note info">
+      <div class="note-title">Info</div>
+      <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
+    </div>
+        </div>
+    
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { GShadowButton, Metric, Status, Surface, ThemeToggle } from "@gshadow/shadcn-registry";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Relay Control</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const RelayControl = () =&gt; (
+  &lt;main className=&quot;gshadow-showcase&quot;&gt;
+    &lt;div className=&quot;gshadow-showcase__atmosphere&quot; aria-hidden=&quot;true&quot;&gt;&lt;span /&gt;&lt;i /&gt;&lt;b /&gt;&lt;/div&gt;
+    &lt;div className=&quot;gshadow-showcase__wrap&quot;&gt;
+      &lt;header className=&quot;gshadow-showcase__rail&quot;&gt;
+        &lt;div className=&quot;gshadow-showcase__brand&quot;&gt;&lt;img src={mark} alt=&quot;&quot; /&gt;&lt;span&gt;ARCLIGHT RELAY&lt;/span&gt;&lt;small&gt;FIELD CONSOLE&lt;/small&gt;&lt;/div&gt;
+        &lt;nav aria-label=&quot;Primary navigation&quot;&gt;&lt;a href=&quot;#overview&quot;&gt;Overview&lt;/a&gt;&lt;a href=&quot;#network&quot;&gt;Network&lt;/a&gt;&lt;a href=&quot;#ledger&quot;&gt;Ledger&lt;/a&gt;&lt;/nav&gt;
+        &lt;div className=&quot;gshadow-showcase__rail-actions&quot;&gt;&lt;Status state=&quot;success&quot;&gt;SYSTEM NOMINAL&lt;/Status&gt;&lt;ThemeToggle /&gt;&lt;/div&gt;
+      &lt;/header&gt;
+
+      &lt;section className=&quot;gshadow-showcase__hero&quot; id=&quot;overview&quot;&gt;
+        &lt;div&gt;
+          &lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;NORTH SECTOR / 06:14 UTC&lt;/p&gt;
+          &lt;h1&gt;Signals hold.&lt;br /&gt;&lt;span&gt;Routes resolve.&lt;/span&gt;&lt;/h1&gt;
+          &lt;p className=&quot;gshadow-showcase__intro&quot;&gt;Arclight maps unverified relay traffic before it becomes an operational problem. Observe the system, review the handoff, then commit with intention.&lt;/p&gt;
+          &lt;div className=&quot;gshadow-showcase__actions&quot;&gt;&lt;GShadowButton&gt;OPEN SIGNAL MAP&lt;/GShadowButton&gt;&lt;GShadowButton intent=&quot;protocol&quot;&gt;VERIFY ROUTE&lt;/GShadowButton&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;Surface elevation=&quot;raised&quot; signal=&quot;convergence&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__handoff&quot;&gt;
+          &lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;ACTIVE HANDOFF&lt;/p&gt;
+          &lt;strong&gt;Array 09 → Relay 42&lt;/strong&gt;
+          &lt;p&gt;Two systems agree on the route. One operator confirmation remains.&lt;/p&gt;
+          &lt;div className=&quot;gshadow-showcase__handoff-line&quot;&gt;&lt;span&gt;09&lt;/span&gt;&lt;i /&gt;&lt;span&gt;42&lt;/span&gt;&lt;/div&gt;
+          &lt;Status state=&quot;warning&quot;&gt;CONFIRMATION WINDOW / 04:32&lt;/Status&gt;
+        &lt;/Surface&gt;
+      &lt;/section&gt;
+
+      &lt;section className=&quot;gshadow-showcase__metrics&quot; aria-label=&quot;Relay metrics&quot;&gt;
+        &lt;Metric signal=&quot;spectral&quot; label=&quot;LIVE SIGNALS&quot; value=&quot;1,284&quot; unit=&quot;RELAYS&quot; /&gt;
+        &lt;Metric signal=&quot;neutral&quot; label=&quot;ROUTE INTEGRITY&quot; value=&quot;99.98&quot; unit=&quot;%&quot; /&gt;
+        &lt;Metric signal=&quot;amber&quot; label=&quot;PENDING REVIEW&quot; value=&quot;07&quot; unit=&quot;ITEMS&quot; /&gt;
+        &lt;Metric signal=&quot;neutral&quot; label=&quot;LATENCY&quot; value=&quot;23&quot; unit=&quot;MS&quot; /&gt;
+      &lt;/section&gt;
+
+      &lt;section className=&quot;gshadow-showcase__grid&quot; id=&quot;network&quot;&gt;
+        &lt;Surface signal=&quot;spectral&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__map&quot;&gt;
+          &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;SPECTRAL LEAD&lt;/p&gt;&lt;h2&gt;Signal field&lt;/h2&gt;&lt;/div&gt;&lt;Status state=&quot;info&quot;&gt;12 NEW PATHS&lt;/Status&gt;&lt;/div&gt;
+          &lt;div className=&quot;gshadow-showcase__map-grid&quot; aria-label=&quot;Abstract relay map&quot;&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--start&quot;&gt;N&lt;/span&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--one&quot;&gt;A&lt;/span&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--two&quot;&gt;R&lt;/span&gt;&lt;span className=&quot;gshadow-showcase__node gshadow-showcase__node--end&quot;&gt;9&lt;/span&gt;&lt;i className=&quot;gshadow-showcase__path gshadow-showcase__path--one&quot; /&gt;&lt;i className=&quot;gshadow-showcase__path gshadow-showcase__path--two&quot; /&gt;&lt;i className=&quot;gshadow-showcase__path gshadow-showcase__path--three&quot; /&gt;&lt;/div&gt;
+          &lt;p className=&quot;gshadow-showcase__caption&quot;&gt;Use spectral for discovery: live topology, selected paths, and reversible investigation.&lt;/p&gt;
+        &lt;/Surface&gt;
+
+        &lt;div className=&quot;gshadow-showcase__right-column&quot;&gt;
+          &lt;Surface signal=&quot;amber&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__review&quot;&gt;
+            &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;AMBER LEAD&lt;/p&gt;&lt;h2&gt;Protocol queue&lt;/h2&gt;&lt;/div&gt;&lt;Status state=&quot;warning&quot;&gt;07 OPEN&lt;/Status&gt;&lt;/div&gt;
+            &lt;ol&gt;{[&#39;Route 42 attestation&#39;, &#39;North-array capacity shift&#39;, &#39;Relay 17 access scope&#39;].map((item, index) =&gt; &lt;li key={item}&gt;&lt;span&gt;0{index + 1}&lt;/span&gt;&lt;strong&gt;{item}&lt;/strong&gt;&lt;GShadowButton intent=&quot;ghost&quot; size=&quot;sm&quot;&gt;REVIEW&lt;/GShadowButton&gt;&lt;/li&gt;)}&lt;/ol&gt;
+          &lt;/Surface&gt;
+          &lt;Surface signal=&quot;neutral&quot; density=&quot;comfortable&quot; className=&quot;gshadow-showcase__activity&quot; id=&quot;ledger&quot;&gt;
+            &lt;div className=&quot;gshadow-showcase__panel-heading&quot;&gt;&lt;div&gt;&lt;p className=&quot;gshadow-showcase__eyebrow&quot;&gt;NEUTRAL FIELD&lt;/p&gt;&lt;h2&gt;Relay ledger&lt;/h2&gt;&lt;/div&gt;&lt;a href=&quot;#ledger&quot;&gt;VIEW ALL →&lt;/a&gt;&lt;/div&gt;
+            &lt;ul&gt;{activity.map(([title, detail, state]) =&gt; &lt;li key={title}&gt;&lt;Status state={state}&gt;{title.toUpperCase()}&lt;/Status&gt;&lt;span&gt;{detail}&lt;/span&gt;&lt;/li&gt;)}&lt;/ul&gt;
+          &lt;/Surface&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;footer className=&quot;gshadow-showcase__footer&quot;&gt;&lt;span&gt;ARCLIGHT RELAY / FIELD OPERATIONS&lt;/span&gt;&lt;span&gt;ONE FIELD. TWO SIGNALS. NO NOISE.&lt;/span&gt;&lt;/footer&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+);</code></pre>
             </div>
         </div>
     
