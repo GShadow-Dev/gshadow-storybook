@@ -594,7 +594,7 @@
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.3s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.5s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -670,13 +670,14 @@ export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39
 function FoundationCanvas() {
   const reduceMotion = useReducedMotion()
 
-  const drift = reduceMotion ? {} : { x: [0, 6, -4, 0], y: [0, -4, 3, 0], opacity: [.22, .34, .26, .22] }
+  const drift = reduceMotion ? {} : { x: [0, 8, -5, 0], y: [0, -5, 4, 0], opacity: [.72, .94, .78, .72], scale: [1, 1.035, 1.01, 1] }
 
   return (
     &lt;main className=&quot;gshadow-foundation&quot;&gt;
       &lt;div className=&quot;gshadow-foundation__atmosphere&quot; aria-hidden=&quot;true&quot;&gt;
-        &lt;motion.div className=&quot;gshadow-foundation__atmosphere-field gshadow-foundation__atmosphere-field--spectral&quot; animate={drift} transition={{ duration: 30, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;
-        &lt;motion.div className=&quot;gshadow-foundation__atmosphere-field gshadow-foundation__atmosphere-field--amber&quot; animate={reduceMotion ? {} : { x: [0, -5, 3, 0], y: [0, 4, -3, 0], opacity: [.20, .31, .24, .20] }} transition={{ duration: 34, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;
+        &lt;motion.div className=&quot;gshadow-foundation__atmosphere-field gshadow-foundation__atmosphere-field--spectral&quot; animate={drift} transition={{ duration: 32, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;
+        &lt;motion.div className=&quot;gshadow-foundation__atmosphere-field gshadow-foundation__atmosphere-field--amber&quot; animate={reduceMotion ? {} : { x: [0, -7, 4, 0], y: [0, 5, -4, 0], opacity: [.68, .90, .74, .68], scale: [1, 1.04, 1.015, 1] }} transition={{ duration: 38, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;
+        &lt;motion.div className=&quot;gshadow-foundation__atmosphere-field gshadow-foundation__atmosphere-field--seam&quot; animate={reduceMotion ? {} : { x: [&#39;-2%&#39;, &#39;2%&#39;, &#39;-1%&#39;, &#39;-2%&#39;], opacity: [.22, .44, .29, .22], scaleX: [1, 1.07, 1.02, 1] }} transition={{ duration: 26, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;
       &lt;/div&gt;
       &lt;div className=&quot;gshadow-foundation__wrap&quot;&gt;
         &lt;header className=&quot;gshadow-foundation__rail&quot;&gt;
@@ -1210,13 +1211,14 @@ export default { title: &#39;GSHADOW/Foundation&#39;, parameters: { layout: &#39
 function FoundationCanvas() {
   const reduceMotion = useReducedMotion()
 
-  const drift = reduceMotion ? {} : { x: [0, 6, -4, 0], y: [0, -4, 3, 0], opacity: [.22, .34, .26, .22] }
+  const drift = reduceMotion ? {} : { x: [0, 8, -5, 0], y: [0, -5, 4, 0], opacity: [.72, .94, .78, .72], scale: [1, 1.035, 1.01, 1] }
 
   return (
     &lt;main className=&quot;gshadow-foundation&quot;&gt;
       &lt;div className=&quot;gshadow-foundation__atmosphere&quot; aria-hidden=&quot;true&quot;&gt;
-        &lt;motion.div className=&quot;gshadow-foundation__atmosphere-field gshadow-foundation__atmosphere-field--spectral&quot; animate={drift} transition={{ duration: 30, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;
-        &lt;motion.div className=&quot;gshadow-foundation__atmosphere-field gshadow-foundation__atmosphere-field--amber&quot; animate={reduceMotion ? {} : { x: [0, -5, 3, 0], y: [0, 4, -3, 0], opacity: [.20, .31, .24, .20] }} transition={{ duration: 34, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;
+        &lt;motion.div className=&quot;gshadow-foundation__atmosphere-field gshadow-foundation__atmosphere-field--spectral&quot; animate={drift} transition={{ duration: 32, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;
+        &lt;motion.div className=&quot;gshadow-foundation__atmosphere-field gshadow-foundation__atmosphere-field--amber&quot; animate={reduceMotion ? {} : { x: [0, -7, 4, 0], y: [0, 5, -4, 0], opacity: [.68, .90, .74, .68], scale: [1, 1.04, 1.015, 1] }} transition={{ duration: 38, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;
+        &lt;motion.div className=&quot;gshadow-foundation__atmosphere-field gshadow-foundation__atmosphere-field--seam&quot; animate={reduceMotion ? {} : { x: [&#39;-2%&#39;, &#39;2%&#39;, &#39;-1%&#39;, &#39;-2%&#39;], opacity: [.22, .44, .29, .22], scaleX: [1, 1.07, 1.02, 1] }} transition={{ duration: 26, ease: &#39;easeInOut&#39;, repeat: Infinity }} /&gt;
       &lt;/div&gt;
       &lt;div className=&quot;gshadow-foundation__wrap&quot;&gt;
         &lt;header className=&quot;gshadow-foundation__rail&quot;&gt;
